@@ -16,6 +16,8 @@ public class PathViewer extends JPanel {
 
     @Override
     protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+
         Waypoint prev = null;
 
         for(Waypoint waypoint : path.getPoints()) {

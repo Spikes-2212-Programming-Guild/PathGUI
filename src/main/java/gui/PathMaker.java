@@ -18,6 +18,8 @@ public class PathMaker extends JPanel implements Connectible {
 
     @Override
     protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+
         Waypoint prev = null;
 
         for(Waypoint waypoint : path) {
