@@ -1,14 +1,14 @@
 package gui;
 
+import gui.menus.PathMenuBar;
+
 import javax.swing.*;
 import java.awt.*;
 
 public class GUI extends JFrame {
     public GUI() {
-        add(new PathMaker());
-
-        JMenuBar menuBar = new PathMenuBar();
-        setJMenuBar(menuBar);
+        setContentPane(new PathMaker());
+        setJMenuBar(new PathMenuBar(this));
     }
 
     public static void main(String[] args) {
