@@ -6,7 +6,7 @@ import gui.PathMaker;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class NewListener implements ActionListener { // TODO bugfix
+public class NewListener implements ActionListener {
     GUI gui;
 
     public NewListener(GUI gui) {
@@ -16,5 +16,7 @@ public class NewListener implements ActionListener { // TODO bugfix
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
         gui.setContentPane(new PathMaker());
+        gui.dispose();
+        GUI.main(new String[]{});
     }
 }
