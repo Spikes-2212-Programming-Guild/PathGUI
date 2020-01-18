@@ -7,7 +7,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class PathViewer extends JPanel {
-    Path path;
+    private Path path;
 
     public PathViewer(java.nio.file.Path filepath) {
         path = Path.importFromCSV(filepath);
@@ -31,6 +31,6 @@ public class PathViewer extends JPanel {
     }
 
     private int ypx(Waypoint waypoint) {
-        return (int)(100 * waypoint.getX());
+        return (int)(100 * waypoint.getY());
     }
 }
