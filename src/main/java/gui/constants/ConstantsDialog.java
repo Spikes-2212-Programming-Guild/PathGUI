@@ -1,4 +1,6 @@
-package gui;
+package gui.constants;
+
+import gui.CloseListener;
 
 import javax.swing.*;
 import java.awt.*;

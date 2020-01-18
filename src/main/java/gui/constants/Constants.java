@@ -1,4 +1,4 @@
-package gui;
+package gui.constants;
 
 public class Constants {
     private double spacing;

@@ -2,6 +2,8 @@ package gui;
 
 import com.spikes2212.path.Path;
 import com.spikes2212.path.Waypoint;
+import gui.constants.Constants;
+import gui.constants.ConstantsDialog;
 
 import javax.swing.*;
 import java.awt.*;
