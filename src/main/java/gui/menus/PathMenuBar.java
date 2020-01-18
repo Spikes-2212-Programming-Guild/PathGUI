@@ -26,14 +26,5 @@ public class PathMenuBar extends JMenuBar {
         file.addSeparator();
         file.add(save);
         add(file);
-
-        JMenu edit = new JMenu("Edit");
-        edit.setMnemonic('E');
-
-        JMenuItem attributes = new JMenuItem("Attributes");
-        attributes.setMnemonic('A');
-
-        edit.add(attributes);
-        add(edit);
     }
 }
