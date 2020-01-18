@@ -48,6 +48,11 @@ public class PathMaker extends JPanel implements Connectible {
     }
 
     @Override
+    public void removeLast() {
+        path.remove(path.size() - 1);
+    }
+
+    @Override
     public void update() {
         repaint();
     }
