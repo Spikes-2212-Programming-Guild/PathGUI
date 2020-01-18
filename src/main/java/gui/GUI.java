@@ -13,7 +13,7 @@ public class GUI extends JFrame {
 
     public static void main(String[] args) {
         GUI gui = new GUI();
-        gui.setPreferredSize(new Dimension(1598, 821));
+        gui.setPreferredSize(new Dimension(821, 1598 / 2));
         gui.setResizable(false);
         gui.pack();
         gui.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
