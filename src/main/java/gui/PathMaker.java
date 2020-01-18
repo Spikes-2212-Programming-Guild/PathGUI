@@ -1,5 +1,6 @@
 package gui;
 
+import com.spikes2212.path.Path;
 import com.spikes2212.path.Waypoint;
 
 import javax.swing.*;
@@ -45,5 +46,11 @@ public class PathMaker extends JPanel implements Connectible {
     @Override
     public void update() {
         repaint();
+    }
+
+    public void exportPath(java.nio.file.Path filepath) {
+        Path spikesPath = new Path(0.075, 0.4, 0.6, 3.05, 3,
+                18, path.toArray(new Waypoint[]{})); // TODO implement `Constants` data class
+        spikesPath.exportToCSV(filepath);
     }
 }
