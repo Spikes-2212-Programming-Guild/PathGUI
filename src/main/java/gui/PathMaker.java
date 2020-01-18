@@ -4,42 +4,16 @@ import com.spikes2212.path.Waypoint;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.util.LinkedList;
 import java.util.List;
 
-public class PathMaker extends JPanel implements MouseListener {
+public class PathMaker extends JPanel implements Connectible {
     private List<Waypoint> path;
 
     public PathMaker() {
         path = new LinkedList<>();
         setSize(1598, 821);
-        addMouseListener(this);
-    }
-
-    @Override
-    public void mouseClicked(MouseEvent mouseEvent) {
-        Point point = mouseEvent.getPoint();
-        path.add(new Waypoint(point.getX() / 100, point.getY() / 100));
-        System.out.println("(" + point.getX() / 100 + ", " + point.getY() / 100 + ")");
-        repaint();
-    }
-
-    @Override
-    public void mousePressed(MouseEvent mouseEvent) {
-    }
-
-    @Override
-    public void mouseReleased(MouseEvent mouseEvent) {
-    }
-
-    @Override
-    public void mouseEntered(MouseEvent mouseEvent) {
-    }
-
-    @Override
-    public void mouseExited(MouseEvent mouseEvent) {
+        addMouseListener(new ConnectionListener(this));
     }
 
     @Override
@@ -59,5 +33,15 @@ public class PathMaker extends JPanel implements MouseListener {
 
     private int ypx(Waypoint waypoint) {
         return (int)(100 * waypoint.getY());
+    }
+
+    @Override
+    public void add(Waypoint waypoint) {
+        path.add(waypoint);
+    }
+
+    @Override
+    public void update() {
+        repaint();
     }
 }
