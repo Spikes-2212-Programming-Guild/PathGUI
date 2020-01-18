@@ -1,7 +1,6 @@
 package gui.menus;
 
-import gui.GUI;
-import gui.PathMaker;
+import gui.*;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -22,5 +21,7 @@ public class SaveListener implements ActionListener {
         if(val == JFileChooser.APPROVE_OPTION && gui.getContentPane() instanceof PathMaker) {
             ((PathMaker)gui.getContentPane()).exportPath(fileChooser.getSelectedFile().toPath());
         }
+
+        gui.setContentPane(new PathViewer(fileChooser.getSelectedFile().toPath()));
     }
 }
