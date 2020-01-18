@@ -13,7 +13,7 @@ public class PathMaker extends JPanel implements Connectible {
 
     public PathMaker() {
         path = new LinkedList<>();
-        setSize(1598, 821);
+        setSize(821, 1598 / 2);
         addMouseListener(new ConnectionListener(this));
     }
 
@@ -24,6 +24,8 @@ public class PathMaker extends JPanel implements Connectible {
         Waypoint prev = null;
 
         for(Waypoint waypoint : path) {
+            g.fillOval(xpx(waypoint) - 2, ypx(waypoint) - 2, 4, 4);
+
             if(prev != null)
                 g.drawLine(xpx(prev), ypx(prev), xpx(waypoint), ypx(waypoint));
             prev = waypoint;
@@ -49,8 +51,11 @@ public class PathMaker extends JPanel implements Connectible {
     }
 
     public void exportPath(java.nio.file.Path filepath) {
-        Path spikesPath = new Path(0.075, 0.4, 0.6, 3.05, 3,
-                18, path.toArray(new Waypoint[]{})); // TODO implement `Constants` data class
+        Constants constants = ConstantsDialog.showDialog();
+
+        Path spikesPath = new Path(constants.getSpacing(), constants.getSmoothWeight(), constants.getTolerance(),
+                constants.getMaxVelocity(), constants.getTurningConstant(), constants.getMaxAcceleration(),
+                path.toArray(new Waypoint[]{}));
         spikesPath.exportToCSV(filepath);
     }
 }

@@ -1,6 +1,7 @@
 package gui;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class ConstantsDialog extends JPanel {
     private JTextField spacing;
@@ -10,39 +11,47 @@ public class ConstantsDialog extends JPanel {
     private JTextField turningConstant;
     private JTextField maxAcceleration;
 
-    public ConstantsDialog() {
-        spacing = new JTextField();
-        smoothWeight = new JTextField();
-        tolerance = new JTextField();
-        maxVelocity = new JTextField();
-        turningConstant = new JTextField();
-        maxAcceleration = new JTextField();
+    private JButton save;
 
-        this.add(new JLabel("Spacing:"));
-        this.add(spacing);
-        this.add(new JLabel("Smooth Weight:"));
-        this.add(smoothWeight);
-        this.add(new JLabel("Tolerance:"));
-        this.add(tolerance);
-        this.add(new JLabel("Max Velocity:"));
-        this.add(maxVelocity);
-        this.add(new JLabel("Turning Constant:"));
-        this.add(turningConstant);
-        this.add(new JLabel("Max Acceleration:"));
-        this.add(maxAcceleration);
+    public ConstantsDialog() {
+        setLayout(new GridLayout(7, 2));
+        spacing = new JTextField(20);
+        smoothWeight = new JTextField(20);
+        tolerance = new JTextField(20);
+        maxVelocity = new JTextField(20);
+        turningConstant = new JTextField(20);
+        maxAcceleration = new JTextField(20);
+        save = new JButton("Save");
+
+        add(new JLabel("Spacing:"));
+        add(spacing);
+        add(new JLabel("Smooth Weight:"));
+        add(smoothWeight);
+        add(new JLabel("Tolerance:"));
+        add(tolerance);
+        add(new JLabel("Max Velocity:"));
+        add(maxVelocity);
+        add(new JLabel("Turning Constant:"));
+        add(turningConstant);
+        add(new JLabel("Max Acceleration:"));
+        add(maxAcceleration);
+        add(save);
+
+        setSize(640, 480);
     }
 
-    public static Constants showDialog() throws InterruptedException {
+    public static Constants showDialog() {
         ConstantsDialog dialog = new ConstantsDialog();
-        JFrame frame = new JFrame();
+        JDialog frame = new JDialog();
+
+        dialog.save.addActionListener(new CloseListener(frame));
+
+        frame.setModal(true);
         frame.setContentPane(dialog);
-        frame.pack();
         frame.setResizable(false);
         frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+        frame.pack();
         frame.setVisible(true);
-
-        while(frame.isVisible())
-            Thread.sleep(100);
 
         return new Constants(Double.parseDouble(dialog.spacing.getText()),
                 Double.parseDouble(dialog.smoothWeight.getText()), Double.parseDouble(dialog.tolerance.getText()),
