@@ -11,7 +11,7 @@ public class PathMenuBar extends JMenuBar {
 
         JMenuItem newFile = new JMenuItem("New");
         newFile.setMnemonic('N');
-        newFile.addActionListener(new NewListener(gui, this));
+        newFile.addActionListener(new NewListener(gui));
 
         JMenuItem open = new JMenuItem("Open");
         open.setMnemonic('O');
