@@ -79,7 +79,6 @@ public class PathMaker extends JPanel implements Connectible {
         }
 
         path = temp;
-        System.out.println(path);
         repaint();
     }
 }
