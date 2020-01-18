@@ -26,5 +26,15 @@ public class PathMenuBar extends JMenuBar {
         file.addSeparator();
         file.add(save);
         add(file);
+
+        JMenu edit = new JMenu("Edit");
+        edit.setMnemonic('E');
+
+        JMenuItem rotate = new JMenuItem("Rotate Path");
+        rotate.setMnemonic('R');
+        rotate.addActionListener(new RotateListener(gui));
+
+        edit.add(rotate);
+        add(edit);
     }
 }
