@@ -23,7 +23,7 @@ public class Path {
     /**
      * Initializes a path.
      * @param spacing the distance between two points filled in between points given as parameters
-     * @param smooth_weight how smooth to make the path, should be about 0.75 to 0.98
+     * @param smooth_weight how smooth to make the path
      * @param tolerance the smoothing tolerance
      * @param maxVelocity the robot's maximum velocity
      * @param turningConstant speed constant at curves (the higher it is, the faster you turn)
