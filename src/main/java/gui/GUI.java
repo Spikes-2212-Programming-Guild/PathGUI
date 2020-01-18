@@ -2,11 +2,10 @@ package gui;
 
 import javax.swing.*;
 import java.awt.*;
-import java.nio.file.Paths;
 
 public class GUI extends JFrame {
     public GUI() {
-        setContentPane(new PathViewer(Paths.get("D:/paths/path.csv")));
+        setContentPane(new PathMaker());
     }
 
     public static void main(String[] args) {
