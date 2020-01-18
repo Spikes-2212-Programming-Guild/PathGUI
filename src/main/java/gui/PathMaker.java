@@ -65,4 +65,21 @@ public class PathMaker extends JPanel implements Connectible {
                 path.toArray(new Waypoint[]{}));
         spikesPath.exportToCSV(filepath);
     }
+
+    public void rotatePath(double radians) {
+        List<Waypoint> temp = new LinkedList<>();
+        double xoff = path.get(0).getX();
+        double yoff = path.get(0).getY();
+
+        for(Waypoint waypoint : path) {
+            double x = (waypoint.getX() - xoff) * Math.cos(radians) - (waypoint.getY() - yoff) * Math.sin(radians);
+            double y = (waypoint.getX() - xoff) * Math.sin(radians) + (waypoint.getY() - yoff) * Math.cos(radians);
+
+            temp.add(new Waypoint(x + xoff, y + yoff));
+        }
+
+        path = temp;
+        System.out.println(path);
+        repaint();
+    }
 }
