@@ -5,7 +5,10 @@ import java.awt.*;
 
 public class GUI extends JFrame {
     public GUI() {
-        setContentPane(new PathMaker());
+        add(new PathMaker());
+
+        JMenuBar menuBar = new PathMenuBar();
+        setJMenuBar(menuBar);
     }
 
     public static void main(String[] args) {
@@ -13,7 +16,7 @@ public class GUI extends JFrame {
         gui.setPreferredSize(new Dimension(1598, 821));
         gui.setResizable(false);
         gui.pack();
-        gui.setVisible(true);
         gui.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        gui.setVisible(true);
     }
 }
