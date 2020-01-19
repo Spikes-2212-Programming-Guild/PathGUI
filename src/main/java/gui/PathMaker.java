@@ -56,7 +56,7 @@ public class PathMaker extends JPanel implements Connectible {
     }
 
     private int ypx(Waypoint waypoint) {
-        return (int)(100 * waypoint.getY());
+        return 799 - (int)(100 * waypoint.getY());
     }
 
     @Override
@@ -104,6 +104,19 @@ public class PathMaker extends JPanel implements Connectible {
 
         for(Waypoint waypoint : path) {
             temp.add(new Waypoint(7.99 - waypoint.getX(), waypoint.getY()));
+        }
+
+        path = temp;
+        repaint();
+    }
+
+    public void moveToOrigin() {
+        List<Waypoint> temp = new LinkedList<>();
+        double xoff = path.get(0).getX();
+        double yoff = path.get(0).getY();
+
+        for(Waypoint waypoint : path) {
+            temp.add(new Waypoint(waypoint.getX() - xoff, waypoint.getY() - yoff));
         }
 
         path = temp;

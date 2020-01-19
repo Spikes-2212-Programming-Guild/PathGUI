@@ -30,6 +30,10 @@ public class PathMenuBar extends JMenuBar {
         JMenu edit = new JMenu("Edit");
         edit.setMnemonic('E');
 
+        JMenuItem origin = new JMenuItem("Move to Origin");
+        origin.setMnemonic('O');
+        origin.addActionListener(new OriginListener(gui));
+
         JMenuItem mirror = new JMenuItem("Mirror Path");
         mirror.setMnemonic('M');
         mirror.addActionListener(new MirrorListener(gui));
@@ -38,6 +42,7 @@ public class PathMenuBar extends JMenuBar {
         rotate.setMnemonic('R');
         rotate.addActionListener(new RotateListener(gui));
 
+        edit.add(origin);
         edit.add(mirror);
         edit.add(rotate);
         add(edit);

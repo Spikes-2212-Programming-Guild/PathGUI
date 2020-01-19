@@ -16,7 +16,7 @@ public class ConnectionListener extends MouseAdapter {
     @Override
     public void mouseClicked(MouseEvent e) {
         Point point = e.getPoint();
-        connectible.add(new Waypoint(point.getX() / 100, point.getY() / 100));
+        connectible.add(new Waypoint(point.getX() / 100, (799 - point.getY()) / 100));
         connectible.update();
     }
 }
