@@ -5,8 +5,12 @@ import com.spikes2212.path.Waypoint;
 import gui.constants.Constants;
 import gui.constants.ConstantsDialog;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -15,13 +19,19 @@ public class PathMaker extends JPanel implements Connectible {
 
     public PathMaker() {
         path = new LinkedList<>();
-        setSize(821, 1598 / 2);
+        setSize(720, 694);
         addMouseListener(new ConnectionListener(this));
     }
 
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
+        BufferedImage img;
+        try {
+            img = ImageIO.read(new File("src/main/resources/HalfField.png"));
+            g.drawImage(img, 0, 0, null);
+        } catch(IOException ignored) {
+        }
 
         Waypoint prev = null;
 
