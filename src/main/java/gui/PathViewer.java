@@ -21,7 +21,7 @@ public class PathViewer extends JPanel {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
-        BufferedImage img = null;
+        BufferedImage img;
         try {
             img = ImageIO.read(new File("src/main/resources/HalfField.png"));
             g.drawImage(img, 0, 0, null);
