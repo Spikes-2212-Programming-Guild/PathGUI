@@ -23,7 +23,6 @@ public class RotateListener implements ActionListener {
             try {
                 ((PathMaker)gui.getContentPane()).rotatePath(Math.toRadians(Double.parseDouble(angle)));
             } catch(Exception ignored) {
-                System.out.println(angle);
             }
         }
     }
