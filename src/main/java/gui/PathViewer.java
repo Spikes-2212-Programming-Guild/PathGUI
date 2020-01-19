@@ -50,6 +50,6 @@ public class PathViewer extends JPanel {
     }
 
     private int ypx(Waypoint waypoint) {
-        return (int)(100 * waypoint.getY());
+        return 799 - (int)(100 * waypoint.getY());
     }
 }
