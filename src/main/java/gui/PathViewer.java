@@ -28,6 +28,13 @@ public class PathViewer extends JPanel {
         } catch(IOException ignored) {
         }
 
+        g.setColor(Color.RED);
+        try {
+            ((Graphics2D)g).setStroke(new BasicStroke(4));
+        } catch(Exception ignored) {
+            ignored.printStackTrace();
+        }
+
         Waypoint prev = null;
 
         for(Waypoint waypoint : path.getPoints()) {
