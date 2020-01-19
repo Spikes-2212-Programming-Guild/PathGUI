@@ -19,7 +19,7 @@ public class PathMaker extends JPanel implements Connectible {
 
     public PathMaker() {
         path = new LinkedList<>();
-        setSize(720, 694);
+        setSize(799, 770);
         addMouseListener(new ConnectionListener(this));
     }
 
@@ -86,6 +86,17 @@ public class PathMaker extends JPanel implements Connectible {
             double y = (waypoint.getX() - xoff) * Math.sin(radians) + (waypoint.getY() - yoff) * Math.cos(radians);
 
             temp.add(new Waypoint(x + xoff, y + yoff));
+        }
+
+        path = temp;
+        repaint();
+    }
+
+    public void mirrorPath() {
+        List<Waypoint> temp = new LinkedList<>();
+
+        for(Waypoint waypoint : path) {
+            temp.add(new Waypoint(7.99 - waypoint.getX(), waypoint.getY()));
         }
 
         path = temp;

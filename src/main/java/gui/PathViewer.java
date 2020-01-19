@@ -15,7 +15,7 @@ public class PathViewer extends JPanel {
 
     public PathViewer(java.nio.file.Path filepath) {
         path = Path.importFromCSV(filepath);
-        setSize(720, 694);
+        setSize(799, 770);
     }
 
     @Override
