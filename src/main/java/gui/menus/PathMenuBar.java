@@ -38,12 +38,17 @@ public class PathMenuBar extends JMenuBar {
         mirror.setMnemonic('M');
         mirror.addActionListener(new MirrorListener(gui));
 
+        JMenuItem align = new JMenuItem("Align Path");
+        align.setMnemonic('A');
+        align.addActionListener(new AlignListener(gui));
+
         JMenuItem rotate = new JMenuItem("Rotate Path");
         rotate.setMnemonic('R');
         rotate.addActionListener(new RotateListener(gui));
 
         edit.add(origin);
         edit.add(mirror);
+        edit.add(align);
         edit.add(rotate);
         add(edit);
     }
