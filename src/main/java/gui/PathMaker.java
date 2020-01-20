@@ -59,6 +59,10 @@ public class PathMaker extends JPanel implements Connectible {
         return 799 - (int)(100 * waypoint.getY());
     }
 
+    public Waypoint getFirst() {
+        return path.get(0);
+    }
+
     @Override
     public void add(Waypoint waypoint) {
         path.add(waypoint);

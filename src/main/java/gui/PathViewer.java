@@ -13,9 +13,18 @@ import java.io.IOException;
 public class PathViewer extends JPanel {
     private Path path;
 
-    public PathViewer(java.nio.file.Path filepath) {
+    private double xoffset;
+    private double yoffset;
+
+    public PathViewer(java.nio.file.Path filepath, double xoffset, double yoffset) {
         path = Path.importFromCSV(filepath);
         setSize(799, 770);
+        this.xoffset = xoffset;
+        this.yoffset = yoffset;
+    }
+
+    public PathViewer(java.nio.file.Path filepath) {
+        this(filepath, 0, 0);
     }
 
     @Override
@@ -46,10 +55,10 @@ public class PathViewer extends JPanel {
     }
 
     private int xpx(Waypoint waypoint) {
-        return (int)(100 * waypoint.getX());
+        return (int)(100 * (waypoint.getX() + xoffset));
     }
 
     private int ypx(Waypoint waypoint) {
-        return 799 - (int)(100 * waypoint.getY());
+        return 799 - (int)(100 * (waypoint.getY() + yoffset));
     }
 }
