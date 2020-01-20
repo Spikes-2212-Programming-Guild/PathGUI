@@ -103,13 +103,8 @@ public class PathMaker extends JPanel implements Connectible {
         Waypoint first = path.get(0);
         Waypoint second = path.get(1);
 
-        System.out.println(first);
-        System.out.println(second);
-
         double m = (first.getY() - second.getY()) / (first.getX() - second.getX());
-        System.out.println(m);
         double angle = Math.atan(m);
-        System.out.println(Math.toDegrees(angle));
 
         rotatePath((Math.PI / 2) - angle);
     }
