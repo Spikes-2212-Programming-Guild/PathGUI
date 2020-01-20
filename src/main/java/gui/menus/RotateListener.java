@@ -8,7 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class RotateListener implements ActionListener {
-    GUI gui;
+    private GUI gui;
 
     public RotateListener(GUI gui) {
         this.gui = gui;

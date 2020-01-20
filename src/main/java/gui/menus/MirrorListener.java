@@ -7,7 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class MirrorListener implements ActionListener {
-    GUI gui;
+    private GUI gui;
 
     public MirrorListener(GUI gui) {
         this.gui = gui;

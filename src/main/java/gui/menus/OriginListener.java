@@ -7,7 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class OriginListener implements ActionListener {
-    GUI gui;
+    private GUI gui;
 
     public OriginListener(GUI gui) {
         this.gui = gui;
