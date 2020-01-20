@@ -6,14 +6,13 @@ import javax.swing.*;
 import java.awt.*;
 
 public class GUI extends JFrame {
-    JFileChooser fileChooser;
+    private JFileChooser fileChooser;
 
     public GUI() {
         setContentPane(new PathMaker());
         setJMenuBar(new PathMenuBar(this));
 
-        String directoryPath = new
-        fileChooser = new JFileChooser("src/main/resources/HalfField.png");
+        fileChooser = new JFileChooser();
     }
 
     public static void main(String[] args) {
