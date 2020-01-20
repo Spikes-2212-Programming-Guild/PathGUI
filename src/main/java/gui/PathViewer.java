@@ -41,7 +41,6 @@ public class PathViewer extends JPanel {
         try {
             ((Graphics2D)g).setStroke(new BasicStroke(4));
         } catch(Exception ignored) {
-            ignored.printStackTrace();
         }
 
         Waypoint prev = null;
