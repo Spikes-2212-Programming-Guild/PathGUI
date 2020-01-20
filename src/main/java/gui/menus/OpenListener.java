@@ -17,7 +17,7 @@ public class OpenListener implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
-        JFileChooser fileChooser = new JFileChooser();
+        JFileChooser fileChooser = gui.getFileChooser();
         int val = fileChooser.showOpenDialog(null);
 
         if(val == JFileChooser.APPROVE_OPTION) {

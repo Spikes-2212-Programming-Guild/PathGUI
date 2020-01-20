@@ -16,7 +16,7 @@ public class SaveListener implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
-        JFileChooser fileChooser = new JFileChooser();
+        JFileChooser fileChooser = gui.getFileChooser();
         int val = fileChooser.showSaveDialog(null);
 
         if(val == JFileChooser.APPROVE_OPTION && gui.getContentPane() instanceof PathMaker) {
