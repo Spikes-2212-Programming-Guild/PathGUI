@@ -42,13 +42,19 @@ public class PathMenuBar extends JMenuBar {
         align.setMnemonic('A');
         align.addActionListener(new AlignListener(gui));
 
+        JMenuItem rotate180 = new JMenuItem("Rotate Path 180");
+        rotate180.setMnemonic('P');
+        rotate180.addActionListener(new Rotate180Listener(gui));
+
         JMenuItem rotate = new JMenuItem("Rotate Path");
         rotate.setMnemonic('R');
         rotate.addActionListener(new RotateListener(gui));
 
         edit.add(origin);
         edit.add(mirror);
+        edit.addSeparator();
         edit.add(align);
+        edit.add(rotate180);
         edit.add(rotate);
         add(edit);
     }
