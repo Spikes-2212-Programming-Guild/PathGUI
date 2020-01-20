@@ -107,6 +107,12 @@ public class PathMaker extends JPanel implements Connectible {
         double angle = Math.atan(m);
 
         rotatePath((Math.PI / 2) - angle);
+
+        first = path.get(0);
+        second = path.get(1);
+        if(second.getY() < first.getY()) {
+            rotatePath(Math.PI);
+        }
     }
 
     public void mirrorPath() {
