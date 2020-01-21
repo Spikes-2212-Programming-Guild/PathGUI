@@ -23,6 +23,7 @@ public class OpenListener implements ActionListener {
         if(val == JFileChooser.APPROVE_OPTION) {
             Path path = fileChooser.getSelectedFile().toPath();
             gui.setContentPane(new PathViewer(path));
+            gui.getPreferences().put("WORKING_DIRECTORY", path.toAbsolutePath().toString());
         }
     }
 }
