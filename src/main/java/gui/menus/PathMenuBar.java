@@ -34,6 +34,12 @@ public class PathMenuBar extends JMenuBar {
         mirror.setMnemonic('M');
         mirror.addActionListener(new MirrorListener(gui));
 
+        JMenuItem undo = new JMenuItem("Undo");
+        undo.setMnemonic('U');
+        undo.addActionListener(new UndoListener(gui));
+
+        edit.add(undo);
+        edit.addSeparator();
         edit.add(mirror);
         add(edit);
     }
