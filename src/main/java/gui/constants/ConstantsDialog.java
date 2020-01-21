@@ -1,5 +1,7 @@
 package gui.constants;
 
+import gui.GUI;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -13,7 +15,7 @@ public class ConstantsDialog extends JPanel {
 
     private JButton save;
 
-    public ConstantsDialog() {
+    public ConstantsDialog(GUI gui) {
         setLayout(new GridLayout(7, 2));
         spacing = new JTextField(20);
         smoothWeight = new JTextField(20);
@@ -40,8 +42,8 @@ public class ConstantsDialog extends JPanel {
         setSize(640, 480);
     }
 
-    public static Constants showDialog() {
-        ConstantsDialog dialog = new ConstantsDialog();
+    public static Constants showDialog(GUI gui) {
+        ConstantsDialog dialog = new ConstantsDialog(gui);
         JDialog frame = new JDialog();
 
         dialog.save.addActionListener(new CloseListener(frame));

@@ -26,7 +26,7 @@ public class SaveListener implements ActionListener {
 
             ((PathMaker)gui.getContentPane()).moveToOrigin();
             ((PathMaker)gui.getContentPane()).alignPath();
-            ((PathMaker)gui.getContentPane()).exportPath(path);
+            ((PathMaker)gui.getContentPane()).exportPath(path, gui);
 
             gui.setContentPane(new PathViewer(path, first.getX(), first.getY()));
             gui.getPreferences().put("WORKING_DIRECTORY", path.toAbsolutePath().toString());

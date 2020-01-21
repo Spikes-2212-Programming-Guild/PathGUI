@@ -77,8 +77,8 @@ public class PathMaker extends JPanel implements Connectible {
         repaint();
     }
 
-    public void exportPath(java.nio.file.Path filepath) {
-        Constants constants = ConstantsDialog.showDialog();
+    public void exportPath(java.nio.file.Path filepath, GUI gui) {
+        Constants constants = ConstantsDialog.showDialog(gui);
 
         Path spikesPath = new Path(constants.getSpacing(), constants.getSmoothWeight(), constants.getTolerance(),
                 constants.getMaxVelocity(), constants.getTurningConstant(), constants.getMaxAcceleration(),
