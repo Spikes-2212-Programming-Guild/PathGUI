@@ -18,11 +18,17 @@ public class ConstantsDialog extends JPanel {
     public ConstantsDialog(GUI gui) {
         setLayout(new GridLayout(7, 2));
         spacing = new JTextField(20);
+        spacing.setText(gui.getPreferences().get("SPACING", "0.075"));
         smoothWeight = new JTextField(20);
+        smoothWeight.setText(gui.getPreferences().get("SMOOTH_WEIGHT", "0.6"));
         tolerance = new JTextField(20);
+        tolerance.setText(gui.getPreferences().get("TOLERANCE", "0.6"));
         maxVelocity = new JTextField(20);
+        maxVelocity.setText(gui.getPreferences().get("MAX_VELOCITY", "3.05"));
         turningConstant = new JTextField(20);
+        turningConstant.setText(gui.getPreferences().get("TURNING_CONSTANT", "3"));
         maxAcceleration = new JTextField(20);
+        maxAcceleration.setText(gui.getPreferences().get("MAX_ACCELERATION", "18"));
         save = new JButton("Save");
 
         add(new JLabel("Spacing:"));
@@ -54,6 +60,13 @@ public class ConstantsDialog extends JPanel {
         frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
+
+        gui.getPreferences().put("SPACING", dialog.spacing.getText());
+        gui.getPreferences().put("SMOOTH_WEIGHT", dialog.smoothWeight.getText());
+        gui.getPreferences().put("TOLERANCE", dialog.tolerance.getText());
+        gui.getPreferences().put("MAX_VELOCITY", dialog.maxVelocity.getText());
+        gui.getPreferences().put("TURNING_CONSTANT", dialog.turningConstant.getText());
+        gui.getPreferences().put("MAX_ACCELERATION", dialog.maxAcceleration.getText());
 
         return new Constants(Double.parseDouble(dialog.spacing.getText()),
                 Double.parseDouble(dialog.smoothWeight.getText()), Double.parseDouble(dialog.tolerance.getText()),
