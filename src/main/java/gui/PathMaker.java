@@ -113,8 +113,8 @@ public class PathMaker extends JPanel implements Connectible {
     }
 
     public void mirrorPath() {
-        for(int i = 0; i < path.size(); i++) {
-            path.set(i, new Waypoint(Constants.FIELD_WIDTH * Constants.CM_TO_M - path.get(i).getX(), path.get(i).getY()));
+        for(Waypoint waypoint : path.getPoints()) {
+            waypoint.setCoords(Constants.FIELD_WIDTH * Constants.CM_TO_M - waypoint.getX(), waypoint.getY());
         }
 
         repaint();
