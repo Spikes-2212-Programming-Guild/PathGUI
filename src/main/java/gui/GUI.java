@@ -28,8 +28,7 @@ public class GUI extends JFrame {
         setJMenuBar(new PathMenuBar(this));
 
         preferences = Preferences.userNodeForPackage(this.getClass());
-        String workingDirectory = preferences.get("WORKING_DIRECTORY", null);
-        fileChooser = new JFileChooser(workingDirectory);
+        fileChooser = new JFileChooser(preferences.get("WORKING_DIRECTORY", null));
     }
 
     public static void main(String[] args) {
