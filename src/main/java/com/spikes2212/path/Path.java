@@ -1,12 +1,6 @@
 package com.spikes2212.path;
 
-import java.io.BufferedWriter;
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 /**
  * This class represents a path.
@@ -31,17 +25,18 @@ public class Path {
      * @param points the initial points on the path. Apart from the edges, non of the points are guaranteed
      *               to be on the final path
      */
-    public Path(double spacing
-            , double smooth_weight, double tolerance,
-                double maxVelocity, double turningConstant
-            , double maxAcceleration, Waypoint... points) {
+    public Path(double spacing, double smooth_weight, double tolerance, double maxVelocity, double turningConstant,
+                double maxAcceleration, Waypoint... points) {
         this.points = new LinkedList<>(Arrays.asList(points));
-        generate(spacing, smooth_weight, tolerance
-                , maxVelocity, turningConstant, maxAcceleration);
+        generate(spacing, smooth_weight, tolerance, maxVelocity, turningConstant, maxAcceleration);
     }
 
-    private Path(List<Waypoint> points) {
-        this.points = points;
+    public Path() {
+        this.points = new LinkedList<>();
+    }
+
+    public void add(Waypoint waypoint) {
+        points.add(waypoint);
     }
 
     public List<Waypoint> getPoints() {
@@ -140,43 +135,5 @@ public class Path {
             points.get(i).setV(Math.min(points.get(i).getV(),
                     Math.sqrt(Math.pow(points.get(i+1).getV(), 2) + 2*maxAcceleration*distance)));
         }
-    }
-
-    /**
-     * Exports the path to a CSV file with the following format:
-     *  x,y,velocity,distance,curvature.
-     * @param path the CSV file
-     */
-    public void exportToCSV(java.nio.file.Path path) {
-        try (BufferedWriter writer = Files.newBufferedWriter(path, StandardCharsets.US_ASCII)) {
-            String s = "x,y,velocity,distance,curvature\n";
-            for (Waypoint w : getPoints()) {
-                s += w.getX() + "," + w.getY() + "," + w.getV() + "," + w.getD() + ","
-                        + w.getCurvature() + "\n";
-            }
-            writer.write(s,0,s.length());
-        } catch (IOException ioe) {
-            ioe.printStackTrace();
-        }
-    }
-
-    public static Path importFromCSV(java.nio.file.Path path) {
-        List<Waypoint> waypoints = new LinkedList<>();
-        try {
-            List<String> lines = Files.readAllLines(path);
-            lines.remove(0);
-            for (String line : lines) {
-                String[] values = line.split(",");
-                Waypoint point = new Waypoint(Double.parseDouble(values[0]),
-                        Double.parseDouble(values[1]));
-                point.setV(Double.parseDouble(values[2]));
-                point.setD(Double.parseDouble(values[3]));
-                point.setCurvature(Double.parseDouble(values[4]));
-                waypoints.add(point);
-            }
-        } catch (IOException ioe) {
-            ioe.printStackTrace();
-        }
-        return new Path(waypoints);
     }
 }

@@ -1,7 +1,6 @@
 package gui;
 
-import com.spikes2212.path.Path;
-import com.spikes2212.path.Waypoint;
+import com.spikes2212.path.*;
 import gui.constants.Constants;
 import gui.constants.ConstantsDialog;
 
@@ -83,7 +82,7 @@ public class PathMaker extends JPanel implements Connectible {
         Path spikesPath = new Path(constants.getSpacing(), constants.getSmoothWeight(), constants.getTolerance(),
                 constants.getMaxVelocity(), constants.getTurningConstant(), constants.getMaxAcceleration(),
                 path.toArray(new Waypoint[]{}));
-        spikesPath.exportToCSV(filepath);
+        PathIO.write(filepath, spikesPath);
     }
 
     public void rotatePath(double radians) {

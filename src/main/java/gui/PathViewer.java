@@ -1,7 +1,6 @@
 package gui;
 
-import com.spikes2212.path.Path;
-import com.spikes2212.path.Waypoint;
+import com.spikes2212.path.*;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -17,7 +16,7 @@ public class PathViewer extends JPanel {
     private double yoffset;
 
     public PathViewer(java.nio.file.Path filepath, double xoffset, double yoffset) {
-        path = Path.importFromCSV(filepath);
+        path = PathIO.read(filepath);
         setSize(799, 770);
         this.xoffset = xoffset;
         this.yoffset = yoffset;
