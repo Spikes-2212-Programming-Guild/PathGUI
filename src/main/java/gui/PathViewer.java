@@ -17,7 +17,7 @@ public class PathViewer extends JPanel {
 
     public PathViewer(java.nio.file.Path filepath, double xoffset, double yoffset) {
         path = PathIO.read(filepath);
-        setSize(799, 770);
+        setSize(Constants.FIELD_WIDTH, Constants.FIELD_HEIGHT);
         this.xoffset = xoffset;
         this.yoffset = yoffset;
     }
@@ -53,10 +53,10 @@ public class PathViewer extends JPanel {
     }
 
     private int xpx(Waypoint waypoint) {
-        return (int)(100 * (waypoint.getX() + xoffset));
+        return (int)(Constants.M_TO_CM * (waypoint.getX() + xoffset));
     }
 
     private int ypx(Waypoint waypoint) {
-        return 799 - (int)(100 * (waypoint.getY() + yoffset));
+        return Constants.FIELD_WIDTH - (int)(Constants.M_TO_CM * (waypoint.getY() + yoffset));
     }
 }
