@@ -86,11 +86,11 @@ public class PathMaker extends JPanel implements Connectible {
         double xoff = path.get(0).getX();
         double yoff = path.get(0).getY();
 
-        for(int i = 0; i < path.size(); i++) {
-            double x = (path.get(i).getX() - xoff) * Math.cos(radians) - (path.get(i).getY() - yoff) * Math.sin(radians);
-            double y = (path.get(i).getX() - xoff) * Math.sin(radians) + (path.get(i).getY() - yoff) * Math.cos(radians);
+        for(Waypoint waypoint : path.getPoints()) {
+            double x = (waypoint.getX() - xoff) * Math.cos(radians) - (waypoint.getY() - yoff) * Math.sin(radians);
+            double y = (waypoint.getX() - xoff) * Math.sin(radians) + (waypoint.getY() - yoff) * Math.cos(radians);
 
-            path.set(i, new Waypoint(x + xoff, y + yoff));
+            waypoint.setCoords(x, y);
         }
 
         repaint();
@@ -124,8 +124,8 @@ public class PathMaker extends JPanel implements Connectible {
         double xoff = path.get(0).getX();
         double yoff = path.get(0).getY();
 
-        for(int i = 0; i < path.size(); i++) {
-            path.set(i, new Waypoint(path.get(i).getX() - xoff, path.get(i).getY() - yoff));
+        for(Waypoint waypoint : path.getPoints()) {
+            waypoint.setCoords(waypoint.getX() - xoff, waypoint.getY() - yoff));
         }
 
         repaint();

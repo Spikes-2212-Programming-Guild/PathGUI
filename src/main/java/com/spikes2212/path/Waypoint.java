@@ -10,12 +10,12 @@ public class Waypoint {
     /**
      * The x coordinate.
      */
-    private final double x;
+    private double x;
 
     /**
      * The y coordinate.
      */
-    private final double y;
+    private double y;
 
     /**
      * The velocity at the given point (used for path following).
@@ -33,6 +33,11 @@ public class Waypoint {
     private double curvature;
 
     public Waypoint(double x, double y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    public void setCoords(double x, double y) {
         this.x = x;
         this.y = y;
     }
