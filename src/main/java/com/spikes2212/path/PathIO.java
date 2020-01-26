@@ -14,12 +14,12 @@ public class PathIO {
      */
     public static void write(java.nio.file.Path filepath, Path path) {
         try (BufferedWriter writer = Files.newBufferedWriter(filepath, StandardCharsets.US_ASCII)) {
-            String s = "x,y,velocity,distance,curvature\n";
+            StringBuilder s = new StringBuilder("x,y,velocity,distance,curvature\n");
             for (Waypoint w : path.getPoints()) {
-                s += w.getX() + "," + w.getY() + "," + w.getV() + "," + w.getD() + ","
-                        + w.getCurvature() + "\n";
+                s.append(w.getX()).append(",").append(w.getY()).append(",").append(w.getV()).append(",")
+                        .append(w.getD()).append(",").append(w.getCurvature()).append("\n");
             }
-            writer.write(s,0,s.length());
+            writer.write(s.toString(),0,s.length());
         } catch (IOException ioe) {
             ioe.printStackTrace();
         }
