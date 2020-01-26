@@ -16,7 +16,7 @@ public class PathMaker extends JPanel implements Connectible {
 
     public PathMaker() {
         path = new Path();
-        setSize(799, 770);
+        setSize(Constants.FIELD_WIDTH, Constants.FIELD_HEIGHT);
         addMouseListener(new ConnectionListener(this));
     }
 
@@ -48,11 +48,11 @@ public class PathMaker extends JPanel implements Connectible {
     }
 
     private int xpx(Waypoint waypoint) {
-        return (int)(100 * waypoint.getX());
+        return (int)(Constants.M_TO_CM * waypoint.getX());
     }
 
     private int ypx(Waypoint waypoint) {
-        return 799 - (int)(100 * waypoint.getY());
+        return Constants.FIELD_WIDTH - (int)(Constants.M_TO_CM * waypoint.getY());
     }
 
     public Waypoint getFirst() {
@@ -114,7 +114,7 @@ public class PathMaker extends JPanel implements Connectible {
 
     public void mirrorPath() {
         for(int i = 0; i < path.size(); i++) {
-            path.set(i, new Waypoint(7.99 - path.get(i).getX(), path.get(i).getY()));
+            path.set(i, new Waypoint(Constants.FIELD_WIDTH * Constants.CM_TO_M - path.get(i).getX(), path.get(i).getY()));
         }
 
         repaint();
