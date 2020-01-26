@@ -1,8 +1,8 @@
 package gui;
 
 public class Constants {
-    public static final int WIDTH = 814;
-    public static final int HEIGHT = 830;
+    public static final int FRAME_WIDTH = 814;
+    public static final int FRAME_HEIGHT = 830;
 
     public static final int TEXTFIELD_COLUMNS = 20;
     public static final int GAINS_WIDTH = 640;
