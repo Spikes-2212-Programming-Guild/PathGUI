@@ -10,14 +10,12 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.util.LinkedList;
-import java.util.List;
 
 public class PathMaker extends JPanel implements Connectible {
-    private List<Waypoint> path;
+    private Path path;
 
     public PathMaker() {
-        path = new LinkedList<>();
+        path = new Path();
         setSize(799, 770);
         addMouseListener(new ConnectionListener(this));
     }
@@ -40,7 +38,7 @@ public class PathMaker extends JPanel implements Connectible {
 
         Waypoint prev = null;
 
-        for(Waypoint waypoint : path) {
+        for(Waypoint waypoint : path.getPoints()) {
             g.fillOval(xpx(waypoint) - 4, ypx(waypoint) - 4, 8, 8);
 
             if(prev != null)
@@ -79,25 +77,22 @@ public class PathMaker extends JPanel implements Connectible {
     public void exportPath(java.nio.file.Path filepath, GUI gui) {
         Constants constants = ConstantsDialog.showDialog(gui);
 
-        Path spikesPath = new Path(constants.getSpacing(), constants.getSmoothWeight(), constants.getTolerance(),
-                constants.getMaxVelocity(), constants.getTurningConstant(), constants.getMaxAcceleration(),
-                path.toArray(new Waypoint[]{}));
-        PathIO.write(filepath, spikesPath);
+        path.generate(constants.getSpacing(), constants.getSmoothWeight(), constants.getTolerance(),
+                constants.getMaxVelocity(), constants.getTurningConstant(), constants.getMaxAcceleration());
+        PathIO.write(filepath, path);
     }
 
     public void rotatePath(double radians) {
-        List<Waypoint> temp = new LinkedList<>();
         double xoff = path.get(0).getX();
         double yoff = path.get(0).getY();
 
-        for(Waypoint waypoint : path) {
-            double x = (waypoint.getX() - xoff) * Math.cos(radians) - (waypoint.getY() - yoff) * Math.sin(radians);
-            double y = (waypoint.getX() - xoff) * Math.sin(radians) + (waypoint.getY() - yoff) * Math.cos(radians);
+        for(int i = 0; i < path.size(); i++) {
+            double x = (path.get(i).getX() - xoff) * Math.cos(radians) - (path.get(i).getY() - yoff) * Math.sin(radians);
+            double y = (path.get(i).getX() - xoff) * Math.sin(radians) + (path.get(i).getY() - yoff) * Math.cos(radians);
 
-            temp.add(new Waypoint(x + xoff, y + yoff));
+            path.set(i, new Waypoint(x + xoff, y + yoff));
         }
 
-        path = temp;
         repaint();
     }
 
@@ -118,26 +113,21 @@ public class PathMaker extends JPanel implements Connectible {
     }
 
     public void mirrorPath() {
-        List<Waypoint> temp = new LinkedList<>();
-
-        for(Waypoint waypoint : path) {
-            temp.add(new Waypoint(7.99 - waypoint.getX(), waypoint.getY()));
+        for(int i = 0; i < path.size(); i++) {
+            path.set(i, new Waypoint(7.99 - path.get(i).getX(), path.get(i).getY()));
         }
 
-        path = temp;
         repaint();
     }
 
     public void moveToOrigin() {
-        List<Waypoint> temp = new LinkedList<>();
         double xoff = path.get(0).getX();
         double yoff = path.get(0).getY();
 
-        for(Waypoint waypoint : path) {
-            temp.add(new Waypoint(waypoint.getX() - xoff, waypoint.getY() - yoff));
+        for(int i = 0; i < path.size(); i++) {
+            path.set(i, new Waypoint(path.get(i).getX() - xoff, path.get(i).getY() - yoff));
         }
 
-        path = temp;
         repaint();
     }
 }

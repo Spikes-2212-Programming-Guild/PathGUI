@@ -39,11 +39,27 @@ public class Path {
         points.add(waypoint);
     }
 
+    public Waypoint get(int index) {
+        return points.get(index);
+    }
+
+    public void set(int index, Waypoint waypoint) {
+        points.set(index, waypoint);
+    }
+
+    public void remove(int index) {
+        points.remove(index);
+    }
+
+    public int size() {
+        return points.size();
+    }
+
     public List<Waypoint> getPoints() {
         return points;
     }
 
-    private void generate(double spacing, double smooth_weight, double tolerance,
+    public void generate(double spacing, double smooth_weight, double tolerance,
                           double maxVelocity, double k, double maxAcceleration) {
         fill(spacing);
         smooth(smooth_weight, tolerance);
