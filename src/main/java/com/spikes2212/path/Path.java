@@ -26,10 +26,6 @@ public class Path {
         return points.get(index);
     }
 
-    public void set(int index, Waypoint waypoint) {
-        points.set(index, waypoint);
-    }
-
     public void remove(int index) {
         points.remove(index);
     }
