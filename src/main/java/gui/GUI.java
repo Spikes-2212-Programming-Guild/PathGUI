@@ -7,6 +7,9 @@ import java.awt.*;
 import java.util.prefs.Preferences;
 
 public class GUI extends JFrame {
+    private static final int WIDTH = 814;
+    private static final int HEIGHT = 830;
+
     private JFileChooser fileChooser;
     private Preferences preferences;
 
@@ -21,7 +24,7 @@ public class GUI extends JFrame {
 
     public static void main(String[] args) {
         GUI gui = new GUI();
-        gui.setPreferredSize(new Dimension(814, 830));
+        gui.setPreferredSize(new Dimension(WIDTH, HEIGHT));
         gui.setResizable(false);
         gui.pack();
         gui.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
