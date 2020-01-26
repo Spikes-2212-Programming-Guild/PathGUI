@@ -125,7 +125,7 @@ public class PathMaker extends JPanel implements Connectible {
         double yoff = path.get(0).getY();
 
         for(Waypoint waypoint : path.getPoints()) {
-            waypoint.setCoords(waypoint.getX() - xoff, waypoint.getY() - yoff));
+            waypoint.setCoords(waypoint.getX() - xoff, waypoint.getY() - yoff);
         }
 
         repaint();
