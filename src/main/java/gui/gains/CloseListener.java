@@ -1,4 +1,4 @@
-package gui.constants;
+package gui.gains;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;

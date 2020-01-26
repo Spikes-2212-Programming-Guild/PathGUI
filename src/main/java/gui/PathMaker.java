@@ -1,8 +1,8 @@
 package gui;
 
 import com.spikes2212.path.*;
-import gui.constants.Constants;
-import gui.constants.ConstantsDialog;
+import gui.gains.Gains;
+import gui.gains.GainsDialog;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -75,10 +75,10 @@ public class PathMaker extends JPanel implements Connectible {
     }
 
     public void exportPath(java.nio.file.Path filepath, GUI gui) {
-        Constants constants = ConstantsDialog.showDialog(gui);
+        Gains gains = GainsDialog.showDialog(gui);
 
-        path.generate(constants.getSpacing(), constants.getSmoothWeight(), constants.getTolerance(),
-                constants.getMaxVelocity(), constants.getTurningConstant(), constants.getMaxAcceleration());
+        path.generate(gains.getSpacing(), gains.getSmoothWeight(), gains.getTolerance(),
+                gains.getMaxVelocity(), gains.getTurningConstant(), gains.getMaxAcceleration());
         PathIO.write(filepath, path);
     }
 

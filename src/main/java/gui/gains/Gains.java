@@ -1,6 +1,6 @@
-package gui.constants;
+package gui.gains;
 
-public class Constants {
+public class Gains {
     private double spacing;
     private double smoothWeight;
     private double tolerance;
@@ -8,7 +8,7 @@ public class Constants {
     private double turningConstant;
     private double maxAcceleration;
 
-    public Constants(double spacing, double smoothWeight, double tolerance, double maxVelocity, double turningConstant, double maxAcceleration) {
+    public Gains(double spacing, double smoothWeight, double tolerance, double maxVelocity, double turningConstant, double maxAcceleration) {
         this.spacing = spacing;
         this.smoothWeight = smoothWeight;
         this.tolerance = tolerance;

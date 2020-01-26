@@ -1,11 +1,11 @@
-package gui.constants;
+package gui.gains;
 
 import gui.GUI;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class ConstantsDialog extends JPanel {
+public class GainsDialog extends JPanel {
     private JTextField spacing;
     private JTextField smoothWeight;
     private JTextField tolerance;
@@ -15,7 +15,7 @@ public class ConstantsDialog extends JPanel {
 
     private JButton save;
 
-    public ConstantsDialog(GUI gui) {
+    public GainsDialog(GUI gui) {
         setLayout(new GridLayout(7, 2));
         spacing = new JTextField(20);
         spacing.setText(gui.getPreferences().get("SPACING", "0.075"));
@@ -48,8 +48,8 @@ public class ConstantsDialog extends JPanel {
         setSize(640, 480);
     }
 
-    public static Constants showDialog(GUI gui) {
-        ConstantsDialog dialog = new ConstantsDialog(gui);
+    public static Gains showDialog(GUI gui) {
+        GainsDialog dialog = new GainsDialog(gui);
         JDialog frame = new JDialog();
 
         dialog.save.addActionListener(new CloseListener(frame));
@@ -68,7 +68,7 @@ public class ConstantsDialog extends JPanel {
         gui.getPreferences().put("TURNING_CONSTANT", dialog.turningConstant.getText());
         gui.getPreferences().put("MAX_ACCELERATION", dialog.maxAcceleration.getText());
 
-        return new Constants(Double.parseDouble(dialog.spacing.getText()),
+        return new Gains(Double.parseDouble(dialog.spacing.getText()),
                 Double.parseDouble(dialog.smoothWeight.getText()), Double.parseDouble(dialog.tolerance.getText()),
                 Double.parseDouble(dialog.maxVelocity.getText()), Double.parseDouble(dialog.turningConstant.getText()),
                 Double.parseDouble(dialog.maxAcceleration.getText()));
