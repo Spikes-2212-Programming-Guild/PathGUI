@@ -14,24 +14,6 @@ public class Path {
      */
     private List<Waypoint> points;
 
-    /**
-     * Initializes a path.
-     *
-     * @param spacing         the distance between two points filled in between points given as parameters
-     * @param smooth_weight   how smooth to make the path
-     * @param tolerance       the smoothing tolerance
-     * @param maxVelocity     the robot's maximum velocity
-     * @param turningConstant speed constant at curves (the higher it is, the faster you turn)
-     * @param maxAcceleration the robot's maximum acceleration
-     * @param points          the initial points on the path. Apart from the edges, non of the points are guaranteed
-     *                        to be on the final path
-     */
-    public Path(double spacing, double smooth_weight, double tolerance, double maxVelocity, double turningConstant,
-                double maxAcceleration, Waypoint... points) {
-        this.points = new LinkedList<>(Arrays.asList(points));
-        generate(spacing, smooth_weight, tolerance, maxVelocity, turningConstant, maxAcceleration);
-    }
-
     public Path() {
         this.points = new LinkedList<>();
     }
