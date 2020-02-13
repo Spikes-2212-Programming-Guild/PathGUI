@@ -32,14 +32,15 @@ public class PathMaker extends JPanel implements Connectible {
 
         g.setColor(Color.RED);
         try {
-            ((Graphics2D)g).setStroke(new BasicStroke(4));
+            ((Graphics2D)g).setStroke(new BasicStroke(Constants.PATH_WIDTH));
         } catch(Exception ignored) {
         }
 
         Waypoint prev = null;
 
         for(Waypoint waypoint : path.getPoints()) {
-            g.fillOval(xpx(waypoint) - 4, ypx(waypoint) - 4, 8, 8);
+            g.fillOval(xpx(waypoint) - Constants.POINT_RADIUS, ypx(waypoint) - Constants.POINT_RADIUS,
+                    Constants.POINT_RADIUS * 2, Constants.POINT_RADIUS * 2);
 
             if(prev != null)
                 g.drawLine(xpx(prev), ypx(prev), xpx(waypoint), ypx(waypoint));

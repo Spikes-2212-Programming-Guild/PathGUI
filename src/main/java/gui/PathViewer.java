@@ -38,7 +38,7 @@ public class PathViewer extends JPanel {
 
         g.setColor(Color.RED);
         try {
-            ((Graphics2D)g).setStroke(new BasicStroke(4));
+            ((Graphics2D)g).setStroke(new BasicStroke(Constants.PATH_WIDTH));
         } catch(Exception ignored) {
         }
 
