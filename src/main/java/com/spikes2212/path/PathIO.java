@@ -9,18 +9,19 @@ import java.util.List;
 public class PathIO {
     /**
      * Exports the path to a CSV file with the following format:
-     *  x,y,velocity,distance,curvature.
+     * x,y,velocity,distance,curvature.
+     *
      * @param filepath the CSV file
      */
     public static void write(java.nio.file.Path filepath, Path path) {
-        try (BufferedWriter writer = Files.newBufferedWriter(filepath, StandardCharsets.US_ASCII)) {
+        try(BufferedWriter writer = Files.newBufferedWriter(filepath, StandardCharsets.US_ASCII)) {
             StringBuilder s = new StringBuilder("x,y,velocity,distance,curvature\n");
-            for (Waypoint w : path.getPoints()) {
+            for(Waypoint w : path.getPoints()) {
                 s.append(w.getX()).append(",").append(w.getY()).append(",").append(w.getV()).append(",")
                         .append(w.getD()).append(",").append(w.getCurvature()).append("\n");
             }
-            writer.write(s.toString(),0,s.length());
-        } catch (IOException ioe) {
+            writer.write(s.toString(), 0, s.length());
+        } catch(IOException ioe) {
             ioe.printStackTrace();
         }
     }
@@ -30,7 +31,7 @@ public class PathIO {
         try {
             List<String> lines = Files.readAllLines(filepath);
             lines.remove(0);
-            for (String line : lines) {
+            for(String line : lines) {
                 String[] values = line.split(",");
                 Waypoint point = new Waypoint(Double.parseDouble(values[0]),
                         Double.parseDouble(values[1]));
@@ -39,7 +40,7 @@ public class PathIO {
                 point.setCurvature(Double.parseDouble(values[4]));
                 path.add(point);
             }
-        } catch (IOException ioe) {
+        } catch(IOException ioe) {
             ioe.printStackTrace();
         }
         return path;
