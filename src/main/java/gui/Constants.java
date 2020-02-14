@@ -9,9 +9,6 @@ public class Constants {
 
     public static Stack<Action> actions = new Stack<>();
 
-    public static final int FRAME_WIDTH = 814;
-    public static final int FRAME_HEIGHT = 830;
-
     public static final int TEXTFIELD_COLUMNS = 20;
     public static final int GAINS_WIDTH = 640;
     public static final int GAINS_HEIGHT = 480;
