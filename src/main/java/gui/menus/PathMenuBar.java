@@ -3,6 +3,7 @@ package gui.menus;
 import gui.GUI;
 
 import javax.swing.*;
+import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 
 public class PathMenuBar extends JMenuBar {
@@ -24,6 +25,11 @@ public class PathMenuBar extends JMenuBar {
         saveAs.addActionListener(new SaveAsListener(gui));
         saveAs.setMnemonic('A');
         saveAs.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, KeyEvent.SHIFT_DOWN_MASK));
+
+        JMenuItem export = new JMenuItem("Export");
+        export.addActionListener(new ExportListener(gui));
+        export.setMnemonic('E');
+        export.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_E, InputEvent.CTRL_DOWN_MASK));
 
         file.add(newFile);
         file.add(open);
