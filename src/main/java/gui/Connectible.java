@@ -7,5 +7,5 @@ public interface Connectible {
 
     void removeLast();
 
-    void update();
+    void repaint();
 }

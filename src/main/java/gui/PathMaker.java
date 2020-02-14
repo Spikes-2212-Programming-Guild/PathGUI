@@ -75,11 +75,6 @@ public class PathMaker extends JPanel implements Connectible {
         path.remove(path.size() - 1);
     }
 
-    @Override
-    public void update() {
-        repaint();
-    }
-
     public void newPath() {
         path = new Path();
     }
