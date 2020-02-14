@@ -15,8 +15,7 @@ public class NewListener implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
-        gui.setContentPane(new PathMaker());
-        gui.dispose();
-        GUI.main(new String[]{});
+        ((PathMaker)gui.getContentPane()).newPath();
+        ((PathMaker)gui.getContentPane()).update();
     }
 }

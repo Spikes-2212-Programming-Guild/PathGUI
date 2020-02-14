@@ -1,7 +1,7 @@
 package gui.menus;
 
-import com.spikes2212.path.Waypoint;
-import gui.*;
+import gui.GUI;
+import gui.PathMaker;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -18,17 +18,11 @@ public class SaveListener implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
         JFileChooser fileChooser = gui.getFileChooser();
-        int val = fileChooser.showSaveDialog(null);
+        int val = fileChooser.showSaveDialog(gui);
 
         if(val == JFileChooser.APPROVE_OPTION && gui.getContentPane() instanceof PathMaker) {
             Path path = fileChooser.getSelectedFile().toPath();
-            Waypoint first = ((PathMaker)gui.getContentPane()).getFirst();
-
-            ((PathMaker)gui.getContentPane()).moveToOrigin();
-            ((PathMaker)gui.getContentPane()).alignPath();
-            ((PathMaker)gui.getContentPane()).exportPath(path, gui);
-
-            gui.setContentPane(new PathViewer(path, first.getX(), first.getY()));
+            ((PathMaker)gui.getContentPane()).savePath(path);
             gui.getPreferences().put("WORKING_DIRECTORY", path.toAbsolutePath().toString());
         }
     }

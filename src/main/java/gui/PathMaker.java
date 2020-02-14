@@ -16,8 +16,13 @@ public class PathMaker extends JPanel implements Connectible {
 
     public PathMaker() {
         path = new Path();
-        setSize(Constants.FIELD_WIDTH, Constants.FIELD_HEIGHT);
+        setPreferredSize(new Dimension(Constants.FIELD_WIDTH, Constants.FIELD_HEIGHT));
         addMouseListener(new ConnectionListener(this));
+    }
+
+    public PathMaker(java.nio.file.Path filepath) {
+        this();
+        path = PathIO.read(filepath);
     }
 
     @Override
@@ -75,11 +80,22 @@ public class PathMaker extends JPanel implements Connectible {
         repaint();
     }
 
-    public void exportPath(java.nio.file.Path filepath, GUI gui) {
+    public void newPath() {
+        path = new Path();
+    }
+
+    public void importPath(java.nio.file.Path filepath) {
+        path = PathIO.read(filepath);
+    }
+
+    public void generatePath(GUI gui) {
         Gains gains = GainsDialog.showDialog(gui);
 
         path.generate(gains.getSpacing(), gains.getSmoothWeight(), gains.getTolerance(),
                 gains.getMaxVelocity(), gains.getTurningConstant(), gains.getMaxAcceleration());
+    }
+
+    public void savePath(java.nio.file.Path filepath) {
         PathIO.write(filepath, path);
     }
 

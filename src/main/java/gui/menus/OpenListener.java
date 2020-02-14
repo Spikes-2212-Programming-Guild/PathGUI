@@ -1,7 +1,7 @@
 package gui.menus;
 
 import gui.GUI;
-import gui.PathViewer;
+import gui.PathMaker;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -18,11 +18,12 @@ public class OpenListener implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
         JFileChooser fileChooser = gui.getFileChooser();
-        int val = fileChooser.showOpenDialog(null);
+        int val = fileChooser.showOpenDialog(gui);
 
         if(val == JFileChooser.APPROVE_OPTION) {
             Path path = fileChooser.getSelectedFile().toPath();
-            gui.setContentPane(new PathViewer(path));
+            ((PathMaker)gui.getContentPane()).importPath(path);
+            ((PathMaker)gui.getContentPane()).update();
             gui.getPreferences().put("WORKING_DIRECTORY", path.toAbsolutePath().toString());
         }
     }
