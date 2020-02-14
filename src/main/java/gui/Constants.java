@@ -23,5 +23,5 @@ public class Constants {
     public static final double CM_TO_M = 0.01;
 
     public static final int PATH_WIDTH = 4;
-    public static final int POINT_RADIUS = 4;
+    public static final int POINT_RADIUS = 8;
 }
