@@ -14,21 +14,23 @@ public class UndoListener implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
-        switch(Constants.lastAction) {
-            case ADD:
-                ((PathMaker)gui.getContentPane()).removeLast();
-                break;
-            case MIRROR:
-                ((PathMaker)gui.getContentPane()).mirrorPath();
-                break;
-            case GENERATE:
-                ((PathMaker)gui.getContentPane()).ungeneratePath();
-                break;
-            case NONE:
-            default:
-                break;
-        }
+        if(!Constants.actions.isEmpty()) {
+            switch(Constants.actions.pop()) {
+                case ADD:
+                    ((PathMaker)gui.getContentPane()).removeLast();
+                    break;
+                case MIRROR:
+                    ((PathMaker)gui.getContentPane()).mirrorPath();
+                    break;
+                case GENERATE:
+                    ((PathMaker)gui.getContentPane()).ungeneratePath();
+                    break;
+                case NONE:
+                default:
+                    break;
+            }
 
-        gui.getContentPane().repaint();
+            gui.getContentPane().repaint();
+        }
     }
 }

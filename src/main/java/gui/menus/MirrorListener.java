@@ -16,6 +16,6 @@ public class MirrorListener implements ActionListener {
     public void actionPerformed(ActionEvent actionEvent) {
         ((PathMaker)gui.getContentPane()).mirrorPath();
         gui.getContentPane().repaint();
-        Constants.lastAction = Constants.Action.MIRROR;
+        Constants.actions.push(Constants.Action.MIRROR);
     }
 }

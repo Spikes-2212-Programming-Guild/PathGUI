@@ -16,6 +16,6 @@ public class GenerateListener implements ActionListener {
     public void actionPerformed(ActionEvent actionEvent) {
         ((PathMaker)gui.getContentPane()).generatePath(gui);
         gui.getContentPane().repaint();
-        Constants.lastAction = Constants.Action.GENERATE;
+        Constants.actions.push(Constants.Action.GENERATE);
     }
 }
