@@ -15,8 +15,7 @@ public class MirrorListener implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
-        if(gui.getContentPane() instanceof PathMaker) {
-            ((PathMaker)gui.getContentPane()).mirrorPath();
-        }
+        ((PathMaker)gui.getContentPane()).mirrorPath();
+        gui.getContentPane().repaint();
     }
 }

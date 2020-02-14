@@ -20,7 +20,7 @@ public class SaveAsListener implements ActionListener {
         JFileChooser fileChooser = gui.getFileChooser();
         int val = fileChooser.showSaveDialog(gui);
 
-        if(val == JFileChooser.APPROVE_OPTION && gui.getContentPane() instanceof PathMaker) {
+        if(val == JFileChooser.APPROVE_OPTION) {
             Path path = fileChooser.getSelectedFile().toPath();
             ((PathMaker)gui.getContentPane()).savePath(path);
             gui.getPreferences().put("WORKING_DIRECTORY", path.toAbsolutePath().toString());
