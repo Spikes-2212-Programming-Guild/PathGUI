@@ -21,7 +21,7 @@ public class PathMenuBar extends JMenuBar {
         open.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_O, KeyEvent.CTRL_DOWN_MASK));
 
         JMenuItem saveAs = new JMenuItem("Save As");
-        saveAs.addActionListener(new SaveListener(gui));
+        saveAs.addActionListener(new SaveAsListener(gui));
         saveAs.setMnemonic('A');
         saveAs.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, KeyEvent.SHIFT_DOWN_MASK));
 

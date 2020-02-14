@@ -8,10 +8,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.nio.file.Path;
 
-public class SaveListener implements ActionListener {
+public class SaveAsListener implements ActionListener {
     private GUI gui;
 
-    public SaveListener(GUI gui) {
+    public SaveAsListener(GUI gui) {
         this.gui = gui;
     }
 
