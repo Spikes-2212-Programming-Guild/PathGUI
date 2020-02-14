@@ -1,7 +1,6 @@
 package gui.menus;
 
-import gui.GUI;
-import gui.PathMaker;
+import gui.*;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -25,5 +24,7 @@ public class SaveAsListener implements ActionListener {
             ((PathMaker)gui.getContentPane()).savePath(path);
             gui.getPreferences().put("WORKING_DIRECTORY", path.toAbsolutePath().toString());
         }
+
+        Constants.lastAction = Constants.Action.NONE;
     }
 }

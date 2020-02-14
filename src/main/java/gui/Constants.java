@@ -1,6 +1,12 @@
 package gui;
 
 public class Constants {
+    public enum Action {
+        ADD, MIRROR, GENERATE, NONE
+    }
+
+    public static Action lastAction = Action.NONE;
+
     public static final int FRAME_WIDTH = 814;
     public static final int FRAME_HEIGHT = 830;
 

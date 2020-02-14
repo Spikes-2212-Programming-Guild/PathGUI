@@ -1,7 +1,6 @@
 package gui.menus;
 
-import gui.GUI;
-import gui.PathMaker;
+import gui.*;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -17,5 +16,6 @@ public class NewListener implements ActionListener {
     public void actionPerformed(ActionEvent actionEvent) {
         ((PathMaker)gui.getContentPane()).newPath();
         gui.getContentPane().repaint();
+        Constants.lastAction = Constants.Action.NONE;
     }
 }

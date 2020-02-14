@@ -13,16 +13,12 @@ import java.io.IOException;
 
 public class PathMaker extends JPanel implements Connectible {
     private Path path;
+    private Path ungeneratedPath = new Path();
 
     public PathMaker() {
         path = new Path();
         setPreferredSize(new Dimension(Constants.FIELD_WIDTH, Constants.FIELD_HEIGHT));
         addMouseListener(new ConnectionListener(this));
-    }
-
-    public PathMaker(java.nio.file.Path filepath) {
-        this();
-        path = PathIO.read(filepath);
     }
 
     @Override
@@ -75,6 +71,10 @@ public class PathMaker extends JPanel implements Connectible {
         path.remove(path.size() - 1);
     }
 
+    public void ungeneratePath() {
+        path = ungeneratedPath;
+    }
+
     public void newPath() {
         path = new Path();
     }
@@ -84,6 +84,10 @@ public class PathMaker extends JPanel implements Connectible {
     }
 
     public void generatePath(GUI gui) {
+        ungeneratedPath = new Path();
+        for(Waypoint waypoint : path.getPoints())
+            ungeneratedPath.add(waypoint);
+
         Gains gains = GainsDialog.showDialog(gui);
 
         path.generate(gains.getSpacing(), gains.getSmoothWeight(), gains.getTolerance(),
