@@ -10,10 +10,11 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.Stack;
 
 public class PathMaker extends JPanel implements Connectible {
     private Path path;
-    private Path ungeneratedPath = new Path();
+    private Stack<Path> ungeneratedPaths = new Stack<>();
 
     public PathMaker() {
         path = new Path();
@@ -72,7 +73,7 @@ public class PathMaker extends JPanel implements Connectible {
     }
 
     public void ungeneratePath() {
-        path = ungeneratedPath;
+        path = ungeneratedPaths.pop();
     }
 
     public void newPath() {
@@ -84,9 +85,10 @@ public class PathMaker extends JPanel implements Connectible {
     }
 
     public void generatePath(GUI gui) {
-        ungeneratedPath = new Path();
+        Path ungeneratedPath = new Path();
         for(Waypoint waypoint : path.getPoints())
             ungeneratedPath.add(waypoint);
+        ungeneratedPaths.push(ungeneratedPath);
 
         Gains gains = GainsDialog.showDialog(gui);
 
