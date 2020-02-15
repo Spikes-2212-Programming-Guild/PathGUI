@@ -5,7 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 /**
- * An action that closes a dialog.
+ * An action listener that closes a dialog.
  */
 public class CloseListener implements ActionListener {
     /**
