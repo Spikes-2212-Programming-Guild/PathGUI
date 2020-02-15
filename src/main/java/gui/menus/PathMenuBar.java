@@ -35,6 +35,7 @@ public class PathMenuBar extends JMenuBar {
         file.add(open);
         file.addSeparator();
         file.add(saveAs);
+        file.add(export);
         add(file);
 
         JMenu edit = new JMenu("Edit");
@@ -48,6 +49,12 @@ public class PathMenuBar extends JMenuBar {
         JMenuItem generate = new JMenuItem("Generate");
         generate.addActionListener(new GenerateListener(gui));
         generate.setMnemonic('G');
+        generate.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_G, KeyEvent.CTRL_DOWN_MASK));
+
+        JMenuItem quickGeneration = new JMenuItem("Quick Generation");
+        quickGeneration.addActionListener(new QuickGenerationListener(gui));
+        quickGeneration.setMnemonic('Q');
+        quickGeneration.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Q, KeyEvent.CTRL_DOWN_MASK));
 
         JMenuItem mirror = new JMenuItem("Mirror Path");
         mirror.addActionListener(new MirrorListener(gui));
@@ -56,6 +63,8 @@ public class PathMenuBar extends JMenuBar {
         edit.add(undo);
         edit.addSeparator();
         edit.add(generate);
+        edit.add(quickGeneration);
+        edit.addSeparator();
         edit.add(mirror);
         add(edit);
     }

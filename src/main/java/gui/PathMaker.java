@@ -2,7 +2,6 @@ package gui;
 
 import com.spikes2212.path.*;
 import gui.gains.Gains;
-import gui.gains.GainsDialog;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -104,16 +103,16 @@ public class PathMaker extends JPanel implements Connectible {
         path = PathIO.read(filepath);
     }
 
-    public void generatePath(GUI gui) {
+    public void generatePath(GUI gui, Gains gains) {
         Path ungeneratedPath = new Path();
         for(Waypoint waypoint : path.getPoints())
             ungeneratedPath.add(waypoint);
         ungeneratedPaths.push(ungeneratedPath);
 
-        Gains gains = GainsDialog.showDialog(gui);
-
         path.generate(gains.getSpacing(), gains.getSmoothWeight(), gains.getTolerance(),
                 gains.getMaxVelocity(), gains.getTurningConstant(), gains.getMaxAcceleration());
+
+        repaint();
     }
 
     public void savePath(java.nio.file.Path filepath) {

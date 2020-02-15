@@ -1,5 +1,7 @@
 package gui.gains;
 
+import gui.GUI;
+
 public class Gains {
     private double spacing;
     private double smoothWeight;
@@ -39,5 +41,14 @@ public class Gains {
 
     public double getMaxAcceleration() {
         return maxAcceleration;
+    }
+
+    public static Gains getPreferences(GUI gui) {
+        return new Gains(Double.parseDouble(gui.getPreferences().get("SPACING", "0.075")),
+                Double.parseDouble(gui.getPreferences().get("SMOOTH_WEIGHT", "0.6")),
+                Double.parseDouble(gui.getPreferences().get("TOLERANCE", "0.6")),
+                Double.parseDouble(gui.getPreferences().get("MAX_VELOCITY", "3.05")),
+                Double.parseDouble(gui.getPreferences().get("TURNING_CONSTANT", "3")),
+                Double.parseDouble(gui.getPreferences().get("MAX_ACCELERATION", "18")));
     }
 }
