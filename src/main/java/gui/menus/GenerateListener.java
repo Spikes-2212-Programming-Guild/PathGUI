@@ -6,7 +6,13 @@ import gui.gains.GainsDialog;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * The action listener for generating paths.
+ */
 public class GenerateListener implements ActionListener {
+    /**
+     * A user interface object.
+     */
     private GUI gui;
 
     public GenerateListener(GUI gui) {

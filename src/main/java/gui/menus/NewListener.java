@@ -5,7 +5,13 @@ import gui.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * The action listener for creating a new file.
+ */
 public class NewListener implements ActionListener {
+    /**
+     * A user interface object.
+     */
     private GUI gui;
 
     public NewListener(GUI gui) {

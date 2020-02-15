@@ -5,8 +5,14 @@ import gui.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * The action listener for undoing actions.
+ */
 public class UndoListener implements ActionListener {
-    GUI gui;
+    /**
+     * A user interface object.
+     */
+    private GUI gui;
 
     public UndoListener(GUI gui) {
         this.gui = gui;

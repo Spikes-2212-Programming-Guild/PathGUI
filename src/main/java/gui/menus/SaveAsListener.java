@@ -7,7 +7,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.nio.file.Path;
 
+/**
+ * The action listener for saving files.
+ */
 public class SaveAsListener implements ActionListener {
+    /**
+     * A user interface object.
+     */
     private GUI gui;
 
     public SaveAsListener(GUI gui) {

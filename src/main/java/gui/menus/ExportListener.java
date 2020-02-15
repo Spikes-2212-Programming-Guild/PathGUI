@@ -7,8 +7,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.nio.file.Path;
 
+/**
+ * The action listener for exporting paths.
+ */
 public class ExportListener implements ActionListener {
-    GUI gui;
+    /**
+     * A user interface object.
+     */
+    private GUI gui;
 
     public ExportListener(GUI gui) {
         this.gui = gui;

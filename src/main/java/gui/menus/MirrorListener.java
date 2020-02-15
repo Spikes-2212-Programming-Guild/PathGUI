@@ -5,7 +5,13 @@ import gui.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * The action listener for mirroring paths.
+ */
 public class MirrorListener implements ActionListener {
+    /**
+     * A user interface object.
+     */
     private GUI gui;
 
     public MirrorListener(GUI gui) {

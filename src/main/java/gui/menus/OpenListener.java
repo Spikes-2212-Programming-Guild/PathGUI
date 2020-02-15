@@ -7,7 +7,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.nio.file.Path;
 
+/**
+ * The action listener for opening files.
+ */
 public class OpenListener implements ActionListener {
+    /**
+     * A user interface object.
+     */
     private GUI gui;
 
     public OpenListener(GUI gui) {
