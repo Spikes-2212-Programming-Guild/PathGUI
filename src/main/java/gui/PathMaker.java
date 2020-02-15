@@ -69,7 +69,7 @@ public class PathMaker extends JPanel implements Connectible {
     public void add(Waypoint waypoint) {
         path.add(waypoint);
         selected = waypoint;
-        toolBar.setCoords((int)(waypoint.getX() * Constants.M_TO_CM),
+        toolBar.setCoordinates((int)(waypoint.getX() * Constants.M_TO_CM),
                 (int)(waypoint.getY() * Constants.M_TO_CM));
         repaint();
     }
@@ -84,7 +84,7 @@ public class PathMaker extends JPanel implements Connectible {
             if(Math.abs(waypoint.getX() - x) < Constants.POINT_RADIUS * Constants.CM_TO_M
                     && Math.abs(waypoint.getY() - y) < Constants.POINT_RADIUS * Constants.CM_TO_M) {
                 selected = waypoint;
-                toolBar.setCoords((int)(waypoint.getX() * Constants.M_TO_CM),
+                toolBar.setCoordinates((int)(waypoint.getX() * Constants.M_TO_CM),
                         (int)(waypoint.getY() * Constants.M_TO_CM));
                 repaint();
                 return true;
@@ -129,7 +129,7 @@ public class PathMaker extends JPanel implements Connectible {
             double x = (waypoint.getX() - xoff) * Math.cos(radians) - (waypoint.getY() - yoff) * Math.sin(radians);
             double y = (waypoint.getX() - xoff) * Math.sin(radians) + (waypoint.getY() - yoff) * Math.cos(radians);
 
-            waypoint.setCoords(x, y);
+            waypoint.setCoordinates(x, y);
         }
 
         repaint();
@@ -153,7 +153,7 @@ public class PathMaker extends JPanel implements Connectible {
 
     public void mirrorPath() {
         for(Waypoint waypoint : path.getPoints()) {
-            waypoint.setCoords(Constants.FIELD_WIDTH * Constants.CM_TO_M - waypoint.getX(), waypoint.getY());
+            waypoint.setCoordinates(Constants.FIELD_WIDTH * Constants.CM_TO_M - waypoint.getX(), waypoint.getY());
         }
 
         repaint();
@@ -164,9 +164,13 @@ public class PathMaker extends JPanel implements Connectible {
         double yoff = path.get(0).getY();
 
         for(Waypoint waypoint : path.getPoints()) {
-            waypoint.setCoords(waypoint.getX() - xoff, waypoint.getY() - yoff);
+            waypoint.setCoordinates(waypoint.getX() - xoff, waypoint.getY() - yoff);
         }
 
         repaint();
+    }
+
+    public void moveSelected(double x, double y) {
+        selected.setCoordinates(x, y);
     }
 }

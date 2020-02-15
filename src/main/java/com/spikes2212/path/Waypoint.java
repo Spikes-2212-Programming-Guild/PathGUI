@@ -37,7 +37,7 @@ public class Waypoint {
         this.y = y;
     }
 
-    public void setCoords(double x, double y) {
+    public void setCoordinates(double x, double y) {
         this.x = x;
         this.y = y;
     }

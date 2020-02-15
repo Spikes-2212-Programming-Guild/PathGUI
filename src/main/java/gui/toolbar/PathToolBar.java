@@ -30,7 +30,7 @@ public class PathToolBar extends JToolBar {
         add(update);
     }
 
-    public void setCoords(int x, int y) {
+    public void setCoordinates(int x, int y) {
         xField.setText(String.valueOf(x));
         yField.setText(String.valueOf(y));
     }
