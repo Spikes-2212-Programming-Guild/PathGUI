@@ -12,10 +12,28 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Stack;
 
+/**
+ * The panel that the user clicks on to add points to a path.
+ */
 public class PathMaker extends JPanel implements Addable {
+    /**
+     * The path the points get added to.
+     */
     private Path path;
-    private Stack<Path> ungeneratedPaths = new Stack<>();
+
+    /**
+     * The old versions of the path, before generation.
+     */
+    private Stack<Path> oldPaths = new Stack<>();
+
+    /**
+     * The current path point selected by the user.
+     */
     private Waypoint selected;
+
+    /**
+     * The {@link PathToolBar} in to the panel.
+     */
     private PathToolBar toolBar;
 
     public PathMaker() {
@@ -35,12 +53,10 @@ public class PathMaker extends JPanel implements Addable {
             img = ImageIO.read(new File("src/main/resources/HalfField.png"));
             g.drawImage(img, 0, 0, null);
         } catch(IOException ignored) {
+            // If the field image cannot be found, do not draw a background.
         }
 
-        try {
-            ((Graphics2D)g).setStroke(new BasicStroke(Globals.PATH_WIDTH));
-        } catch(Exception ignored) {
-        }
+        ((Graphics2D)g).setStroke(new BasicStroke(Globals.PATH_WIDTH));
 
         Waypoint prev = null;
 
@@ -73,6 +89,9 @@ public class PathMaker extends JPanel implements Addable {
         repaint();
     }
 
+    /**
+     * Removes the last point from the path.
+     */
     public void removeLast() {
         path.remove(path.size() - 1);
         repaint();
@@ -93,24 +112,41 @@ public class PathMaker extends JPanel implements Addable {
         return false;
     }
 
+
+    /**
+     * Reverts tp before the last time the path was generated.
+     */
     public void ungeneratePath() {
-        path = ungeneratedPaths.pop();
+        path = oldPaths.pop();
         repaint();
     }
 
+    /**
+     * Creates a new path, losing all unsaved changes to the old one.
+     */
     public void newPath() {
         path = new Path();
     }
 
+    /**
+     * Imports a path from a csv file.
+     *
+     * @param filepath the path of the file to import
+     */
     public void importPath(java.nio.file.Path filepath) {
         path = PathIO.read(filepath);
     }
 
-    public void generatePath(GUI gui, Gains gains) {
-        Path ungeneratedPath = new Path();
+    /**
+     * Generate the path.
+     *
+     * @param gains the gains object containing the gains for the path generation
+     */
+    public void generatePath(Gains gains) {
+        Path oldPath = new Path();
         for(Waypoint waypoint : path.getPoints())
-            ungeneratedPath.add(waypoint);
-        ungeneratedPaths.push(ungeneratedPath);
+            oldPath.add(waypoint);
+        oldPaths.push(oldPath);
 
         path.generate(gains.getSpacing(), gains.getSmoothWeight(), gains.getTolerance(),
                 gains.getMaxVelocity(), gains.getTurningConstant(), gains.getMaxAcceleration());
@@ -118,11 +154,21 @@ public class PathMaker extends JPanel implements Addable {
         repaint();
     }
 
+    /**
+     * Save the path to a file.
+     *
+     * @param filepath the path of the file.
+     */
     public void savePath(java.nio.file.Path filepath) {
         PathIO.write(filepath, path);
     }
 
-    public void rotatePath(double radians) {
+    /**
+     * Rotate the path by an arbitrary amount.
+     *
+     * @param radians the amount by which to rotate the path
+     */
+    private void rotatePath(double radians) {
         double xoff = path.get(0).getX();
         double yoff = path.get(0).getY();
 
@@ -136,6 +182,9 @@ public class PathMaker extends JPanel implements Addable {
         repaint();
     }
 
+    /**
+     * Align the path so that the robot is facing forward at the beginning of it.
+     */
     public void alignPath() {
         Waypoint first = path.get(0);
         Waypoint second = path.get(1);
@@ -152,6 +201,9 @@ public class PathMaker extends JPanel implements Addable {
         }
     }
 
+    /**
+     * Mirror the path.
+     */
     public void mirrorPath() {
         for(Waypoint waypoint : path.getPoints()) {
             waypoint.setCoordinates(Globals.FIELD_WIDTH * Globals.CM_TO_M - waypoint.getX(), waypoint.getY());
@@ -160,6 +212,9 @@ public class PathMaker extends JPanel implements Addable {
         repaint();
     }
 
+    /**
+     * Move the path to the origin.
+     */
     public void moveToOrigin() {
         double xoff = path.get(0).getX();
         double yoff = path.get(0).getY();
@@ -171,6 +226,12 @@ public class PathMaker extends JPanel implements Addable {
         repaint();
     }
 
+    /**
+     * Move the selected point to the supplied coordinates.
+     *
+     * @param x the x coordinate
+     * @param y the x coordinate
+     */
     public void moveSelected(double x, double y) {
         selected.setCoordinates(x, y);
         repaint();

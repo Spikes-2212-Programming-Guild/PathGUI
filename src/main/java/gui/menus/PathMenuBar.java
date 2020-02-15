@@ -54,12 +54,12 @@ public class PathMenuBar extends JMenuBar {
         undo.setMnemonic('U');
         undo.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Z, KeyEvent.CTRL_DOWN_MASK));
 
-        JMenuItem generate = new JMenuItem("Generate");
+        JMenuItem generate = new JMenuItem("Preview");
         generate.addActionListener(new GenerateListener(gui));
-        generate.setMnemonic('G');
-        generate.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_G, KeyEvent.CTRL_DOWN_MASK));
+        generate.setMnemonic('P');
+        generate.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_P, KeyEvent.CTRL_DOWN_MASK));
 
-        JMenuItem quickGeneration = new JMenuItem("Quick Generation");
+        JMenuItem quickGeneration = new JMenuItem("Quick Preview");
         quickGeneration.addActionListener(new QuickGenerationListener(gui));
         quickGeneration.setMnemonic('Q');
         quickGeneration.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Q, KeyEvent.CTRL_DOWN_MASK));
