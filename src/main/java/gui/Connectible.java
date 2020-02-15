@@ -8,4 +8,6 @@ public interface Connectible {
     void removeLast();
 
     void repaint();
+
+    boolean select(double x, double y);
 }

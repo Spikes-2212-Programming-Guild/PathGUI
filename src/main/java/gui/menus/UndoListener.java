@@ -23,7 +23,7 @@ public class UndoListener implements ActionListener {
                     ((PathMaker)gui.getContentPane()).mirrorPath();
                     break;
                 case GENERATE:
-                    ((PathMaker)gui.getContentPane()).ungeneratePath();
+                    ((PathMaker)gui.getContentPane()).ungeneratedPath();
                     break;
                 case NONE:
                 default:

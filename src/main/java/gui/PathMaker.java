@@ -15,6 +15,7 @@ import java.util.Stack;
 public class PathMaker extends JPanel implements Connectible {
     private Path path;
     private Stack<Path> ungeneratedPaths = new Stack<>();
+    private Waypoint selected;
 
     public PathMaker() {
         path = new Path();
@@ -32,7 +33,6 @@ public class PathMaker extends JPanel implements Connectible {
         } catch(IOException ignored) {
         }
 
-        g.setColor(Color.RED);
         try {
             ((Graphics2D)g).setStroke(new BasicStroke(Constants.PATH_WIDTH));
         } catch(Exception ignored) {
@@ -41,9 +41,11 @@ public class PathMaker extends JPanel implements Connectible {
         Waypoint prev = null;
 
         for(Waypoint waypoint : path.getPoints()) {
+            g.setColor(waypoint == selected ? Color.YELLOW : Color.RED);
             g.fillOval(xpx(waypoint) - Constants.POINT_RADIUS, ypx(waypoint) - Constants.POINT_RADIUS,
                     Constants.POINT_RADIUS * 2, Constants.POINT_RADIUS * 2);
 
+            g.setColor(Color.RED);
             if(prev != null)
                 g.drawLine(xpx(prev), ypx(prev), xpx(waypoint), ypx(waypoint));
             prev = waypoint;
@@ -65,6 +67,7 @@ public class PathMaker extends JPanel implements Connectible {
     @Override
     public void add(Waypoint waypoint) {
         path.add(waypoint);
+        selected = waypoint;
     }
 
     @Override
@@ -72,7 +75,20 @@ public class PathMaker extends JPanel implements Connectible {
         path.remove(path.size() - 1);
     }
 
-    public void ungeneratePath() {
+    @Override
+    public boolean select(double x, double y) {
+        for(Waypoint waypoint : path.getPoints())
+            if(Math.abs(waypoint.getX() - x) < Constants.POINT_RADIUS * Constants.CM_TO_M
+                    && Math.abs(waypoint.getY() - y) < Constants.POINT_RADIUS * Constants.CM_TO_M) {
+                selected = waypoint;
+                repaint();
+                return true;
+            }
+
+        return false;
+    }
+
+    public void ungeneratedPath() {
         path = ungeneratedPaths.pop();
     }
 

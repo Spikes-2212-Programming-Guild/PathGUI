@@ -16,6 +16,10 @@ public class ConnectionListener extends MouseAdapter {
     @Override
     public void mouseReleased(MouseEvent e) {
         Point point = e.getPoint();
+        if(connectible.select(point.getX() * Constants.CM_TO_M,
+                (Constants.FIELD_WIDTH - point.getY()) * Constants.CM_TO_M))
+            return;
+
         connectible.add(new Waypoint(point.getX() * Constants.CM_TO_M,
                 (Constants.FIELD_WIDTH - point.getY()) * Constants.CM_TO_M));
         connectible.repaint();
