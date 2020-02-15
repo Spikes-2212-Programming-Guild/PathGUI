@@ -57,6 +57,7 @@ public class GainsDialog extends JPanel {
 
         frame.setModal(true);
         frame.setContentPane(dialog);
+        frame.setTitle("Gains | Spikes Path Drawing Tool");
         frame.setResizable(false);
         frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         frame.pack();

@@ -1,6 +1,7 @@
 package gui;
 
 import gui.menus.PathMenuBar;
+import gui.toolbar.PathToolBar;
 
 import javax.swing.*;
 import java.util.prefs.Preferences;
@@ -25,6 +26,7 @@ public class GUI extends JFrame {
     public GUI() {
         setContentPane(new PathMaker());
         setJMenuBar(new PathMenuBar(this));
+        add(new PathToolBar());
 
         preferences = Preferences.userNodeForPackage(this.getClass());
         fileChooser = new JFileChooser(preferences.get("WORKING_DIRECTORY", null));
@@ -32,6 +34,7 @@ public class GUI extends JFrame {
 
     public static void main(String[] args) {
         GUI gui = new GUI();
+        gui.setTitle("Spikes Path Drawing Tool");
         gui.setResizable(false);
         gui.pack();
         gui.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
