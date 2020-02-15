@@ -66,7 +66,6 @@ public class PathMaker extends JPanel implements Connectible {
         selected = waypoint;
     }
 
-    @Override
     public void removeLast() {
         path.remove(path.size() - 1);
     }
