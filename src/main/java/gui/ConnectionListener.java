@@ -22,7 +22,6 @@ public class ConnectionListener extends MouseAdapter {
 
         connectible.add(new Waypoint(point.getX() * Constants.CM_TO_M,
                 (Constants.FIELD_WIDTH - point.getY()) * Constants.CM_TO_M));
-        connectible.repaint();
         Constants.actions.push(Constants.Action.ADD);
     }
 }

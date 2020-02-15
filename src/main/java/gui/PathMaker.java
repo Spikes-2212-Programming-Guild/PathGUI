@@ -3,6 +3,7 @@ package gui;
 import com.spikes2212.path.*;
 import gui.gains.Gains;
 import gui.gains.GainsDialog;
+import gui.toolbar.PathToolBar;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -16,10 +17,13 @@ public class PathMaker extends JPanel implements Connectible {
     private Path path;
     private Stack<Path> ungeneratedPaths = new Stack<>();
     private Waypoint selected;
+    private PathToolBar toolBar;
 
     public PathMaker() {
         path = new Path();
         setPreferredSize(new Dimension(Constants.FIELD_WIDTH, Constants.FIELD_HEIGHT));
+        toolBar = new PathToolBar();
+        add(toolBar);
         addMouseListener(new ConnectionListener(this));
     }
 
@@ -64,6 +68,9 @@ public class PathMaker extends JPanel implements Connectible {
     public void add(Waypoint waypoint) {
         path.add(waypoint);
         selected = waypoint;
+        toolBar.setCoords((int)(waypoint.getX() * Constants.M_TO_CM),
+                (int)(waypoint.getY() * Constants.M_TO_CM));
+        repaint();
     }
 
     public void removeLast() {
@@ -76,6 +83,8 @@ public class PathMaker extends JPanel implements Connectible {
             if(Math.abs(waypoint.getX() - x) < Constants.POINT_RADIUS * Constants.CM_TO_M
                     && Math.abs(waypoint.getY() - y) < Constants.POINT_RADIUS * Constants.CM_TO_M) {
                 selected = waypoint;
+                toolBar.setCoords((int)(waypoint.getX() * Constants.M_TO_CM),
+                        (int)(waypoint.getY() * Constants.M_TO_CM));
                 repaint();
                 return true;
             }

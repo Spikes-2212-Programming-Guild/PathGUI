@@ -6,23 +6,32 @@ import javax.swing.*;
 import java.text.NumberFormat;
 
 public class PathToolBar extends JToolBar {
+
+    private JFormattedTextField xField;
+    private JFormattedTextField yField;
+
     public PathToolBar() {
         super("Tool Bar | Spikes Path Drawing Tool");
 
         JLabel xLabel = new JLabel(" X (cm): ");
-        JFormattedTextField x = new JFormattedTextField(NumberFormat.getNumberInstance());
-        x.setColumns(Constants.TEXTFIELD_COLUMNS);
+        xField = new JFormattedTextField(NumberFormat.getNumberInstance());
+        xField.setColumns(Constants.TEXTFIELD_COLUMNS);
 
         JLabel yLabel = new JLabel(" Y (cm): ");
-        JFormattedTextField y = new JFormattedTextField(NumberFormat.getNumberInstance());
-        y.setColumns(Constants.TEXTFIELD_COLUMNS);
+        yField = new JFormattedTextField(NumberFormat.getNumberInstance());
+        yField.setColumns(Constants.TEXTFIELD_COLUMNS);
 
         JButton update = new JButton("Update");
 
         add(xLabel);
-        add(x);
+        add(xField);
         add(yLabel);
-        add(y);
+        add(yField);
         add(update);
+    }
+
+    public void setCoords(int x, int y) {
+        xField.setText(String.valueOf(x));
+        yField.setText(String.valueOf(y));
     }
 }
