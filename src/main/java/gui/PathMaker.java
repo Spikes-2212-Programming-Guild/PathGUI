@@ -44,11 +44,11 @@ public class PathMaker extends JPanel implements Addable {
         Waypoint prev = null;
 
         for(Waypoint waypoint : path.getPoints()) {
-            g.setColor(waypoint == selected ? Color.YELLOW : Color.RED);
+            g.setColor(waypoint == selected ? Globals.POINT_COLOR : Globals.SELECTION_COLOR);
             g.fillOval(xpx(waypoint) - Globals.POINT_RADIUS, ypx(waypoint) - Globals.POINT_RADIUS,
                     Globals.POINT_RADIUS * 2, Globals.POINT_RADIUS * 2);
 
-            g.setColor(Color.RED);
+            g.setColor(Globals.PATH_COLOR);
             if(prev != null)
                 g.drawLine(xpx(prev), ypx(prev), xpx(waypoint), ypx(waypoint));
             prev = waypoint;

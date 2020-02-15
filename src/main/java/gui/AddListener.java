@@ -16,12 +16,12 @@ public class AddListener extends MouseAdapter {
     @Override
     public void mouseReleased(MouseEvent e) {
         Point point = e.getPoint();
-        if(addable.select(point.getX() * Constants.CM_TO_M,
-                (Constants.FIELD_WIDTH - point.getY()) * Constants.CM_TO_M))
+        if(addable.select(point.getX() * Globals.CM_TO_M,
+                (Globals.FIELD_WIDTH - point.getY()) * Globals.CM_TO_M))
             return;
 
-        addable.add(new Waypoint(point.getX() * Constants.CM_TO_M,
-                (Constants.FIELD_WIDTH - point.getY()) * Constants.CM_TO_M));
-        Constants.undoStack.push(Constants.Action.ADD);
+        addable.add(new Waypoint(point.getX() * Globals.CM_TO_M,
+                (Globals.FIELD_WIDTH - point.getY()) * Globals.CM_TO_M));
+        Globals.undoStack.push(Globals.Action.ADD);
     }
 }

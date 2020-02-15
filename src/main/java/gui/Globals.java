@@ -1,5 +1,6 @@
 package gui;
 
+import java.awt.*;
 import java.util.Stack;
 
 public class Globals {
@@ -21,4 +22,8 @@ public class Globals {
 
     public static final int PATH_WIDTH = 4;
     public static final int POINT_RADIUS = 8;
+
+    public static final Color PATH_COLOR = Color.RED;
+    public static final Color POINT_COLOR = Color.RED;
+    public static final Color SELECTION_COLOR = Color.YELLOW;
 }
