@@ -8,7 +8,7 @@ public class Globals {
         ADD, MIRROR, GENERATE, NONE
     }
 
-    public static final Stack<Action> undoStack = new Stack<>();
+    public static final Stack<Action> UNDO_STACK = new Stack<>();
 
     public static final int TEXTFIELD_COLUMNS = 20;
     public static final int GAINS_WIDTH = 640;

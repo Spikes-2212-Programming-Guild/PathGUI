@@ -22,6 +22,6 @@ public class AddListener extends MouseAdapter {
 
         addable.add(new Waypoint(point.getX() * Globals.CM_TO_M,
                 (Globals.FIELD_WIDTH - point.getY()) * Globals.CM_TO_M));
-        Globals.undoStack.push(Globals.Action.ADD);
+        Globals.UNDO_STACK.push(Globals.Action.ADD);
     }
 }
