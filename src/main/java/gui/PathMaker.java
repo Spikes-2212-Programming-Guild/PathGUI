@@ -10,6 +10,9 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
+import java.net.URLClassLoader;
+import java.util.Objects;
 import java.util.Stack;
 
 /**
@@ -50,7 +53,7 @@ public class PathMaker extends JPanel implements Addable {
         super.paintComponent(g);
         BufferedImage img;
         try {
-            img = ImageIO.read(new File("src/main/resources/HalfField.png"));
+            img = ImageIO.read(Objects.requireNonNull(getClass().getResource("/res/HalfField.png")));
             g.drawImage(img, 0, 0, null);
         } catch(IOException ignored) {
             // If the field image cannot be found, do not draw a background.
