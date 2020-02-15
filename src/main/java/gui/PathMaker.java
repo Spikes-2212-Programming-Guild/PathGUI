@@ -60,10 +60,6 @@ public class PathMaker extends JPanel implements Connectible {
         return Constants.FIELD_WIDTH - (int)(Constants.M_TO_CM * waypoint.getY());
     }
 
-    public Waypoint getFirst() {
-        return path.get(0);
-    }
-
     @Override
     public void add(Waypoint waypoint) {
         path.add(waypoint);
