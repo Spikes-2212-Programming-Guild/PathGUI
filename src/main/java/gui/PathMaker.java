@@ -11,7 +11,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Stack;
 
-public class PathMaker extends JPanel implements Connectible {
+public class PathMaker extends JPanel implements Addable {
     private Path path;
     private Stack<Path> ungeneratedPaths = new Stack<>();
     private Waypoint selected;
@@ -23,7 +23,7 @@ public class PathMaker extends JPanel implements Connectible {
         setPreferredSize(new Dimension(Constants.FIELD_WIDTH, Constants.FIELD_HEIGHT));
         toolBar = new PathToolBar(this);
         add(toolBar, BorderLayout.PAGE_END);
-        addMouseListener(new ConnectionListener(this));
+        addMouseListener(new AddListener(this));
     }
 
     @Override

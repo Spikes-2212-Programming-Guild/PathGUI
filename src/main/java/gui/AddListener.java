@@ -6,21 +6,21 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class ConnectionListener extends MouseAdapter {
-    private Connectible connectible;
+public class AddListener extends MouseAdapter {
+    private Addable addable;
 
-    public ConnectionListener(Connectible connectible) {
-        this.connectible = connectible;
+    public AddListener(Addable addable) {
+        this.addable = addable;
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
         Point point = e.getPoint();
-        if(connectible.select(point.getX() * Constants.CM_TO_M,
+        if(addable.select(point.getX() * Constants.CM_TO_M,
                 (Constants.FIELD_WIDTH - point.getY()) * Constants.CM_TO_M))
             return;
 
-        connectible.add(new Waypoint(point.getX() * Constants.CM_TO_M,
+        addable.add(new Waypoint(point.getX() * Constants.CM_TO_M,
                 (Constants.FIELD_WIDTH - point.getY()) * Constants.CM_TO_M));
         Constants.undoStack.push(Constants.Action.ADD);
     }
