@@ -7,7 +7,7 @@ public class Constants {
         ADD, MIRROR, GENERATE, NONE
     }
 
-    public static Stack<Action> actions = new Stack<>();
+    public static Stack<Action> undoStack = new Stack<>();
 
     public static final int TEXTFIELD_COLUMNS = 20;
     public static final int GAINS_WIDTH = 640;

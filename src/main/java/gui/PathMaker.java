@@ -74,6 +74,7 @@ public class PathMaker extends JPanel implements Connectible {
 
     public void removeLast() {
         path.remove(path.size() - 1);
+        repaint();
     }
 
     @Override
@@ -91,8 +92,9 @@ public class PathMaker extends JPanel implements Connectible {
         return false;
     }
 
-    public void ungeneratedPath() {
+    public void ungeneratePath() {
         path = ungeneratedPaths.pop();
+        repaint();
     }
 
     public void newPath() {

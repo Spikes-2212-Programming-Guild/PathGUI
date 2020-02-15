@@ -16,6 +16,6 @@ public class GenerateListener implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
         ((PathMaker)gui.getContentPane()).generatePath(gui, GainsDialog.showDialog(gui));
-        Constants.actions.push(Constants.Action.GENERATE);
+        Constants.undoStack.push(Constants.Action.GENERATE);
     }
 }
