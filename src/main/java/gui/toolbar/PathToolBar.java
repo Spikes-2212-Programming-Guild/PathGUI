@@ -1,16 +1,16 @@
 package gui.toolbar;
 
 import gui.Constants;
+import gui.PathMaker;
 
 import javax.swing.*;
 import java.text.NumberFormat;
 
 public class PathToolBar extends JToolBar {
-
     private JFormattedTextField xField;
     private JFormattedTextField yField;
 
-    public PathToolBar() {
+    public PathToolBar(PathMaker pathMaker) {
         super("Tool Bar | Spikes Path Drawing Tool");
 
         JLabel xLabel = new JLabel(" X (cm): ");
@@ -22,6 +22,9 @@ public class PathToolBar extends JToolBar {
         yField.setColumns(Constants.TEXTFIELD_COLUMNS);
 
         JButton update = new JButton("Update");
+        update.addActionListener(actionEvent -> pathMaker
+                .moveSelected(Double.parseDouble(xField.getText()) * Constants.CM_TO_M,
+                        Double.parseDouble(yField.getText()) * Constants.CM_TO_M));
 
         add(xLabel);
         add(xField);

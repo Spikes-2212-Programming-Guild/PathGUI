@@ -23,7 +23,7 @@ public class PathMaker extends JPanel implements Connectible {
         super(new BorderLayout());
         path = new Path();
         setPreferredSize(new Dimension(Constants.FIELD_WIDTH, Constants.FIELD_HEIGHT));
-        toolBar = new PathToolBar();
+        toolBar = new PathToolBar(this);
         add(toolBar, BorderLayout.PAGE_END);
         addMouseListener(new ConnectionListener(this));
     }
@@ -172,5 +172,6 @@ public class PathMaker extends JPanel implements Connectible {
 
     public void moveSelected(double x, double y) {
         selected.setCoordinates(x, y);
+        repaint();
     }
 }
