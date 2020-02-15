@@ -24,7 +24,7 @@ public class PathMaker extends JPanel implements Addable {
         setPreferredSize(new Dimension(Globals.FIELD_WIDTH, Globals.FIELD_HEIGHT));
         toolBar = new PathToolBar(this);
         add(toolBar, BorderLayout.PAGE_END);
-        addMouseListener(new AddListener(this));
+        addMouseListener(new AddAdapter(this));
     }
 
     @Override

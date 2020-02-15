@@ -6,10 +6,16 @@ import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class AddListener extends MouseAdapter {
+/**
+ * An adapter that adds {@link Waypoint}s to an {@link Addable} when the left mouse button is clicked.
+ */
+public class AddAdapter extends MouseAdapter {
+    /**
+     * The {@link Addable} to add {@link Waypoint}s to.
+     */
     private Addable addable;
 
-    public AddListener(Addable addable) {
+    public AddAdapter(Addable addable) {
         this.addable = addable;
     }
 
