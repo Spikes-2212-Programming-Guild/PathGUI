@@ -26,6 +26,6 @@ public class OpenListener implements ActionListener {
             gui.getPreferences().put("WORKING_DIRECTORY", path.toAbsolutePath().toString());
         }
 
-        Constants.undoStack.push(Constants.Action.NONE);
+        Globals.undoStack.push(Globals.Action.NONE);
     }
 }

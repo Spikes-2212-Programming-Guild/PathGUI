@@ -20,7 +20,7 @@ public class PathMaker extends JPanel implements Addable {
     public PathMaker() {
         super(new BorderLayout());
         path = new Path();
-        setPreferredSize(new Dimension(Constants.FIELD_WIDTH, Constants.FIELD_HEIGHT));
+        setPreferredSize(new Dimension(Globals.FIELD_WIDTH, Globals.FIELD_HEIGHT));
         toolBar = new PathToolBar(this);
         add(toolBar, BorderLayout.PAGE_END);
         addMouseListener(new AddListener(this));
@@ -37,7 +37,7 @@ public class PathMaker extends JPanel implements Addable {
         }
 
         try {
-            ((Graphics2D)g).setStroke(new BasicStroke(Constants.PATH_WIDTH));
+            ((Graphics2D)g).setStroke(new BasicStroke(Globals.PATH_WIDTH));
         } catch(Exception ignored) {
         }
 
@@ -45,8 +45,8 @@ public class PathMaker extends JPanel implements Addable {
 
         for(Waypoint waypoint : path.getPoints()) {
             g.setColor(waypoint == selected ? Color.YELLOW : Color.RED);
-            g.fillOval(xpx(waypoint) - Constants.POINT_RADIUS, ypx(waypoint) - Constants.POINT_RADIUS,
-                    Constants.POINT_RADIUS * 2, Constants.POINT_RADIUS * 2);
+            g.fillOval(xpx(waypoint) - Globals.POINT_RADIUS, ypx(waypoint) - Globals.POINT_RADIUS,
+                    Globals.POINT_RADIUS * 2, Globals.POINT_RADIUS * 2);
 
             g.setColor(Color.RED);
             if(prev != null)
@@ -56,19 +56,19 @@ public class PathMaker extends JPanel implements Addable {
     }
 
     private int xpx(Waypoint waypoint) {
-        return (int)(Constants.M_TO_CM * waypoint.getX());
+        return (int)(Globals.M_TO_CM * waypoint.getX());
     }
 
     private int ypx(Waypoint waypoint) {
-        return Constants.FIELD_WIDTH - (int)(Constants.M_TO_CM * waypoint.getY());
+        return Globals.FIELD_WIDTH - (int)(Globals.M_TO_CM * waypoint.getY());
     }
 
     @Override
     public void add(Waypoint waypoint) {
         path.add(waypoint);
         selected = waypoint;
-        toolBar.setCoordinates((int)(waypoint.getX() * Constants.M_TO_CM),
-                (int)(waypoint.getY() * Constants.M_TO_CM));
+        toolBar.setCoordinates((int)(waypoint.getX() * Globals.M_TO_CM),
+                (int)(waypoint.getY() * Globals.M_TO_CM));
         repaint();
     }
 
@@ -80,11 +80,11 @@ public class PathMaker extends JPanel implements Addable {
     @Override
     public boolean select(double x, double y) {
         for(Waypoint waypoint : path.getPoints())
-            if(Math.abs(waypoint.getX() - x) < Constants.POINT_RADIUS * Constants.CM_TO_M
-                    && Math.abs(waypoint.getY() - y) < Constants.POINT_RADIUS * Constants.CM_TO_M) {
+            if(Math.abs(waypoint.getX() - x) < Globals.POINT_RADIUS * Globals.CM_TO_M
+                    && Math.abs(waypoint.getY() - y) < Globals.POINT_RADIUS * Globals.CM_TO_M) {
                 selected = waypoint;
-                toolBar.setCoordinates((int)(waypoint.getX() * Constants.M_TO_CM),
-                        (int)(waypoint.getY() * Constants.M_TO_CM));
+                toolBar.setCoordinates((int)(waypoint.getX() * Globals.M_TO_CM),
+                        (int)(waypoint.getY() * Globals.M_TO_CM));
                 repaint();
                 return true;
             }
@@ -153,7 +153,7 @@ public class PathMaker extends JPanel implements Addable {
 
     public void mirrorPath() {
         for(Waypoint waypoint : path.getPoints()) {
-            waypoint.setCoordinates(Constants.FIELD_WIDTH * Constants.CM_TO_M - waypoint.getX(), waypoint.getY());
+            waypoint.setCoordinates(Globals.FIELD_WIDTH * Globals.CM_TO_M - waypoint.getX(), waypoint.getY());
         }
 
         repaint();

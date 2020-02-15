@@ -14,8 +14,8 @@ public class UndoListener implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
-        if(!Constants.undoStack.isEmpty()) {
-            Constants.Action lastAction = Constants.undoStack.pop();
+        if(!Globals.undoStack.isEmpty()) {
+            Globals.Action lastAction = Globals.undoStack.pop();
 
             switch(lastAction) {
                 case ADD:

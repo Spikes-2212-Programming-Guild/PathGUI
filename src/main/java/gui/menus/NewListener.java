@@ -16,6 +16,6 @@ public class NewListener implements ActionListener {
     public void actionPerformed(ActionEvent actionEvent) {
         ((PathMaker)gui.getContentPane()).newPath();
         gui.getContentPane().repaint();
-        Constants.undoStack.push(Constants.Action.NONE);
+        Globals.undoStack.push(Globals.Action.NONE);
     }
 }

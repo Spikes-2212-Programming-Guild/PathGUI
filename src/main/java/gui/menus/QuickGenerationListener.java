@@ -16,6 +16,6 @@ public class QuickGenerationListener implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
         ((PathMaker)gui.getContentPane()).generatePath(gui, Gains.getPreferences(gui));
-        Constants.undoStack.push(Constants.Action.GENERATE);
+        Globals.undoStack.push(Globals.Action.GENERATE);
     }
 }

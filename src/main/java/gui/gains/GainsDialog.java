@@ -1,7 +1,7 @@
 package gui.gains;
 
-import gui.Constants;
 import gui.GUI;
+import gui.Globals;
 
 import javax.swing.*;
 import java.awt.*;
@@ -18,17 +18,17 @@ public class GainsDialog extends JPanel {
 
     public GainsDialog(GUI gui) {
         setLayout(new GridLayout(7, 2));
-        spacing = new JTextField(Constants.TEXTFIELD_COLUMNS);
+        spacing = new JTextField(Globals.TEXTFIELD_COLUMNS);
         spacing.setText(gui.getPreferences().get("SPACING", "0.075"));
-        smoothWeight = new JTextField(Constants.TEXTFIELD_COLUMNS);
+        smoothWeight = new JTextField(Globals.TEXTFIELD_COLUMNS);
         smoothWeight.setText(gui.getPreferences().get("SMOOTH_WEIGHT", "0.6"));
-        tolerance = new JTextField(Constants.TEXTFIELD_COLUMNS);
+        tolerance = new JTextField(Globals.TEXTFIELD_COLUMNS);
         tolerance.setText(gui.getPreferences().get("TOLERANCE", "0.6"));
-        maxVelocity = new JTextField(Constants.TEXTFIELD_COLUMNS);
+        maxVelocity = new JTextField(Globals.TEXTFIELD_COLUMNS);
         maxVelocity.setText(gui.getPreferences().get("MAX_VELOCITY", "3.05"));
-        turningConstant = new JTextField(Constants.TEXTFIELD_COLUMNS);
+        turningConstant = new JTextField(Globals.TEXTFIELD_COLUMNS);
         turningConstant.setText(gui.getPreferences().get("TURNING_CONSTANT", "3"));
-        maxAcceleration = new JTextField(Constants.TEXTFIELD_COLUMNS);
+        maxAcceleration = new JTextField(Globals.TEXTFIELD_COLUMNS);
         maxAcceleration.setText(gui.getPreferences().get("MAX_ACCELERATION", "18"));
         save = new JButton("Save");
 
@@ -46,7 +46,7 @@ public class GainsDialog extends JPanel {
         add(maxAcceleration);
         add(save);
 
-        setSize(Constants.GAINS_WIDTH, Constants.GAINS_HEIGHT);
+        setSize(Globals.GAINS_WIDTH, Globals.GAINS_HEIGHT);
     }
 
     public static Gains showDialog(GUI gui) {

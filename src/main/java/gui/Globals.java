@@ -2,7 +2,7 @@ package gui;
 
 import java.util.Stack;
 
-public class Constants {
+public class Globals {
     public enum Action {
         ADD, MIRROR, GENERATE, NONE
     }

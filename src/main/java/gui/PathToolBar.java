@@ -12,16 +12,16 @@ public class PathToolBar extends JToolBar {
 
         JLabel xLabel = new JLabel(" X (cm): ");
         xField = new JFormattedTextField(NumberFormat.getNumberInstance());
-        xField.setColumns(Constants.TEXTFIELD_COLUMNS);
+        xField.setColumns(Globals.TEXTFIELD_COLUMNS);
 
         JLabel yLabel = new JLabel(" Y (cm): ");
         yField = new JFormattedTextField(NumberFormat.getNumberInstance());
-        yField.setColumns(Constants.TEXTFIELD_COLUMNS);
+        yField.setColumns(Globals.TEXTFIELD_COLUMNS);
 
         JButton update = new JButton("Update");
         update.addActionListener(actionEvent -> pathMaker
-                .moveSelected(Double.parseDouble(xField.getText()) * Constants.CM_TO_M,
-                        Double.parseDouble(yField.getText()) * Constants.CM_TO_M));
+                .moveSelected(Double.parseDouble(xField.getText()) * Globals.CM_TO_M,
+                        Double.parseDouble(yField.getText()) * Globals.CM_TO_M));
 
         add(xLabel);
         add(xField);
