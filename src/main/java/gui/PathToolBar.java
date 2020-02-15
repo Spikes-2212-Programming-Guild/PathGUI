@@ -1,7 +1,4 @@
-package gui.toolbar;
-
-import gui.Constants;
-import gui.PathMaker;
+package gui;
 
 import javax.swing.*;
 import java.text.NumberFormat;

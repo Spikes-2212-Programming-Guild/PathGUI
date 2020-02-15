@@ -3,7 +3,6 @@ package gui;
 import com.spikes2212.path.*;
 import gui.gains.Gains;
 import gui.gains.GainsDialog;
-import gui.toolbar.PathToolBar;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
