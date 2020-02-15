@@ -20,10 +20,11 @@ public class PathMaker extends JPanel implements Connectible {
     private PathToolBar toolBar;
 
     public PathMaker() {
+        super(new BorderLayout());
         path = new Path();
         setPreferredSize(new Dimension(Constants.FIELD_WIDTH, Constants.FIELD_HEIGHT));
         toolBar = new PathToolBar();
-        add(toolBar);
+        add(toolBar, BorderLayout.PAGE_END);
         addMouseListener(new ConnectionListener(this));
     }
 
