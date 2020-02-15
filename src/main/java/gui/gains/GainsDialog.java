@@ -6,15 +6,44 @@ import gui.Globals;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * The dialog for manual entry of path generation gains.
+ */
 public class GainsDialog extends JPanel {
+    /**
+     * A text field input for the spacing between points on the generated path.
+     */
     private JTextField spacing;
+
+    /**
+     * A text field input for how much to smooth the path.
+     */
     private JTextField smoothWeight;
+
+    /**
+     * A text field input for the highest tolerable distance between the smoothed and original paths.
+     */
     private JTextField tolerance;
+
+    /**
+     * A text field input the maximum velocity of the robot.
+     */
     private JTextField maxVelocity;
+
+    /**
+     * A text field input the turning constant for the path generation algorithm.
+     */
     private JTextField turningConstant;
+
+    /**
+     * A text field input for the maximum acceleration of the robot.
+     */
     private JTextField maxAcceleration;
 
-    private JButton save;
+    /**
+     * A button that generates the path.
+     */
+    private JButton generate;
 
     public GainsDialog(GUI gui) {
         setLayout(new GridLayout(7, 2));
@@ -30,7 +59,7 @@ public class GainsDialog extends JPanel {
         turningConstant.setText(gui.getPreferences().get("TURNING_CONSTANT", "3"));
         maxAcceleration = new JTextField(Globals.TEXTFIELD_COLUMNS);
         maxAcceleration.setText(gui.getPreferences().get("MAX_ACCELERATION", "18"));
-        save = new JButton("Save");
+        generate = new JButton("Generate");
 
         add(new JLabel("Spacing:"));
         add(spacing);
@@ -44,16 +73,22 @@ public class GainsDialog extends JPanel {
         add(turningConstant);
         add(new JLabel("Max Acceleration:"));
         add(maxAcceleration);
-        add(save);
+        add(generate);
 
         setSize(Globals.GAINS_WIDTH, Globals.GAINS_HEIGHT);
     }
 
-    public static Gains showDialog(GUI gui) {
-        GainsDialog dialog = new GainsDialog(gui);
+    /**
+     * Show the gains dialog.
+     *
+     * @param context the context for the dialog
+     * @return the gains from the user input
+     */
+    public static Gains showDialog(GUI context) {
+        GainsDialog dialog = new GainsDialog(context);
         JDialog frame = new JDialog();
 
-        dialog.save.addActionListener(new CloseListener(frame));
+        dialog.generate.addActionListener(new CloseListener(frame));
 
         frame.setModal(true);
         frame.setContentPane(dialog);
@@ -63,12 +98,12 @@ public class GainsDialog extends JPanel {
         frame.pack();
         frame.setVisible(true);
 
-        gui.getPreferences().put("SPACING", dialog.spacing.getText());
-        gui.getPreferences().put("SMOOTH_WEIGHT", dialog.smoothWeight.getText());
-        gui.getPreferences().put("TOLERANCE", dialog.tolerance.getText());
-        gui.getPreferences().put("MAX_VELOCITY", dialog.maxVelocity.getText());
-        gui.getPreferences().put("TURNING_CONSTANT", dialog.turningConstant.getText());
-        gui.getPreferences().put("MAX_ACCELERATION", dialog.maxAcceleration.getText());
+        context.getPreferences().put("SPACING", dialog.spacing.getText());
+        context.getPreferences().put("SMOOTH_WEIGHT", dialog.smoothWeight.getText());
+        context.getPreferences().put("TOLERANCE", dialog.tolerance.getText());
+        context.getPreferences().put("MAX_VELOCITY", dialog.maxVelocity.getText());
+        context.getPreferences().put("TURNING_CONSTANT", dialog.turningConstant.getText());
+        context.getPreferences().put("MAX_ACCELERATION", dialog.maxAcceleration.getText());
 
         return new Gains(Double.parseDouble(dialog.spacing.getText()),
                 Double.parseDouble(dialog.smoothWeight.getText()), Double.parseDouble(dialog.tolerance.getText()),
