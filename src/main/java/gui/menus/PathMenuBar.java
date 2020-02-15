@@ -6,7 +6,15 @@ import javax.swing.*;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 
+/**
+ * The menu bar for the path GUI.
+ */
 public class PathMenuBar extends JMenuBar {
+    /**
+     * Sets up the menu bar, menus and menu items.
+     *
+     * @param gui a user interface object.
+     */
     public PathMenuBar(GUI gui) {
         JMenu file = new JMenu("File");
         file.setMnemonic('F');
