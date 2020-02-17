@@ -27,7 +27,7 @@ public class PathMaker extends JPanel implements Addable {
     private Stack<Path> oldPaths = new Stack<>();
 
     /**
-     * The current path point selected by the user.
+     * The path point currently selected by the user.
      */
     private Waypoint selected;
 
