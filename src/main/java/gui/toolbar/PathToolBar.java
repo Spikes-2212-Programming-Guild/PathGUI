@@ -28,18 +28,18 @@ public class PathToolBar extends JToolBar {
     public PathToolBar(PathMaker pathMaker) {
         super("Tool Bar | Spikes Path Drawing Tool");
 
-        JLabel xLabel = new JLabel(" X (cm): ");
+        JLabel xLabel = new JLabel(" X (m): ");
         xField = new JFormattedTextField(NumberFormat.getNumberInstance());
         xField.setColumns(Globals.TEXTFIELD_COLUMNS);
 
-        JLabel yLabel = new JLabel(" Y (cm): ");
+        JLabel yLabel = new JLabel(" Y (m): ");
         yField = new JFormattedTextField(NumberFormat.getNumberInstance());
         yField.setColumns(Globals.TEXTFIELD_COLUMNS);
 
         JButton update = new JButton("Update");
         update.addActionListener(actionEvent -> pathMaker
-                .moveSelected(Double.parseDouble(xField.getText()) * Globals.CM_TO_M,
-                        Double.parseDouble(yField.getText()) * Globals.CM_TO_M));
+                .moveSelected(Double.parseDouble(xField.getText()),
+                        Double.parseDouble(yField.getText())));
 
         add(xLabel);
         add(xField);
@@ -54,7 +54,7 @@ public class PathToolBar extends JToolBar {
      * @param x the x coordinate
      * @param y the y coordinate
      */
-    public void setCoordinates(int x, int y) {
+    public void setCoordinates(double x, double y) {
         xField.setText(String.valueOf(x));
         yField.setText(String.valueOf(y));
     }

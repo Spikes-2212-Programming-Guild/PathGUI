@@ -8,10 +8,7 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
-import java.net.URL;
-import java.net.URLClassLoader;
 import java.util.Objects;
 import java.util.Stack;
 
@@ -87,8 +84,7 @@ public class PathMaker extends JPanel implements Addable {
     public void add(Waypoint waypoint) {
         path.add(waypoint);
         selected = waypoint;
-        toolBar.setCoordinates((int)(waypoint.getX() * Globals.M_TO_CM),
-                (int)(waypoint.getY() * Globals.M_TO_CM));
+        toolBar.setCoordinates(waypoint.getX(), waypoint.getY());
         repaint();
     }
 
@@ -106,8 +102,7 @@ public class PathMaker extends JPanel implements Addable {
             if(Math.abs(waypoint.getX() - x) < Globals.POINT_RADIUS * Globals.CM_TO_M
                     && Math.abs(waypoint.getY() - y) < Globals.POINT_RADIUS * Globals.CM_TO_M) {
                 selected = waypoint;
-                toolBar.setCoordinates((int)(waypoint.getX() * Globals.M_TO_CM),
-                        (int)(waypoint.getY() * Globals.M_TO_CM));
+                toolBar.setCoordinates(waypoint.getX(), waypoint.getY());
                 repaint();
                 return true;
             }
@@ -115,9 +110,8 @@ public class PathMaker extends JPanel implements Addable {
         return false;
     }
 
-
     /**
-     * Reverts tp before the last time the path was generated.
+     * Reverts to before the last time the path was generated.
      */
     public void ungeneratePath() {
         path = oldPaths.pop();
