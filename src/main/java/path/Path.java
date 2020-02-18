@@ -8,7 +8,6 @@ import java.util.*;
  * @author T
  */
 public class Path {
-
     /**
      * The points on the path.
      */
@@ -18,14 +17,30 @@ public class Path {
         this.points = new LinkedList<>();
     }
 
+    /**
+     * Adds a {@link Waypoint} to the path.
+     *
+     * @param waypoint the {@link Waypoint} added.
+     */
     public void add(Waypoint waypoint) {
         points.add(waypoint);
     }
 
+    /**
+     * Returns the {@link Waypoint} at the specified index.
+     *
+     * @param index the {@link Waypoint}'s index
+     * @return the {@link Waypoint} at the specified index
+     */
     public Waypoint get(int index) {
         return points.get(index);
     }
 
+    /**
+     * Removes the {@link Waypoint} at the specified index from the path.
+     *
+     * @param index the {@link Waypoint}'s index
+     */
     public void remove(int index) {
         points.remove(index);
     }
@@ -38,13 +53,23 @@ public class Path {
         return points;
     }
 
-    public void generate(double spacing, double smooth_weight, double tolerance,
-                         double maxVelocity, double k, double maxAcceleration) {
+    /**
+     * Generates the path.
+     *
+     * @param spacing the spacing between points on the generated path
+     * @param smooth_weight how much to smooth the path
+     * @param tolerance the highest tolerable distance between the smoothed and original paths
+     * @param maxVelocity the maximum velocity of the robot
+     * @param turningConstant the turning constant for the path generation algorithm
+     * @param maxAcceleration the maximum acceleration of the robot
+     */
+    public void generate(double spacing, double smooth_weight, double tolerance, double maxVelocity,
+                         double turningConstant, double maxAcceleration) {
         fill(spacing);
         smooth(smooth_weight, tolerance);
         calculateDistances();
         calculateCurvatures();
-        calculateMaxVelocities(maxVelocity, k);
+        calculateMaxVelocities(maxVelocity, turningConstant);
         smoothVelocities(maxAcceleration);
     }
 
