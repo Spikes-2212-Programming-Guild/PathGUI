@@ -24,4 +24,8 @@ public class PathNumberField extends JFormattedTextField {
     public double getNumber() {
         return Double.parseDouble(getText());
     }
+
+    public void setNumber(double number) {
+        setText(String.valueOf(number));
+    }
 }
