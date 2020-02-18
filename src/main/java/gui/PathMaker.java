@@ -1,8 +1,8 @@
 package gui;
 
-import com.spikes2212.path.*;
 import gui.gains.Gains;
 import gui.toolbar.PathToolBar;
+import path.*;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;

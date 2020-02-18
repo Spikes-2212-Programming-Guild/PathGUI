@@ -1,6 +1,6 @@
 package gui;
 
-import com.spikes2212.path.Waypoint;
+import path.Waypoint;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;

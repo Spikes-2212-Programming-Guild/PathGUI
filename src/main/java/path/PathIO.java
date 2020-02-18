@@ -1,4 +1,4 @@
-package com.spikes2212.path;
+package path;
 
 import java.io.BufferedWriter;
 import java.io.IOException;

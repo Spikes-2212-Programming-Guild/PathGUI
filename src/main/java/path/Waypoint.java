@@ -1,4 +1,4 @@
-package com.spikes2212.path;
+package path;
 
 /**
  * This class represents a point in 2d space, with additional fields used for path generation and following.

@@ -1,6 +1,6 @@
 package gui;
 
-import com.spikes2212.path.Waypoint;
+import path.Waypoint;
 
 /**
  * An object that you can add {@link Waypoint}s to.
