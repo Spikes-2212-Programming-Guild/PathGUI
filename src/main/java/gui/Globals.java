@@ -25,16 +25,6 @@ public class Globals {
     public static final int TEXTFIELD_COLUMNS = 20;
 
     /**
-     * The width of the gains input dialog.
-     */
-    public static final int GAINS_WIDTH = 640;
-
-    /**
-     * The height of the gains input dialog.
-     */
-    public static final int GAINS_HEIGHT = 480;
-
-    /**
      * The width of the field in centimeters.
      * <p>
      * This constant needs to be changed when a new field is introduced.

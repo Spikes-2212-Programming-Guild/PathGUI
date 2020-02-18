@@ -74,8 +74,6 @@ public class GainsDialog extends JPanel {
         add(new JLabel("Max Acceleration:"));
         add(maxAcceleration);
         add(generate);
-
-        setSize(Globals.GAINS_WIDTH, Globals.GAINS_HEIGHT);
     }
 
     /**
