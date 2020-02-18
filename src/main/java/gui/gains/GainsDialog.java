@@ -1,5 +1,6 @@
 package gui.gains;
 
+import components.PathNumberField;
 import gui.GUI;
 import gui.Globals;
 import path.Gains;
@@ -16,32 +17,32 @@ public class GainsDialog extends JPanel {
     /**
      * A text field input for the spacing between points on the generated path.
      */
-    private JTextField spacing;
+    private PathNumberField spacing;
 
     /**
      * A text field input for how much to smooth the path.
      */
-    private JTextField smoothWeight;
+    private PathNumberField smoothWeight;
 
     /**
      * A text field input for the highest tolerable distance between the smoothed and original paths.
      */
-    private JTextField tolerance;
+    private PathNumberField tolerance;
 
     /**
      * A text field input the maximum velocity of the robot.
      */
-    private JTextField maxVelocity;
+    private PathNumberField maxVelocity;
 
     /**
      * A text field input the turning constant for the path generation algorithm.
      */
-    private JTextField turningConstant;
+    private PathNumberField turningConstant;
 
     /**
      * A text field input for the maximum acceleration of the robot.
      */
-    private JTextField maxAcceleration;
+    private PathNumberField maxAcceleration;
 
     /**
      * A button that generates the path.
@@ -51,12 +52,12 @@ public class GainsDialog extends JPanel {
     public GainsDialog() {
         setLayout(new GridLayout(7, 2));
 
-        spacing = new JTextField(Globals.PREFS.get("SPACING", "0.075"), Globals.TEXTFIELD_COLUMNS);
-        smoothWeight = new JTextField(Globals.PREFS.get("SMOOTH_WEIGHT", "0.6"), Globals.TEXTFIELD_COLUMNS);
-        tolerance = new JTextField(Globals.PREFS.get("TOLERANCE", "0.6"), Globals.TEXTFIELD_COLUMNS);
-        maxVelocity = new JTextField(Globals.PREFS.get("MAX_VELOCITY", "3.05"), Globals.TEXTFIELD_COLUMNS);
-        turningConstant = new JTextField(Globals.PREFS.get("TURNING_CONSTANT", "3"), Globals.TEXTFIELD_COLUMNS);
-        maxAcceleration = new JTextField(Globals.PREFS.get("MAX_ACCELERATION", "18"), Globals.TEXTFIELD_COLUMNS);
+        spacing = new PathNumberField(Globals.PREFS.get("SPACING", "0.075"));
+        smoothWeight = new PathNumberField(Globals.PREFS.get("SMOOTH_WEIGHT", "0.6"));
+        tolerance = new PathNumberField(Globals.PREFS.get("TOLERANCE", "0.6"));
+        maxVelocity = new PathNumberField(Globals.PREFS.get("MAX_VELOCITY", "3.05"));
+        turningConstant = new PathNumberField(Globals.PREFS.get("TURNING_CONSTANT", "3"));
+        maxAcceleration = new PathNumberField(Globals.PREFS.get("MAX_ACCELERATION", "18"));
 
         generate = new JButton("Generate");
 
@@ -103,9 +104,7 @@ public class GainsDialog extends JPanel {
         Globals.PREFS.put("TURNING_CONSTANT", dialog.turningConstant.getText());
         Globals.PREFS.put("MAX_ACCELERATION", dialog.maxAcceleration.getText());
 
-        return new Gains(Double.parseDouble(dialog.spacing.getText()),
-                Double.parseDouble(dialog.smoothWeight.getText()), Double.parseDouble(dialog.tolerance.getText()),
-                Double.parseDouble(dialog.maxVelocity.getText()), Double.parseDouble(dialog.turningConstant.getText()),
-                Double.parseDouble(dialog.maxAcceleration.getText()));
+        return new Gains(dialog.spacing.getNumber(), dialog.smoothWeight.getNumber(), dialog.tolerance.getNumber(),
+                dialog.maxVelocity.getNumber(), dialog.turningConstant.getNumber(), dialog.maxAcceleration.getNumber());
     }
 }
