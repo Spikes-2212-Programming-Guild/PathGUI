@@ -1,10 +1,9 @@
 package gui.toolbar;
 
-import gui.Globals;
+import components.PathNumberField;
 import gui.pane.PathPane;
 
 import javax.swing.*;
-import java.text.NumberFormat;
 
 /**
  * The tool bar for the path GUI.
@@ -15,12 +14,12 @@ public class PathToolBar extends JToolBar {
     /**
      * The text field input for the x coordinate.
      */
-    private JFormattedTextField xField;
+    private PathNumberField xField;
 
     /**
      * The text field input for the x coordinate.
      */
-    private JFormattedTextField yField;
+    private PathNumberField yField;
 
     /**
      * Sets up the tool bar, menus and menu items.
@@ -31,16 +30,13 @@ public class PathToolBar extends JToolBar {
         super("Tool Bar | Spikes Path Drawing Tool");
 
         JLabel xLabel = new JLabel(" X (m): ");
-        xField = new JFormattedTextField(NumberFormat.getInstance());
-        xField.setColumns(Globals.TEXTFIELD_COLUMNS);
+        xField = new PathNumberField();
 
         JLabel yLabel = new JLabel(" Y (m): ");
-        yField = new JFormattedTextField(NumberFormat.getInstance());
-        yField.setColumns(Globals.TEXTFIELD_COLUMNS);
+        yField = new PathNumberField();
 
         JButton update = new JButton("Update");
-        update.addActionListener(actionEvent -> pathPane
-                .moveSelected(Double.parseDouble(xField.getText()), Double.parseDouble(yField.getText())));
+        update.addActionListener(actionEvent -> pathPane.moveSelected(xField.getNumber(), yField.getNumber()));
 
         add(xLabel);
         add(xField);
@@ -56,7 +52,7 @@ public class PathToolBar extends JToolBar {
      * @param y the y coordinate
      */
     public void setCoordinates(double x, double y) {
-        xField.setText(String.valueOf(x));
-        yField.setText(String.valueOf(y));
+        xField.setNumber(x);
+        yField.setNumber(y);
     }
 }
