@@ -1,7 +1,9 @@
 package gui.menus;
 
-import gui.*;
+import gui.GUI;
+import gui.Globals;
 import gui.gains.GainsDialog;
+import gui.pane.PathPane;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -23,7 +25,7 @@ public class GenerateListener implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
-        ((PathMaker)gui.getContentPane()).generatePath(GainsDialog.showDialog(gui));
+        ((PathPane)gui.getContentPane()).generatePath(GainsDialog.showDialog(gui));
         Globals.UNDO_STACK.push(Globals.Action.GENERATE);
     }
 }

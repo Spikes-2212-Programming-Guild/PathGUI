@@ -1,7 +1,7 @@
 package gui.toolbar;
 
 import gui.Globals;
-import gui.PathMaker;
+import gui.pane.PathPane;
 
 import javax.swing.*;
 import java.text.NumberFormat;
@@ -25,9 +25,9 @@ public class PathToolBar extends JToolBar {
     /**
      * Sets up the tool bar, menus and menu items.
      *
-     * @param pathMaker a path drawing interface object.
+     * @param pathPane a path drawing interface object.
      */
-    public PathToolBar(PathMaker pathMaker) {
+    public PathToolBar(PathPane pathPane) {
         super("Tool Bar | Spikes Path Drawing Tool");
 
         JLabel xLabel = new JLabel(" X (m): ");
@@ -39,7 +39,7 @@ public class PathToolBar extends JToolBar {
         yField.setColumns(Globals.TEXTFIELD_COLUMNS);
 
         JButton update = new JButton("Update");
-        update.addActionListener(actionEvent -> pathMaker
+        update.addActionListener(actionEvent -> pathPane
                 .moveSelected(Double.parseDouble(xField.getText()), Double.parseDouble(yField.getText())));
 
         add(xLabel);

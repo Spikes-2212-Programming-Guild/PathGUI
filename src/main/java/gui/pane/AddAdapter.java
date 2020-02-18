@@ -1,5 +1,6 @@
-package gui;
+package gui.pane;
 
+import gui.Globals;
 import path.Waypoint;
 
 import java.awt.event.MouseAdapter;

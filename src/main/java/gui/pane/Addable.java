@@ -1,4 +1,4 @@
-package gui;
+package gui.pane;
 
 import path.Waypoint;
 

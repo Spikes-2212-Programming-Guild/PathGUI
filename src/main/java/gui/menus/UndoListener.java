@@ -1,6 +1,8 @@
 package gui.menus;
 
-import gui.*;
+import gui.GUI;
+import gui.Globals;
+import gui.pane.PathPane;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -27,13 +29,13 @@ public class UndoListener implements ActionListener {
 
             switch(lastAction) {
                 case ADD:
-                    ((PathMaker)gui.getContentPane()).removeLast();
+                    ((PathPane)gui.getContentPane()).removeLast();
                     break;
                 case MIRROR:
-                    ((PathMaker)gui.getContentPane()).mirrorPath();
+                    ((PathPane)gui.getContentPane()).mirrorPath();
                     break;
                 case GENERATE:
-                    ((PathMaker)gui.getContentPane()).ungeneratePath();
+                    ((PathPane)gui.getContentPane()).ungeneratePath();
                     break;
                 case NONE:
                 default:

@@ -1,5 +1,6 @@
-package gui;
+package gui.pane;
 
+import gui.Globals;
 import gui.toolbar.PathToolBar;
 import path.*;
 
@@ -15,7 +16,7 @@ import java.util.Objects;
  *
  * @author Eran Goldstein
  */
-public class PathMaker extends JPanel implements Addable {
+public class PathPane extends JPanel implements Addable {
     /**
      * The path manipulator object.
      */
@@ -31,7 +32,7 @@ public class PathMaker extends JPanel implements Addable {
      */
     private PathToolBar toolBar;
 
-    public PathMaker() {
+    public PathPane() {
         super(new BorderLayout());
         pathManipulator = new PathManipulator();
         setPreferredSize(new Dimension(Globals.FIELD_WIDTH, Globals.FIELD_HEIGHT));

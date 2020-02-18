@@ -1,6 +1,8 @@
 package gui.menus;
 
-import gui.*;
+import gui.GUI;
+import gui.Globals;
+import gui.pane.PathPane;
 import path.Gains;
 
 import java.awt.event.ActionEvent;
@@ -23,7 +25,7 @@ public class QuickGenerationListener implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
-        ((PathMaker)gui.getContentPane()).generatePath(Gains.getPreferences());
+        ((PathPane)gui.getContentPane()).generatePath(Gains.getPreferences());
         Globals.UNDO_STACK.push(Globals.Action.GENERATE);
     }
 }

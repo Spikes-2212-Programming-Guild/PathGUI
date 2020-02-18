@@ -1,6 +1,7 @@
 package gui;
 
 import gui.menus.PathMenuBar;
+import gui.pane.PathPane;
 
 import javax.swing.*;
 
@@ -11,7 +12,7 @@ import javax.swing.*;
  */
 public class GUI extends JFrame {
     public GUI() {
-        setContentPane(new PathMaker());
+        setContentPane(new PathPane());
         setJMenuBar(new PathMenuBar(this));
     }
 

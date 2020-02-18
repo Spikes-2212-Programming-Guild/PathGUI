@@ -1,6 +1,8 @@
 package gui.menus;
 
-import gui.*;
+import gui.GUI;
+import gui.Globals;
+import gui.pane.PathPane;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -22,7 +24,7 @@ public class MirrorListener implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
-        ((PathMaker)gui.getContentPane()).mirrorPath();
+        ((PathPane)gui.getContentPane()).mirrorPath();
         Globals.UNDO_STACK.push(Globals.Action.MIRROR);
     }
 }

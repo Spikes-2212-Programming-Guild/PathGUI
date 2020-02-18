@@ -1,6 +1,8 @@
 package gui.menus;
 
-import gui.*;
+import gui.GUI;
+import gui.Globals;
+import gui.pane.PathPane;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -24,14 +26,14 @@ public class ExportListener implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
-        ((PathMaker)gui.getContentPane()).alignPath();
-        ((PathMaker)gui.getContentPane()).moveToOrigin();
+        ((PathPane)gui.getContentPane()).alignPath();
+        ((PathPane)gui.getContentPane()).moveToOrigin();
 
         int val = Globals.FILE_CHOOSER.showSaveDialog(gui);
 
         if(val == JFileChooser.APPROVE_OPTION) {
             Path path = Globals.FILE_CHOOSER.getSelectedFile().toPath();
-            ((PathMaker)gui.getContentPane()).savePath(path);
+            ((PathPane)gui.getContentPane()).savePath(path);
             Globals.PREFS.put("WORKING_DIRECTORY", path.toAbsolutePath().toString());
         }
 

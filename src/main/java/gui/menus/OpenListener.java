@@ -1,6 +1,8 @@
 package gui.menus;
 
-import gui.*;
+import gui.GUI;
+import gui.Globals;
+import gui.pane.PathPane;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -28,7 +30,7 @@ public class OpenListener implements ActionListener {
 
         if(val == JFileChooser.APPROVE_OPTION) {
             Path path = Globals.FILE_CHOOSER.getSelectedFile().toPath();
-            ((PathMaker)gui.getContentPane()).importPath(path);
+            ((PathPane)gui.getContentPane()).importPath(path);
             Globals.PREFS.put("WORKING_DIRECTORY", path.toAbsolutePath().toString());
         }
 
