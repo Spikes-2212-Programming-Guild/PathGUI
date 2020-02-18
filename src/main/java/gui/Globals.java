@@ -2,6 +2,7 @@ package gui;
 
 import java.awt.*;
 import java.util.Stack;
+import java.util.prefs.Preferences;
 
 /**
  * Class containing global project constants.
@@ -18,6 +19,11 @@ public class Globals {
      * The actions performed on the current path, in order.
      */
     public static final Stack<Action> UNDO_STACK = new Stack<>();
+
+    /**
+     * The preferences object that saves the preferences for default directory and path generation gains.
+     */
+    public static final Preferences prefs = Preferences.userNodeForPackage(GUI.class);
 
     /**
      * The amount of character columns in text fields.

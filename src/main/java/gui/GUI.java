@@ -3,7 +3,6 @@ package gui;
 import gui.menus.PathMenuBar;
 
 import javax.swing.*;
-import java.util.prefs.Preferences;
 
 /**
  * The main frame that holds the paths GUI.
@@ -17,17 +16,11 @@ public class GUI extends JFrame {
      */
     private JFileChooser fileChooser;
 
-    /**
-     * The preferences object that saves the preferences for default directory and path generation gains.
-     */
-    private Preferences preferences;
-
     public GUI() {
         setContentPane(new PathMaker());
         setJMenuBar(new PathMenuBar(this));
 
-        preferences = Preferences.userNodeForPackage(this.getClass());
-        fileChooser = new JFileChooser(preferences.get("WORKING_DIRECTORY", null));
+        fileChooser = new JFileChooser(Globals.prefs.get("WORKING_DIRECTORY", null));
     }
 
     public static void main(String[] args) {
@@ -41,9 +34,5 @@ public class GUI extends JFrame {
 
     public JFileChooser getFileChooser() {
         return fileChooser;
-    }
-
-    public Preferences getPreferences() {
-        return preferences;
     }
 }

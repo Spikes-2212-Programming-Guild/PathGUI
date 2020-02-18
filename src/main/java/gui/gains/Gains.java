@@ -1,6 +1,6 @@
 package gui.gains;
 
-import gui.GUI;
+import gui.Globals;
 
 /**
  * The gains for the path generation algorithm.
@@ -72,15 +72,14 @@ public class Gains {
     /**
      * Returns the user-saved default gains.
      *
-     * @param gui a program object that holds the user preferences
      * @return the user-saved default gains
      */
-    public static Gains getPreferences(GUI gui) {
-        return new Gains(Double.parseDouble(gui.getPreferences().get("SPACING", "0.075")),
-                Double.parseDouble(gui.getPreferences().get("SMOOTH_WEIGHT", "0.6")),
-                Double.parseDouble(gui.getPreferences().get("TOLERANCE", "0.6")),
-                Double.parseDouble(gui.getPreferences().get("MAX_VELOCITY", "3.05")),
-                Double.parseDouble(gui.getPreferences().get("TURNING_CONSTANT", "3")),
-                Double.parseDouble(gui.getPreferences().get("MAX_ACCELERATION", "18")));
+    public static Gains getPreferences() {
+        return new Gains(Double.parseDouble(Globals.prefs.get("SPACING", "0.075")),
+                Double.parseDouble(Globals.prefs.get("SMOOTH_WEIGHT", "0.6")),
+                Double.parseDouble(Globals.prefs.get("TOLERANCE", "0.6")),
+                Double.parseDouble(Globals.prefs.get("MAX_VELOCITY", "3.05")),
+                Double.parseDouble(Globals.prefs.get("TURNING_CONSTANT", "3")),
+                Double.parseDouble(Globals.prefs.get("MAX_ACCELERATION", "18")));
     }
 }

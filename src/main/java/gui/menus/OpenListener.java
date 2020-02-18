@@ -29,7 +29,7 @@ public class OpenListener implements ActionListener {
             Path path = fileChooser.getSelectedFile().toPath();
             ((PathMaker)gui.getContentPane()).importPath(path);
             gui.getContentPane().repaint();
-            gui.getPreferences().put("WORKING_DIRECTORY", path.toAbsolutePath().toString());
+            Globals.prefs.put("WORKING_DIRECTORY", path.toAbsolutePath().toString());
         }
 
         Globals.UNDO_STACK.push(Globals.Action.NONE);
