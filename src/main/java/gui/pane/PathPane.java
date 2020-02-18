@@ -39,6 +39,7 @@ public class PathPane extends JPanel implements Addable {
         toolBar = new PathToolBar(this);
         add(toolBar, BorderLayout.PAGE_END);
         addMouseListener(new AddAdapter(this));
+        setOpaque(true);
     }
 
     @Override
