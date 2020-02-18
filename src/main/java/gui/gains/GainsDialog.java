@@ -47,18 +47,12 @@ public class GainsDialog extends JPanel {
 
     public GainsDialog(GUI gui) {
         setLayout(new GridLayout(7, 2));
-        spacing = new JTextField(Globals.TEXTFIELD_COLUMNS);
-        spacing.setText(gui.getPreferences().get("SPACING", "0.075"));
-        smoothWeight = new JTextField(Globals.TEXTFIELD_COLUMNS);
-        smoothWeight.setText(gui.getPreferences().get("SMOOTH_WEIGHT", "0.6"));
-        tolerance = new JTextField(Globals.TEXTFIELD_COLUMNS);
-        tolerance.setText(gui.getPreferences().get("TOLERANCE", "0.6"));
-        maxVelocity = new JTextField(Globals.TEXTFIELD_COLUMNS);
-        maxVelocity.setText(gui.getPreferences().get("MAX_VELOCITY", "3.05"));
-        turningConstant = new JTextField(Globals.TEXTFIELD_COLUMNS);
-        turningConstant.setText(gui.getPreferences().get("TURNING_CONSTANT", "3"));
-        maxAcceleration = new JTextField(Globals.TEXTFIELD_COLUMNS);
-        maxAcceleration.setText(gui.getPreferences().get("MAX_ACCELERATION", "18"));
+        spacing = new JTextField(gui.getPreferences().get("SPACING", "0.075"), Globals.TEXTFIELD_COLUMNS);
+        smoothWeight = new JTextField(gui.getPreferences().get("SMOOTH_WEIGHT", "0.6"), Globals.TEXTFIELD_COLUMNS);
+        tolerance = new JTextField(gui.getPreferences().get("TOLERANCE", "0.6"), Globals.TEXTFIELD_COLUMNS);
+        maxVelocity = new JTextField(gui.getPreferences().get("MAX_VELOCITY", "3.05"), Globals.TEXTFIELD_COLUMNS);
+        turningConstant = new JTextField(gui.getPreferences().get("TURNING_CONSTANT", "3"), Globals.TEXTFIELD_COLUMNS);
+        maxAcceleration = new JTextField(gui.getPreferences().get("MAX_ACCELERATION", "18"), Globals.TEXTFIELD_COLUMNS);
         generate = new JButton("Generate");
 
         add(new JLabel("Spacing:"));
