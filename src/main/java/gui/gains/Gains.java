@@ -38,7 +38,8 @@ public class Gains {
      */
     private double maxAcceleration;
 
-    public Gains(double spacing, double smoothWeight, double tolerance, double maxVelocity, double turningConstant, double maxAcceleration) {
+    public Gains(double spacing, double smoothWeight, double tolerance, double maxVelocity, double turningConstant,
+                 double maxAcceleration) {
         this.spacing = spacing;
         this.smoothWeight = smoothWeight;
         this.tolerance = tolerance;
