@@ -45,7 +45,7 @@ public class GainsDialog extends JPanel {
      */
     private JButton generate;
 
-    public GainsDialog(GUI gui) {
+    public GainsDialog() {
         setLayout(new GridLayout(7, 2));
 
         spacing = new JTextField(Globals.prefs.get("SPACING", "0.075"), Globals.TEXTFIELD_COLUMNS);
@@ -79,7 +79,7 @@ public class GainsDialog extends JPanel {
      * @return the gains from the user input
      */
     public static Gains showDialog(GUI context) {
-        GainsDialog dialog = new GainsDialog(context);
+        GainsDialog dialog = new GainsDialog();
         JDialog frame = new JDialog();
 
         dialog.generate.addActionListener(new CloseListener(frame));
