@@ -9,6 +9,8 @@ import java.nio.file.Path;
 
 /**
  * The action listener for saving files.
+ *
+ * @author Eran Goldstein
  */
 public class SaveAsListener implements ActionListener {
     /**

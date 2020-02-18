@@ -14,6 +14,8 @@ import java.util.Stack;
 
 /**
  * The panel that the user clicks on to add points to a path.
+ *
+ * @author Eran Goldstein
  */
 public class PathMaker extends JPanel implements Addable {
     /**

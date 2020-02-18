@@ -7,6 +7,8 @@ import java.awt.event.ActionListener;
 
 /**
  * The action listener for creating a new file.
+ *
+ * @author Eran Goldstein
  */
 public class NewListener implements ActionListener {
     /**

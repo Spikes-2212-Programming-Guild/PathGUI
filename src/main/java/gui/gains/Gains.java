@@ -4,6 +4,8 @@ import gui.Globals;
 
 /**
  * The gains for the path generation algorithm.
+ *
+ * @author Eran Goldstein
  */
 public class Gains {
     /**

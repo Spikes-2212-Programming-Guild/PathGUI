@@ -7,6 +7,8 @@ import java.awt.event.MouseEvent;
 
 /**
  * An adapter that adds {@link Waypoint}s to an {@link Addable} when the left mouse button is clicked.
+ *
+ * @author Eran Goldstein
  */
 public class AddAdapter extends MouseAdapter {
     /**

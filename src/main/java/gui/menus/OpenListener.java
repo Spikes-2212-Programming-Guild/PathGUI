@@ -9,6 +9,8 @@ import java.nio.file.Path;
 
 /**
  * The action listener for opening files.
+ *
+ * @author Eran Goldstein
  */
 public class OpenListener implements ActionListener {
     /**

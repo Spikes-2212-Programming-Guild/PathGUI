@@ -8,6 +8,8 @@ import java.awt.event.KeyEvent;
 
 /**
  * The menu bar for the path GUI.
+ *
+ * @author Eran Goldstein
  */
 public class PathMenuBar extends JMenuBar {
     /**

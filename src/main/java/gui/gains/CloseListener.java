@@ -6,6 +6,8 @@ import java.awt.event.ActionListener;
 
 /**
  * An action listener that closes a dialog.
+ *
+ * @author Eran Goldstein
  */
 public class CloseListener implements ActionListener {
     /**

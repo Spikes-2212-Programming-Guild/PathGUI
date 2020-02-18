@@ -4,6 +4,8 @@ import path.Waypoint;
 
 /**
  * An object that you can add {@link Waypoint}s to.
+ *
+ * @author Eran Goldstein
  */
 public interface Addable {
     /**

@@ -8,6 +8,8 @@ import java.text.NumberFormat;
 
 /**
  * The tool bar for the path GUI.
+ *
+ * @author Eran Goldstein
  */
 public class PathToolBar extends JToolBar {
     /**

@@ -7,6 +7,8 @@ import java.awt.event.ActionListener;
 
 /**
  * The action listener for undoing actions.
+ *
+ * @author Eran Goldstein
  */
 public class UndoListener implements ActionListener {
     /**

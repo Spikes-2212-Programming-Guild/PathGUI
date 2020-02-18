@@ -6,6 +6,8 @@ import javax.swing.*;
 
 /**
  * The main frame that holds the paths GUI.
+ *
+ * @author Eran Goldstein
  */
 public class GUI extends JFrame {
     /**

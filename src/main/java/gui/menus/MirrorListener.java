@@ -7,6 +7,8 @@ import java.awt.event.ActionListener;
 
 /**
  * The action listener for mirroring paths.
+ *
+ * @author Eran Goldstein
  */
 public class MirrorListener implements ActionListener {
     /**

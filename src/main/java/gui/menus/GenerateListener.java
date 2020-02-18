@@ -8,6 +8,8 @@ import java.awt.event.ActionListener;
 
 /**
  * The action listener for generating paths.
+ *
+ * @author Eran Goldstein
  */
 public class GenerateListener implements ActionListener {
     /**

@@ -8,6 +8,8 @@ import java.awt.event.ActionListener;
 
 /**
  * The action listener for generating paths using the default gains.
+ *
+ * @author Eran Goldstein
  */
 public class QuickGenerationListener implements ActionListener {
     /**

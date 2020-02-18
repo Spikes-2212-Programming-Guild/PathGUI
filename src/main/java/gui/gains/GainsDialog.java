@@ -8,6 +8,8 @@ import java.awt.*;
 
 /**
  * The dialog for manual entry of path generation gains.
+ *
+ * @author Eran Goldstein
  */
 public class GainsDialog extends JPanel {
     /**

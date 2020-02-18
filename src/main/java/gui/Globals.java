@@ -6,6 +6,8 @@ import java.util.prefs.Preferences;
 
 /**
  * Class containing global project constants.
+ *
+ * @author Eran Goldstein
  */
 public class Globals {
     /**
