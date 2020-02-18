@@ -6,6 +6,9 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.util.List;
 
+/**
+ * A class containing static convenience methods for performing simple path read/write operations.
+ */
 public class PathIO {
     /**
      * Writes the path to a file in CSV format.
