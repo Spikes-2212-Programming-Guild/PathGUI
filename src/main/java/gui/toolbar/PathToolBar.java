@@ -38,8 +38,7 @@ public class PathToolBar extends JToolBar {
 
         JButton update = new JButton("Update");
         update.addActionListener(actionEvent -> pathMaker
-                .moveSelected(Double.parseDouble(xField.getText()),
-                        Double.parseDouble(yField.getText())));
+                .moveSelected(Double.parseDouble(xField.getText()), Double.parseDouble(yField.getText())));
 
         add(xLabel);
         add(xField);
