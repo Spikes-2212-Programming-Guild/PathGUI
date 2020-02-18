@@ -56,21 +56,15 @@ public class Path {
     /**
      * Generates the path.
      *
-     * @param spacing the spacing between points on the generated path
-     * @param smooth_weight how much to smooth the path
-     * @param tolerance the highest tolerable distance between the smoothed and original paths
-     * @param maxVelocity the maximum velocity of the robot
-     * @param turningConstant the turning constant for the path generation algorithm
-     * @param maxAcceleration the maximum acceleration of the robot
+     * @param gains the path generation gains
      */
-    public void generate(double spacing, double smooth_weight, double tolerance, double maxVelocity,
-                         double turningConstant, double maxAcceleration) {
-        fill(spacing);
-        smooth(smooth_weight, tolerance);
+    public void generate(Gains gains) {
+        fill(gains.getSpacing());
+        smooth(gains.getSmoothWeight(), gains.getTolerance());
         calculateDistances();
         calculateCurvatures();
-        calculateMaxVelocities(maxVelocity, turningConstant);
-        smoothVelocities(maxAcceleration);
+        calculateMaxVelocities(gains.getMaxVelocity(), gains.getTurningConstant());
+        smoothVelocities(gains.getMaxAcceleration());
     }
 
     private void fill(double spacing) {

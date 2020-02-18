@@ -2,6 +2,7 @@ package gui.gains;
 
 import gui.GUI;
 import gui.Globals;
+import path.Gains;
 
 import javax.swing.*;
 import java.awt.*;

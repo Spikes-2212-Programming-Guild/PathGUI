@@ -1,7 +1,7 @@
 package gui.menus;
 
 import gui.*;
-import gui.gains.Gains;
+import path.Gains;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

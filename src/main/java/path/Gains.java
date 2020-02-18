@@ -1,4 +1,4 @@
-package gui.gains;
+package path;
 
 import gui.Globals;
 

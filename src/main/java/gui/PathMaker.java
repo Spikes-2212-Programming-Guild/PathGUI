@@ -1,9 +1,7 @@
 package gui;
 
-import gui.gains.Gains;
 import gui.toolbar.PathToolBar;
-import path.PathManipulator;
-import path.Waypoint;
+import path.*;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;

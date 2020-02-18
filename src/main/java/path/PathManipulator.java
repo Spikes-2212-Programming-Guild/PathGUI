@@ -1,7 +1,6 @@
 package path;
 
 import gui.Globals;
-import gui.gains.Gains;
 
 import java.util.List;
 import java.util.Stack;
@@ -68,8 +67,7 @@ public class PathManipulator {
             oldPath.add(waypoint);
         oldPaths.push(oldPath);
 
-        path.generate(gains.getSpacing(), gains.getSmoothWeight(), gains.getTolerance(),
-                gains.getMaxVelocity(), gains.getTurningConstant(), gains.getMaxAcceleration());
+        path.generate(gains);
     }
 
     /**
