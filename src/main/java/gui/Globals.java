@@ -39,7 +39,7 @@ public class Globals {
     /**
      * The amount of character columns in text fields.
      */
-    public static final int TEXTFIELD_COLUMNS = 20;
+    public static final int TEXTFIELD_COLUMNS = 12;
 
     /**
      * The width of the field in centimeters.

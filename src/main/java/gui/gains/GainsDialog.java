@@ -61,17 +61,17 @@ public class GainsDialog extends JPanel {
 
         preview = new JButton("Preview");
 
-        add(new JLabel("Spacing:"));
+        add(new JLabel("Spacing: "));
         add(spacing);
-        add(new JLabel("Smooth Weight:"));
+        add(new JLabel("Smooth Weight: "));
         add(smoothWeight);
-        add(new JLabel("Tolerance:"));
+        add(new JLabel("Tolerance: "));
         add(tolerance);
-        add(new JLabel("Max Velocity:"));
+        add(new JLabel("Max Velocity: "));
         add(maxVelocity);
-        add(new JLabel("Turning Constant:"));
+        add(new JLabel("Turning Constant: "));
         add(turningConstant);
-        add(new JLabel("Max Acceleration:"));
+        add(new JLabel("Max Acceleration: "));
         add(maxAcceleration);
         add(preview);
     }
