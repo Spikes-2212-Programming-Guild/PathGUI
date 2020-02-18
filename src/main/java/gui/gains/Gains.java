@@ -77,11 +77,11 @@ public class Gains {
      * @return the user-saved default gains
      */
     public static Gains getPreferences() {
-        return new Gains(Double.parseDouble(Globals.prefs.get("SPACING", "0.075")),
-                Double.parseDouble(Globals.prefs.get("SMOOTH_WEIGHT", "0.6")),
-                Double.parseDouble(Globals.prefs.get("TOLERANCE", "0.6")),
-                Double.parseDouble(Globals.prefs.get("MAX_VELOCITY", "3.05")),
-                Double.parseDouble(Globals.prefs.get("TURNING_CONSTANT", "3")),
-                Double.parseDouble(Globals.prefs.get("MAX_ACCELERATION", "18")));
+        return new Gains(Double.parseDouble(Globals.PREFS.get("SPACING", "0.075")),
+                Double.parseDouble(Globals.PREFS.get("SMOOTH_WEIGHT", "0.6")),
+                Double.parseDouble(Globals.PREFS.get("TOLERANCE", "0.6")),
+                Double.parseDouble(Globals.PREFS.get("MAX_VELOCITY", "3.05")),
+                Double.parseDouble(Globals.PREFS.get("TURNING_CONSTANT", "3")),
+                Double.parseDouble(Globals.PREFS.get("MAX_ACCELERATION", "18")));
     }
 }

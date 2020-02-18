@@ -1,5 +1,6 @@
 package gui;
 
+import javax.swing.*;
 import java.awt.*;
 import java.util.Stack;
 import java.util.prefs.Preferences;
@@ -25,7 +26,15 @@ public class Globals {
     /**
      * The preferences object that saves the preferences for default directory and path generation gains.
      */
-    public static final Preferences prefs = Preferences.userNodeForPackage(GUI.class);
+    public static final Preferences PREFS = Preferences.userNodeForPackage(GUI.class);
+
+    /**
+     * The file chooser used when opening and saving path files.
+     * <p>
+     * Having one global file chooser allows us to keep directory preferences without constant accesses to the
+     * Preferences object.
+     */
+    public static final JFileChooser FILE_CHOOSER = new JFileChooser(PREFS.get("WORKING_DIRECTORY", null));
 
     /**
      * The amount of character columns in text fields.

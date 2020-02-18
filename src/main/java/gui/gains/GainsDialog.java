@@ -50,12 +50,12 @@ public class GainsDialog extends JPanel {
     public GainsDialog() {
         setLayout(new GridLayout(7, 2));
 
-        spacing = new JTextField(Globals.prefs.get("SPACING", "0.075"), Globals.TEXTFIELD_COLUMNS);
-        smoothWeight = new JTextField(Globals.prefs.get("SMOOTH_WEIGHT", "0.6"), Globals.TEXTFIELD_COLUMNS);
-        tolerance = new JTextField(Globals.prefs.get("TOLERANCE", "0.6"), Globals.TEXTFIELD_COLUMNS);
-        maxVelocity = new JTextField(Globals.prefs.get("MAX_VELOCITY", "3.05"), Globals.TEXTFIELD_COLUMNS);
-        turningConstant = new JTextField(Globals.prefs.get("TURNING_CONSTANT", "3"), Globals.TEXTFIELD_COLUMNS);
-        maxAcceleration = new JTextField(Globals.prefs.get("MAX_ACCELERATION", "18"), Globals.TEXTFIELD_COLUMNS);
+        spacing = new JTextField(Globals.PREFS.get("SPACING", "0.075"), Globals.TEXTFIELD_COLUMNS);
+        smoothWeight = new JTextField(Globals.PREFS.get("SMOOTH_WEIGHT", "0.6"), Globals.TEXTFIELD_COLUMNS);
+        tolerance = new JTextField(Globals.PREFS.get("TOLERANCE", "0.6"), Globals.TEXTFIELD_COLUMNS);
+        maxVelocity = new JTextField(Globals.PREFS.get("MAX_VELOCITY", "3.05"), Globals.TEXTFIELD_COLUMNS);
+        turningConstant = new JTextField(Globals.PREFS.get("TURNING_CONSTANT", "3"), Globals.TEXTFIELD_COLUMNS);
+        maxAcceleration = new JTextField(Globals.PREFS.get("MAX_ACCELERATION", "18"), Globals.TEXTFIELD_COLUMNS);
 
         generate = new JButton("Generate");
 
@@ -95,12 +95,12 @@ public class GainsDialog extends JPanel {
         frame.setLocationRelativeTo(context);
         frame.setVisible(true);
 
-        Globals.prefs.put("SPACING", dialog.spacing.getText());
-        Globals.prefs.put("SMOOTH_WEIGHT", dialog.smoothWeight.getText());
-        Globals.prefs.put("TOLERANCE", dialog.tolerance.getText());
-        Globals.prefs.put("MAX_VELOCITY", dialog.maxVelocity.getText());
-        Globals.prefs.put("TURNING_CONSTANT", dialog.turningConstant.getText());
-        Globals.prefs.put("MAX_ACCELERATION", dialog.maxAcceleration.getText());
+        Globals.PREFS.put("SPACING", dialog.spacing.getText());
+        Globals.PREFS.put("SMOOTH_WEIGHT", dialog.smoothWeight.getText());
+        Globals.PREFS.put("TOLERANCE", dialog.tolerance.getText());
+        Globals.PREFS.put("MAX_VELOCITY", dialog.maxVelocity.getText());
+        Globals.PREFS.put("TURNING_CONSTANT", dialog.turningConstant.getText());
+        Globals.PREFS.put("MAX_ACCELERATION", dialog.maxAcceleration.getText());
 
         return new Gains(Double.parseDouble(dialog.spacing.getText()),
                 Double.parseDouble(dialog.smoothWeight.getText()), Double.parseDouble(dialog.tolerance.getText()),

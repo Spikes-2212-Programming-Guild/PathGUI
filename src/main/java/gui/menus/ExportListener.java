@@ -27,13 +27,12 @@ public class ExportListener implements ActionListener {
         ((PathMaker)gui.getContentPane()).alignPath();
         ((PathMaker)gui.getContentPane()).moveToOrigin();
 
-        JFileChooser fileChooser = gui.getFileChooser();
-        int val = fileChooser.showSaveDialog(gui);
+        int val = Globals.FILE_CHOOSER.showSaveDialog(gui);
 
         if(val == JFileChooser.APPROVE_OPTION) {
-            Path path = fileChooser.getSelectedFile().toPath();
+            Path path = Globals.FILE_CHOOSER.getSelectedFile().toPath();
             ((PathMaker)gui.getContentPane()).savePath(path);
-            Globals.prefs.put("WORKING_DIRECTORY", path.toAbsolutePath().toString());
+            Globals.PREFS.put("WORKING_DIRECTORY", path.toAbsolutePath().toString());
         }
 
         Globals.UNDO_STACK.push(Globals.Action.NONE);
