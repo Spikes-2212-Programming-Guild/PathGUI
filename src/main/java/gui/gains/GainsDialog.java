@@ -96,6 +96,7 @@ public class GainsDialog extends JPanel {
         frame.setResizable(false);
         frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         frame.pack();
+        frame.setLocationRelativeTo(context);
         frame.setVisible(true);
 
         context.getPreferences().put("SPACING", dialog.spacing.getText());
