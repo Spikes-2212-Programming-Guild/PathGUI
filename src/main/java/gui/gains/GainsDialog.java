@@ -47,7 +47,7 @@ public class GainsDialog extends JPanel {
     /**
      * A button that generates the path.
      */
-    private JButton generate;
+    private JButton preview;
 
     public GainsDialog() {
         setLayout(new GridLayout(7, 2));
@@ -59,7 +59,7 @@ public class GainsDialog extends JPanel {
         turningConstant = new PathNumberField(Globals.PREFS.get("TURNING_CONSTANT", "3"));
         maxAcceleration = new PathNumberField(Globals.PREFS.get("MAX_ACCELERATION", "18"));
 
-        generate = new JButton("Generate");
+        preview = new JButton("Preview");
 
         add(new JLabel("Spacing:"));
         add(spacing);
@@ -73,7 +73,7 @@ public class GainsDialog extends JPanel {
         add(turningConstant);
         add(new JLabel("Max Acceleration:"));
         add(maxAcceleration);
-        add(generate);
+        add(preview);
     }
 
     /**
@@ -86,7 +86,7 @@ public class GainsDialog extends JPanel {
         GainsDialog dialog = new GainsDialog();
         JDialog frame = new JDialog();
 
-        dialog.generate.addActionListener(actionEvent -> frame.dispose());
+        dialog.preview.addActionListener(actionEvent -> frame.dispose());
 
         frame.setModal(true);
         frame.setContentPane(dialog);

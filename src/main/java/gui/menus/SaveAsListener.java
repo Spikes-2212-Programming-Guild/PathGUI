@@ -26,7 +26,7 @@ public class SaveAsListener implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
-        if(Globals.FILE_CHOOSER.showOpenDialog(gui) == JFileChooser.APPROVE_OPTION) {
+        if(Globals.FILE_CHOOSER.showSaveDialog(gui) == JFileChooser.APPROVE_OPTION) {
             Path path = Globals.FILE_CHOOSER.getSelectedFile().toPath();
             ((PathPane)gui.getContentPane()).savePath(path);
             Globals.PREFS.put("WORKING_DIRECTORY", path.toAbsolutePath().toString());
