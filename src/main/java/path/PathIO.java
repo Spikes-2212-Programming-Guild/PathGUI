@@ -8,10 +8,10 @@ import java.util.List;
 
 public class PathIO {
     /**
-     * Exports the path to a CSV file with the following format:
-     * x,y,velocity,distance,curvature.
+     * Writes the path to a file in CSV format.
      *
-     * @param filepath the CSV file
+     * @param filepath the file's path
+     * @param path the path that will be written to the file
      */
     public static void write(java.nio.file.Path filepath, Path path) {
         try(BufferedWriter writer = Files.newBufferedWriter(filepath, StandardCharsets.US_ASCII)) {
@@ -26,6 +26,12 @@ public class PathIO {
         }
     }
 
+    /**
+     * Reads a path from a file in CSV format.
+     *
+     * @param filepath the file's path
+     * @return the imported path
+     */
     public static Path read(java.nio.file.Path filepath) {
         Path path = new Path();
         try {
@@ -33,8 +39,7 @@ public class PathIO {
             lines.remove(0);
             for(String line : lines) {
                 String[] values = line.split(",");
-                Waypoint point = new Waypoint(Double.parseDouble(values[0]),
-                        Double.parseDouble(values[1]));
+                Waypoint point = new Waypoint(Double.parseDouble(values[0]), Double.parseDouble(values[1]));
                 point.setV(Double.parseDouble(values[2]));
                 point.setD(Double.parseDouble(values[3]));
                 point.setCurvature(Double.parseDouble(values[4]));
