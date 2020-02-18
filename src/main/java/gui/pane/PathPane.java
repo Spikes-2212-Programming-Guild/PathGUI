@@ -50,7 +50,8 @@ public class PathPane extends JPanel implements Addable {
             img = ImageIO.read(Objects.requireNonNull(getClass().getResource("/res/HalfField.png")));
             g.drawImage(img, 0, 0, null);
         } catch(IOException ignored) {
-            // If the field image cannot be found, do not draw a background.
+            JOptionPane.showMessageDialog(this, "Failed to load game field image.",
+                    "Error", JOptionPane.ERROR_MESSAGE);
         }
 
         ((Graphics2D)g).setStroke(new BasicStroke(Globals.PATH_WIDTH));
