@@ -85,7 +85,7 @@ public class GainsDialog extends JPanel {
         GainsDialog dialog = new GainsDialog();
         JDialog frame = new JDialog();
 
-        dialog.generate.addActionListener(new CloseListener(frame));
+        dialog.generate.addActionListener(actionEvent -> frame.dispose());
 
         frame.setModal(true);
         frame.setContentPane(dialog);
