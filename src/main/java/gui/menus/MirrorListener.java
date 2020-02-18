@@ -23,7 +23,6 @@ public class MirrorListener implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
         ((PathMaker)gui.getContentPane()).mirrorPath();
-        gui.getContentPane().repaint();
         Globals.UNDO_STACK.push(Globals.Action.MIRROR);
     }
 }

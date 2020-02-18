@@ -23,7 +23,6 @@ public class NewListener implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
         ((PathMaker)gui.getContentPane()).newPath();
-        gui.getContentPane().repaint();
         Globals.UNDO_STACK.push(Globals.Action.NONE);
     }
 }

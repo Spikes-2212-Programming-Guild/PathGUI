@@ -29,7 +29,6 @@ public class OpenListener implements ActionListener {
         if(val == JFileChooser.APPROVE_OPTION) {
             Path path = Globals.FILE_CHOOSER.getSelectedFile().toPath();
             ((PathMaker)gui.getContentPane()).importPath(path);
-            gui.getContentPane().repaint();
             Globals.PREFS.put("WORKING_DIRECTORY", path.toAbsolutePath().toString());
         }
 
