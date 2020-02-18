@@ -6,7 +6,6 @@ package path;
  * @author T
  */
 public class Waypoint {
-
     /**
      * The x coordinate.
      */
@@ -62,15 +61,18 @@ public class Waypoint {
         this.d = distance;
     }
 
-    public double getD(){
+    public double getD() {
         return d;
     }
 
     /**
      * returns an array of the point's coordinates
+     *
      * @return an array of the point's coordinates
      */
-    public double[] toArray() { return new double[]{x, y}; }
+    public double[] toArray() {
+        return new double[]{x, y};
+    }
 
     public double getCurvature() {
         return curvature;
@@ -82,11 +84,13 @@ public class Waypoint {
 
     /**
      * returns the distance from the given point to {@code this}.
+     *
      * @param point the point to calculate the distance from
      * @return the distance between the points
      */
     public double distance(Waypoint point) {
-        return Math.sqrt((x - point.getX())*(getX() - point.getX()) + (getY() - point.getY())*(getY() - point.getY()));
+        return Math.sqrt((getX() - point.getX()) * (getX() - point.getX())
+                + (getY() - point.getY()) * (getY() - point.getY()));
     }
 
     @Override
