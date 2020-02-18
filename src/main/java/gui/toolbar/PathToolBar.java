@@ -29,11 +29,11 @@ public class PathToolBar extends JToolBar {
         super("Tool Bar | Spikes Path Drawing Tool");
 
         JLabel xLabel = new JLabel(" X (m): ");
-        xField = new JFormattedTextField(NumberFormat.getNumberInstance());
+        xField = new JFormattedTextField(NumberFormat.getInstance());
         xField.setColumns(Globals.TEXTFIELD_COLUMNS);
 
         JLabel yLabel = new JLabel(" Y (m): ");
-        yField = new JFormattedTextField(NumberFormat.getNumberInstance());
+        yField = new JFormattedTextField(NumberFormat.getInstance());
         yField.setColumns(Globals.TEXTFIELD_COLUMNS);
 
         JButton update = new JButton("Update");
