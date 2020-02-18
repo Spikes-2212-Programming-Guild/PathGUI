@@ -3,6 +3,7 @@ package path;
 import gui.Globals;
 import gui.gains.Gains;
 
+import java.util.List;
 import java.util.Stack;
 
 /**
@@ -142,6 +143,10 @@ public class PathManipulator {
 
         for(Waypoint waypoint : path.getPoints())
             waypoint.setCoordinates(waypoint.getX() - xoff, waypoint.getY() - yoff);
+    }
+
+    public List<Waypoint> getPoints() {
+        return path.getPoints();
     }
 
     public Path getPath() {
