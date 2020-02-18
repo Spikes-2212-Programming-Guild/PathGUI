@@ -29,9 +29,7 @@ public class ExportListener implements ActionListener {
         ((PathPane)gui.getContentPane()).alignPath();
         ((PathPane)gui.getContentPane()).moveToOrigin();
 
-        int val = Globals.FILE_CHOOSER.showSaveDialog(gui);
-
-        if(val == JFileChooser.APPROVE_OPTION) {
+        if(Globals.FILE_CHOOSER.showSaveDialog(gui) == JFileChooser.APPROVE_OPTION) {
             Path path = Globals.FILE_CHOOSER.getSelectedFile().toPath();
             ((PathPane)gui.getContentPane()).savePath(path);
             Globals.PREFS.put("WORKING_DIRECTORY", path.toAbsolutePath().toString());
