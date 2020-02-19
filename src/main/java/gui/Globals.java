@@ -21,7 +21,7 @@ public class Globals {
     /**
      * The actions performed on the current path, in order.
      */
-    public static final Stack<Action> UNDO_STACK = new Stack<>();
+    public static Stack<Action> UNDO_STACK = new Stack<>();
 
     /**
      * The preferences object that saves the preferences for default directory and path generation gains.

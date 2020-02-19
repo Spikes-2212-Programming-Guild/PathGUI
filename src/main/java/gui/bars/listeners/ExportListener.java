@@ -8,6 +8,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.nio.file.Path;
+import java.util.Stack;
 
 /**
  * The action listener for exporting paths.
@@ -36,7 +37,7 @@ public class ExportListener implements ActionListener {
             gui.getPathPane().savePath(path);
             Globals.PREFS.put("WORKING_DIRECTORY", path.toAbsolutePath().toString());
 
-            Globals.UNDO_STACK.empty();
+            Globals.UNDO_STACK = new Stack<>();
         }
     }
 }

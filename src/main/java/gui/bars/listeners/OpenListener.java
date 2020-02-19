@@ -7,6 +7,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.nio.file.Path;
+import java.util.Stack;
 
 /**
  * The action listener for opening files.
@@ -29,7 +30,7 @@ public class OpenListener implements ActionListener {
             Path path = Globals.FILE_CHOOSER.getSelectedFile().toPath();
             gui.getPathPane().importPath(path);
             Globals.PREFS.put("WORKING_DIRECTORY", path.toAbsolutePath().toString());
-            Globals.UNDO_STACK.empty();
+            Globals.UNDO_STACK = new Stack<>();
         }
     }
 }

@@ -5,6 +5,7 @@ import gui.Globals;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Stack;
 
 /**
  * The action listener for creating a new file.
@@ -24,6 +25,6 @@ public class NewListener implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
         gui.getPathPane().newPath();
-        Globals.UNDO_STACK.empty();
+        Globals.UNDO_STACK = new Stack<>();
     }
 }
