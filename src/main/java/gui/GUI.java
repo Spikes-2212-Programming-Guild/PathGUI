@@ -21,6 +21,7 @@ public class GUI extends JFrame {
         gui.setTitle("Spikes Path Drawing Tool");
         gui.setResizable(false);
         gui.pack();
+        gui.setLocationRelativeTo(null);
         gui.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         gui.setVisible(true);
     }
