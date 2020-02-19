@@ -154,4 +154,8 @@ public class PathManipulator {
     public void setPath(Path path) {
         this.path = path;
     }
+
+    public boolean isGenerated() {
+        return !oldPaths.isEmpty();
+    }
 }

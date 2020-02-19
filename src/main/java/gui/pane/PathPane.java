@@ -57,10 +57,10 @@ public class PathPane extends JPanel implements Addable {
         ((Graphics2D)g).setStroke(new BasicStroke(Globals.PATH_WIDTH));
 
         Waypoint prev = null;
+        int radius = pathManipulator.isGenerated() ? Globals.GENERATED_RADIUS : Globals.POINT_RADIUS;
         for(Waypoint waypoint : pathManipulator.getPoints()) {
             g.setColor(waypoint == selected ? Globals.SELECTION_COLOR : Globals.POINT_COLOR);
-            g.fillOval(xpx(waypoint) - Globals.POINT_RADIUS, ypx(waypoint) - Globals.POINT_RADIUS,
-                    Globals.POINT_RADIUS * 2, Globals.POINT_RADIUS * 2);
+            g.fillOval(xpx(waypoint) - radius, ypx(waypoint) - radius, radius * 2, radius * 2);
 
             g.setColor(Globals.PATH_COLOR);
             if(prev != null)
@@ -95,14 +95,16 @@ public class PathPane extends JPanel implements Addable {
 
     @Override
     public boolean select(double x, double y) {
-        for(Waypoint waypoint : pathManipulator.getPoints())
-            if(Math.abs(waypoint.getX() - x) < Globals.POINT_RADIUS * Globals.CM_TO_M
-                    && Math.abs(waypoint.getY() - y) < Globals.POINT_RADIUS * Globals.CM_TO_M) {
+        for(Waypoint waypoint : pathManipulator.getPoints()) {
+            int radius = pathManipulator.isGenerated() ? Globals.GENERATED_RADIUS : Globals.POINT_RADIUS;
+            if(Math.abs(waypoint.getX() - x) < radius * Globals.CM_TO_M
+                    && Math.abs(waypoint.getY() - y) < radius * Globals.CM_TO_M) {
                 selected = waypoint;
                 toolBar.setCoordinates(waypoint.getX(), waypoint.getY());
                 repaint();
                 return true;
             }
+        }
 
         return false;
     }

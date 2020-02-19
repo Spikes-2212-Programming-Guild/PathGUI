@@ -76,6 +76,11 @@ public class Globals {
     public static final int POINT_RADIUS = 8;
 
     /**
+     * The radius of each path point of a generated path on the UI.
+     */
+    public static final int GENERATED_RADIUS = 4;
+
+    /**
      * The color of the path on the UI.
      */
     public static final Color PATH_COLOR = Color.RED;
