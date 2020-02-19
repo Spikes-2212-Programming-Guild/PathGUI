@@ -20,7 +20,7 @@ public interface Addable {
      *
      * @param x the x coordinate to select at
      * @param y the y coordinate to select at
-     * @return `true` if the {@link Waypoint} was successfully selected, `false` otherwise
+     * @return {@code true} if the {@link Waypoint} was successfully selected, {@code false} otherwise
      */
     boolean select(double x, double y);
 }
