@@ -9,7 +9,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.util.Objects;
 
 /**
  * The panel that the user clicks on to add points to a path.
@@ -47,7 +46,7 @@ public class PathPane extends JPanel implements Addable {
         super.paintComponent(g);
         BufferedImage img;
         try {
-            img = ImageIO.read(Objects.requireNonNull(getClass().getResource("/res/HalfField.png")));
+            img = ImageIO.read(getClass().getResource("/res/HalfField.png"));
             g.drawImage(img, 0, 0, null);
         } catch(IOException ignored) {
             JOptionPane.showMessageDialog(this, "Failed to load game field image.",
