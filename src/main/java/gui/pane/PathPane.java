@@ -180,6 +180,10 @@ public class PathPane extends JPanel implements Addable {
         repaint();
     }
 
+    public boolean isPathGenerated() {
+        return pathManipulator.isGenerated();
+    }
+
     /**
      * Move the selected point to the supplied coordinates.
      *

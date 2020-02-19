@@ -2,6 +2,7 @@ package gui.bars.listeners;
 
 import gui.GUI;
 import gui.Globals;
+import path.Gains;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -25,6 +26,8 @@ public class ExportListener implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
+        if(gui.getPathPane().isPathGenerated())
+            gui.getPathPane().generatePath(Gains.getPreferences());
         gui.getPathPane().alignPath();
         gui.getPathPane().moveToOrigin();
 
