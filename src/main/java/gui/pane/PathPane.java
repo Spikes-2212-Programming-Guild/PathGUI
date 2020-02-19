@@ -49,7 +49,7 @@ public class PathPane extends JPanel implements Addable {
         try {
             BufferedImage img = ImageIO.read(getClass().getResource("/res/HalfField.png"));
             g.drawImage(img, 0, 0, null);
-        } catch(IOException ignored) {
+        } catch(IOException ioe) {
             JOptionPane.showMessageDialog(this, "Failed to load game field image.",
                     "Error", JOptionPane.ERROR_MESSAGE);
         }
