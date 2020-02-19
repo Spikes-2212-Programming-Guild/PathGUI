@@ -12,7 +12,7 @@ import java.util.prefs.Preferences;
  */
 public class Globals {
     /**
-     * An path manipulation action that was performed within the UI.
+     * A path manipulation action that was performed within the UI.
      */
     public enum Action {
         ADD, MIRROR, GENERATE, NONE
