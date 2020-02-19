@@ -26,7 +26,7 @@ public class ExportListener implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
-        if(gui.getPathPane().isPathGenerated())
+        if(!gui.getPathPane().isPathGenerated())
             gui.getPathPane().generatePath(Gains.getPreferences());
         gui.getPathPane().alignPath();
         gui.getPathPane().moveToOrigin();
