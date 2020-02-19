@@ -30,6 +30,26 @@ public class PathToolBar extends JToolBar {
     public PathToolBar(GUI gui) {
         super("Tool Bar | Spikes Path Drawing Tool");
 
+        JButton newFile = new JButton(new ImageIcon(getClass().getResource("/res/icon/new.png")));
+        newFile.addActionListener(new NewListener(gui));
+        newFile.setToolTipText("New");
+
+        JButton save = new JButton(new ImageIcon(getClass().getResource("/res/icon/save.png")));
+        save.addActionListener(new SaveListener(gui));
+        save.setToolTipText("Save");
+
+        JButton open = new JButton(new ImageIcon(getClass().getResource("/res/icon/open.png")));
+        open.addActionListener(new OpenListener(gui));
+        open.setToolTipText("Open");
+
+        JButton undo = new JButton(new ImageIcon(getClass().getResource("/res/icon/undo.png")));
+        undo.addActionListener(new UndoListener(gui));
+        undo.setToolTipText("Undo");
+
+        JButton mirror = new JButton(new ImageIcon(getClass().getResource("/res/icon/mirror.png")));
+        mirror.addActionListener(new MirrorListener(gui));
+        mirror.setToolTipText("Mirror");
+
         JLabel xLabel = new JLabel(" X (m): ");
         xField = new PathNumberField();
 
@@ -38,21 +58,6 @@ public class PathToolBar extends JToolBar {
 
         JButton move = new JButton("Move");
         move.addActionListener(actionEvent -> gui.getPathPane().moveSelected(xField.getNumber(), yField.getNumber()));
-
-        JButton newFile = new JButton(new ImageIcon(getClass().getResource("/res/icon/new.png")));
-        newFile.addActionListener(new NewListener(gui));
-
-        JButton save = new JButton(new ImageIcon(getClass().getResource("/res/icon/save.png")));
-        save.addActionListener(new SaveListener(gui));
-
-        JButton open = new JButton(new ImageIcon(getClass().getResource("/res/icon/open.png")));
-        open.addActionListener(new OpenListener(gui));
-
-        JButton undo = new JButton(new ImageIcon(getClass().getResource("/res/icon/undo.png")));
-        undo.addActionListener(new UndoListener(gui));
-
-        JButton mirror = new JButton(new ImageIcon(getClass().getResource("/res/icon/mirror.png")));
-        mirror.addActionListener(new MirrorListener(gui));
 
         add(newFile);
         add(save);
