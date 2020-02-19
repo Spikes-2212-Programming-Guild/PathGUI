@@ -28,8 +28,8 @@ public class PathMenuBar extends JMenuBar {
         newFile.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_N, KeyEvent.CTRL_DOWN_MASK));
 
         JMenuItem open = new JMenuItem("Open", new ImageIcon(getClass().getResource("/res/icon/open.png")));
-        open.setMnemonic('O');
         open.addActionListener(new OpenListener(gui));
+        open.setMnemonic('O');
         open.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_O, KeyEvent.CTRL_DOWN_MASK));
 
         JMenuItem save = new JMenuItem("Save", new ImageIcon(getClass().getResource("/res/icon/save.png")));
