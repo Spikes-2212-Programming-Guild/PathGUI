@@ -15,32 +15,32 @@ import java.awt.*;
  */
 public class GainsDialog extends JPanel {
     /**
-     * A text field input for the spacing between points on the generated path.
+     * A number field input for the spacing between points on the generated path.
      */
     private PathNumberField spacing;
 
     /**
-     * A text field input for how much to smooth the path.
+     * A number field input for how much to smooth the path.
      */
     private PathNumberField smoothWeight;
 
     /**
-     * A text field input for the highest tolerable distance between the smoothed and original paths.
+     * A number field input for the highest tolerable distance between the smoothed and original paths.
      */
     private PathNumberField tolerance;
 
     /**
-     * A text field input the maximum velocity of the robot.
+     * A number field input the maximum velocity of the robot.
      */
     private PathNumberField maxVelocity;
 
     /**
-     * A text field input the turning constant for the path generation algorithm.
+     * A number field input the turning constant for the path generation algorithm.
      */
     private PathNumberField turningConstant;
 
     /**
-     * A text field input for the maximum acceleration of the robot.
+     * A number field input for the maximum acceleration of the robot.
      */
     private PathNumberField maxAcceleration;
 
