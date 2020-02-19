@@ -13,7 +13,7 @@ import java.awt.*;
  *
  * @author Eran Goldstein
  */
-public class GainsDialog extends JPanel {
+public class GainsPanel extends JPanel {
     /**
      * A number field input for the spacing between points on the generated path.
      */
@@ -49,7 +49,7 @@ public class GainsDialog extends JPanel {
      */
     private JButton preview;
 
-    public GainsDialog() {
+    public GainsPanel() {
         setLayout(new GridLayout(7, 2));
 
         spacing = new PathNumberField(Globals.PREFS.getDouble("SPACING", 0.075));
@@ -83,7 +83,7 @@ public class GainsDialog extends JPanel {
      * @return the gains from the user input
      */
     public static Gains showDialog(GUI context) {
-        GainsDialog dialog = new GainsDialog();
+        GainsPanel dialog = new GainsPanel();
         JDialog frame = new JDialog();
 
         dialog.preview.addActionListener(actionEvent -> frame.dispose());

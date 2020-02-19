@@ -2,7 +2,7 @@ package gui.bars.listeners;
 
 import gui.GUI;
 import gui.Globals;
-import gui.gains.GainsDialog;
+import gui.gains.GainsPanel;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -24,7 +24,7 @@ public class GenerateListener implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
-        gui.getPathPane().generatePath(GainsDialog.showDialog(gui));
+        gui.getPathPane().generatePath(GainsPanel.showDialog(gui));
         Globals.UNDO_STACK.push(Globals.Action.GENERATE);
     }
 }
