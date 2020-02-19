@@ -11,14 +11,14 @@ import java.text.NumberFormat;
  * @author Eran Goldstein
  */
 public class PathNumberField extends JFormattedTextField {
-    public PathNumberField(String value) {
+    public PathNumberField(double value) {
         super(NumberFormat.getInstance());
         setColumns(Globals.TEXTFIELD_COLUMNS);
         setText(String.valueOf(value));
     }
 
     public PathNumberField() {
-        this("");
+        this(0);
     }
 
     public double getNumber() {

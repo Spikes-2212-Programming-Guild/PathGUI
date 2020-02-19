@@ -52,12 +52,12 @@ public class GainsDialog extends JPanel {
     public GainsDialog() {
         setLayout(new GridLayout(7, 2));
 
-        spacing = new PathNumberField(Globals.PREFS.get("SPACING", "0.075"));
-        smoothWeight = new PathNumberField(Globals.PREFS.get("SMOOTH_WEIGHT", "0.6"));
-        tolerance = new PathNumberField(Globals.PREFS.get("TOLERANCE", "0.6"));
-        maxVelocity = new PathNumberField(Globals.PREFS.get("MAX_VELOCITY", "3.05"));
-        turningConstant = new PathNumberField(Globals.PREFS.get("TURNING_CONSTANT", "3"));
-        maxAcceleration = new PathNumberField(Globals.PREFS.get("MAX_ACCELERATION", "18"));
+        spacing = new PathNumberField(Globals.PREFS.getDouble("SPACING", 0.075));
+        smoothWeight = new PathNumberField(Globals.PREFS.getDouble("SMOOTH_WEIGHT", 0.6));
+        tolerance = new PathNumberField(Globals.PREFS.getDouble("TOLERANCE", 0.6));
+        maxVelocity = new PathNumberField(Globals.PREFS.getDouble("MAX_VELOCITY", 3.05));
+        turningConstant = new PathNumberField(Globals.PREFS.getDouble("TURNING_CONSTANT", 3));
+        maxAcceleration = new PathNumberField(Globals.PREFS.getDouble("MAX_ACCELERATION", 18));
 
         preview = new JButton("Preview");
 
@@ -97,12 +97,12 @@ public class GainsDialog extends JPanel {
         frame.setLocationRelativeTo(context);
         frame.setVisible(true);
 
-        Globals.PREFS.put("SPACING", dialog.spacing.getText());
-        Globals.PREFS.put("SMOOTH_WEIGHT", dialog.smoothWeight.getText());
-        Globals.PREFS.put("TOLERANCE", dialog.tolerance.getText());
-        Globals.PREFS.put("MAX_VELOCITY", dialog.maxVelocity.getText());
-        Globals.PREFS.put("TURNING_CONSTANT", dialog.turningConstant.getText());
-        Globals.PREFS.put("MAX_ACCELERATION", dialog.maxAcceleration.getText());
+        Globals.PREFS.putDouble("SPACING", dialog.spacing.getNumber());
+        Globals.PREFS.putDouble("SMOOTH_WEIGHT", dialog.smoothWeight.getNumber());
+        Globals.PREFS.putDouble("TOLERANCE", dialog.tolerance.getNumber());
+        Globals.PREFS.putDouble("MAX_VELOCITY", dialog.maxVelocity.getNumber());
+        Globals.PREFS.putDouble("TURNING_CONSTANT", dialog.turningConstant.getNumber());
+        Globals.PREFS.putDouble("MAX_ACCELERATION", dialog.maxAcceleration.getNumber());
 
         return new Gains(dialog.spacing.getNumber(), dialog.smoothWeight.getNumber(), dialog.tolerance.getNumber(),
                 dialog.maxVelocity.getNumber(), dialog.turningConstant.getNumber(), dialog.maxAcceleration.getNumber());
