@@ -26,12 +26,12 @@ public class ExportListener implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
-        if(!gui.getPathPane().isPathGenerated())
-            gui.getPathPane().generatePath(Gains.getPreferences());
-        gui.getPathPane().alignPath();
-        gui.getPathPane().moveToOrigin();
-
         if(Globals.FILE_CHOOSER.showSaveDialog(gui) == JFileChooser.APPROVE_OPTION) {
+            if(!gui.getPathPane().isPathGenerated())
+                gui.getPathPane().generatePath(Gains.getPreferences());
+            gui.getPathPane().alignPath();
+            gui.getPathPane().moveToOrigin();
+
             Path path = Globals.FILE_CHOOSER.getSelectedFile().toPath();
             gui.getPathPane().savePath(path);
             Globals.PREFS.put("WORKING_DIRECTORY", path.toAbsolutePath().toString());
