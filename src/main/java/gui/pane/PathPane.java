@@ -57,7 +57,6 @@ public class PathPane extends JPanel implements Addable {
         ((Graphics2D)g).setStroke(new BasicStroke(Globals.PATH_WIDTH));
 
         Waypoint prev = null;
-
         for(Waypoint waypoint : pathManipulator.getPoints()) {
             g.setColor(waypoint == selected ? Globals.SELECTION_COLOR : Globals.POINT_COLOR);
             g.fillOval(xpx(waypoint) - Globals.POINT_RADIUS, ypx(waypoint) - Globals.POINT_RADIUS,
