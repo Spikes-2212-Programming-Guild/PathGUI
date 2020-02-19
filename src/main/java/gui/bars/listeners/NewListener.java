@@ -24,6 +24,6 @@ public class NewListener implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
         gui.getPathPane().newPath();
-        Globals.UNDO_STACK.push(Globals.Action.NONE);
+        Globals.UNDO_STACK.empty();
     }
 }

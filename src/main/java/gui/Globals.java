@@ -15,7 +15,7 @@ public class Globals {
      * A path manipulation action that was performed within the UI.
      */
     public enum Action {
-        ADD, MIRROR, GENERATE, NONE
+        ADD, MIRROR, GENERATE
     }
 
     /**

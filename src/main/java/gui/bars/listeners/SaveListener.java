@@ -29,8 +29,7 @@ public class SaveListener implements ActionListener {
             Path path = Globals.FILE_CHOOSER.getSelectedFile().toPath();
             gui.getPathPane().savePath(path);
             Globals.PREFS.put("WORKING_DIRECTORY", path.toAbsolutePath().toString());
+            Globals.UNDO_STACK.empty();
         }
-
-        Globals.UNDO_STACK.push(Globals.Action.NONE);
     }
 }

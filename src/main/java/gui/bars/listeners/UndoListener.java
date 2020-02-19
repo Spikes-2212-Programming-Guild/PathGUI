@@ -24,9 +24,7 @@ public class UndoListener implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
         if(!Globals.UNDO_STACK.isEmpty()) {
-            Globals.Action lastAction = Globals.UNDO_STACK.pop();
-
-            switch(lastAction) {
+            switch(Globals.UNDO_STACK.pop()) {
                 case ADD:
                     gui.getPathPane().removeLast();
                     break;
@@ -35,8 +33,6 @@ public class UndoListener implements ActionListener {
                     break;
                 case GENERATE:
                     gui.getPathPane().ungeneratePath();
-                    break;
-                case NONE:
                     break;
             }
         }
