@@ -37,7 +37,6 @@ public class UndoListener implements ActionListener {
                     gui.getPathPane().ungeneratePath();
                     break;
                 case NONE:
-                default:
                     break;
             }
         }
