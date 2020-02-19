@@ -62,12 +62,14 @@ public class PathManipulator {
      * @param gains the gains object containing the gains for the path generation
      */
     public void generatePath(Gains gains) {
-        Path oldPath = new Path();
-        for(Waypoint waypoint : path.getPoints())
-            oldPath.add(waypoint);
-        oldPaths.push(oldPath);
+        if(!path.getPoints().isEmpty()) {
+            Path oldPath = new Path();
+            for(Waypoint waypoint : path.getPoints())
+                oldPath.add(waypoint);
+            oldPaths.push(oldPath);
 
-        path.generate(gains);
+            path.generate(gains);
+        }
     }
 
     /**
