@@ -1,6 +1,7 @@
-package gui.menus;
+package gui.bars;
 
 import gui.GUI;
+import gui.bars.listeners.*;
 
 import javax.swing.*;
 import java.awt.event.InputEvent;

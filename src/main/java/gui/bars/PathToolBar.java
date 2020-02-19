@@ -1,8 +1,8 @@
-package gui.toolbar;
+package gui.bars;
 
 import components.PathNumberField;
 import gui.GUI;
-import gui.menus.*;
+import gui.bars.listeners.*;
 import gui.pane.PathPane;
 
 import javax.swing.*;

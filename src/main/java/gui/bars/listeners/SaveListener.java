@@ -1,4 +1,4 @@
-package gui.menus;
+package gui.bars.listeners;
 
 import gui.GUI;
 import gui.Globals;

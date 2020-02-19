@@ -1,6 +1,6 @@
 package gui;
 
-import gui.menus.PathMenuBar;
+import gui.bars.PathMenuBar;
 import gui.pane.PathPane;
 
 import javax.swing.*;

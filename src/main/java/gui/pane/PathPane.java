@@ -2,7 +2,7 @@ package gui.pane;
 
 import gui.GUI;
 import gui.Globals;
-import gui.toolbar.PathToolBar;
+import gui.bars.PathToolBar;
 import path.*;
 
 import javax.imageio.ImageIO;
