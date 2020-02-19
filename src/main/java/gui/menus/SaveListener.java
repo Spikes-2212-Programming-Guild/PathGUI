@@ -14,13 +14,13 @@ import java.nio.file.Path;
  *
  * @author Eran Goldstein
  */
-public class SaveAsListener implements ActionListener {
+public class SaveListener implements ActionListener {
     /**
      * A user interface object.
      */
     private GUI gui;
 
-    public SaveAsListener(GUI gui) {
+    public SaveListener(GUI gui) {
         this.gui = gui;
     }
 

@@ -1,6 +1,8 @@
 package gui.toolbar;
 
 import components.PathNumberField;
+import gui.GUI;
+import gui.menus.*;
 import gui.pane.PathPane;
 
 import javax.swing.*;
@@ -24,9 +26,9 @@ public class PathToolBar extends JToolBar {
     /**
      * Sets up the tool bar, menus and menu items.
      *
-     * @param pathPane a path drawing interface object.
+     * @param gui an interface object
      */
-    public PathToolBar(PathPane pathPane) {
+    public PathToolBar(GUI gui) {
         super("Tool Bar | Spikes Path Drawing Tool");
 
         JLabel xLabel = new JLabel(" X (m): ");
@@ -36,8 +38,31 @@ public class PathToolBar extends JToolBar {
         yField = new PathNumberField();
 
         JButton update = new JButton("Update");
-        update.addActionListener(actionEvent -> pathPane.moveSelected(xField.getNumber(), yField.getNumber()));
+        update.addActionListener(actionEvent -> ((PathPane)gui.getContentPane())
+                .moveSelected(xField.getNumber(), yField.getNumber()));
 
+        JButton newFile = new JButton(new ImageIcon(getClass().getResource("/res/icon/new.png")));
+        newFile.addActionListener(new NewListener(gui));
+
+        JButton save = new JButton(new ImageIcon(getClass().getResource("/res/icon/save.png")));
+        save.addActionListener(new SaveListener(gui));
+
+        JButton open = new JButton(new ImageIcon(getClass().getResource("/res/icon/open.png")));
+        open.addActionListener(new OpenListener(gui));
+
+        JButton undo = new JButton(new ImageIcon(getClass().getResource("/res/icon/undo.png")));
+        undo.addActionListener(new UndoListener(gui));
+
+        JButton mirror = new JButton(new ImageIcon(getClass().getResource("/res/icon/mirror.png")));
+        mirror.addActionListener(new MirrorListener(gui));
+
+        add(newFile);
+        add(save);
+        add(open);
+        addSeparator();
+        add(undo);
+        add(mirror);
+        addSeparator();
         add(xLabel);
         add(xField);
         add(yLabel);

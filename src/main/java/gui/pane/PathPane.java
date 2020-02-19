@@ -1,5 +1,6 @@
 package gui.pane;
 
+import gui.GUI;
 import gui.Globals;
 import gui.toolbar.PathToolBar;
 import path.*;
@@ -31,11 +32,11 @@ public class PathPane extends JPanel implements Addable {
      */
     private PathToolBar toolBar;
 
-    public PathPane() {
+    public PathPane(GUI gui) {
         super(new BorderLayout());
         pathManipulator = new PathManipulator();
         setPreferredSize(new Dimension(Globals.FIELD_WIDTH, Globals.FIELD_HEIGHT));
-        toolBar = new PathToolBar(this);
+        toolBar = new PathToolBar(gui);
         add(toolBar, BorderLayout.PAGE_END);
         addMouseListener(new AddAdapter(this));
         setOpaque(true);

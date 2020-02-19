@@ -12,7 +12,7 @@ import javax.swing.*;
  */
 public class GUI extends JFrame {
     public GUI() {
-        setContentPane(new PathPane());
+        setContentPane(new PathPane(this));
         setJMenuBar(new PathMenuBar(this));
     }
 
