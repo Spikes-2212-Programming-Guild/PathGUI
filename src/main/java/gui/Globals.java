@@ -31,27 +31,26 @@ public class Globals {
     /**
      * The file chooser used when opening and saving path files.
      * <p>
-     * Having one global file chooser allows us to keep directory preferences without constant accesses to the
-     * Preferences object.
+     * Using one global file chooser allows us to keep directory preference without constant {@link Preferences} calls.
      */
     public static final JFileChooser FILE_CHOOSER = new JFileChooser(PREFS.get("WORKING_DIRECTORY", null));
 
     /**
-     * The amount of character columns in text fields.
+     * The amount of character columns in number fields.
      */
     public static final int TEXTFIELD_COLUMNS = 12;
 
     /**
-     * The width of the field in centimeters.
+     * The width of the game field in centimeters.
      * <p>
-     * This constant needs to be changed when a new field is introduced.
+     * This constant needs to be changed whenever a new game field is introduced.
      */
     public static final int FIELD_WIDTH = 799;
 
     /**
-     * The height of the field in centimeters.
+     * The height of the game field in centimeters.
      * <p>
-     * This constant needs to be changed when a new field is introduced.
+     * This constant needs to be changed whenever a new game field is introduced.
      */
     public static final int FIELD_HEIGHT = 770;
 
@@ -66,7 +65,7 @@ public class Globals {
     public static final double CM_TO_M = 0.01;
 
     /**
-     * The width of the path on the UI.
+     * The width of each path segment on the UI.
      */
     public static final int PATH_WIDTH = 4;
 
@@ -81,7 +80,7 @@ public class Globals {
     public static final int GENERATED_RADIUS = 4;
 
     /**
-     * The color of the path on the UI.
+     * The color of each path segment on the UI.
      */
     public static final Color PATH_COLOR = Color.RED;
 
