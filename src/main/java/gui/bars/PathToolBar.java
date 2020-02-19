@@ -3,7 +3,6 @@ package gui.bars;
 import components.PathNumberField;
 import gui.GUI;
 import gui.bars.listeners.*;
-import gui.pane.PathPane;
 
 import javax.swing.*;
 
@@ -38,8 +37,7 @@ public class PathToolBar extends JToolBar {
         yField = new PathNumberField();
 
         JButton update = new JButton("Update");
-        update.addActionListener(actionEvent -> ((PathPane)gui.getContentPane())
-                .moveSelected(xField.getNumber(), yField.getNumber()));
+        update.addActionListener(actionEvent -> gui.getPathPane().moveSelected(xField.getNumber(), yField.getNumber()));
 
         JButton newFile = new JButton(new ImageIcon(getClass().getResource("/res/icon/new.png")));
         newFile.addActionListener(new NewListener(gui));

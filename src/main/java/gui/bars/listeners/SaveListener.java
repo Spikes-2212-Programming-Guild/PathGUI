@@ -2,7 +2,6 @@ package gui.bars.listeners;
 
 import gui.GUI;
 import gui.Globals;
-import gui.pane.PathPane;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -28,7 +27,7 @@ public class SaveListener implements ActionListener {
     public void actionPerformed(ActionEvent actionEvent) {
         if(Globals.FILE_CHOOSER.showSaveDialog(gui) == JFileChooser.APPROVE_OPTION) {
             Path path = Globals.FILE_CHOOSER.getSelectedFile().toPath();
-            ((PathPane)gui.getContentPane()).savePath(path);
+            gui.getPathPane().savePath(path);
             Globals.PREFS.put("WORKING_DIRECTORY", path.toAbsolutePath().toString());
         }
 

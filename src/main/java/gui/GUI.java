@@ -24,4 +24,8 @@ public class GUI extends JFrame {
         gui.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         gui.setVisible(true);
     }
+
+    public PathPane getPathPane() {
+        return (PathPane)getContentPane();
+    }
 }
