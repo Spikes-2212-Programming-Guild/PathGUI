@@ -56,8 +56,9 @@ public class PathToolBar extends JToolBar {
         JLabel yLabel = new JLabel(" Y (m): ");
         yField = new PathNumberField();
 
-        JButton move = new JButton("Move");
+        JButton move = new JButton(new ImageIcon(getClass().getResource("/res/icon/move.png")));
         move.addActionListener(actionEvent -> gui.getPathPane().moveSelected(xField.getNumber(), yField.getNumber()));
+        move.setToolTipText("Move");
 
         add(newFile);
         add(save);
