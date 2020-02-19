@@ -102,6 +102,7 @@ public class PathPane extends JPanel implements Addable {
                 selected = waypoint;
                 toolBar.setCoordinates(waypoint.getX(), waypoint.getY());
                 repaint();
+
                 return true;
             }
         }
