@@ -45,11 +45,6 @@ public class GainsDialog extends JDialog {
     private PathNumberField maxAcceleration;
 
     /**
-     * A button that generates the path.
-     */
-    private JButton preview;
-
-    /**
      * The value returned by this dialog.
      * <p>
      * The value is one of:
@@ -78,7 +73,7 @@ public class GainsDialog extends JDialog {
         turningConstant = new PathNumberField(Globals.PREFS.getDouble("TURNING_CONSTANT", 3));
         maxAcceleration = new PathNumberField(Globals.PREFS.getDouble("MAX_ACCELERATION", 18));
 
-        preview = new JButton("Preview");
+        JButton preview = new JButton("Preview");
         preview.addActionListener(actionEvent -> {
             returnValue = APPROVE_OPTION;
             dispose();
