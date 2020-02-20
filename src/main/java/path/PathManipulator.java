@@ -47,6 +47,7 @@ public class PathManipulator {
      */
     public void newPath() {
         path = new Path();
+        oldPaths = new Stack<>();
     }
 
     /**
@@ -79,6 +80,7 @@ public class PathManipulator {
      */
     public void importPath(java.nio.file.Path filepath) {
         path = PathIO.read(filepath);
+        oldPaths = new Stack<>();
     }
 
     /**
@@ -88,6 +90,7 @@ public class PathManipulator {
      */
     public void savePath(java.nio.file.Path filepath) {
         PathIO.write(filepath, path);
+        oldPaths = new Stack<>();
     }
 
     /**
