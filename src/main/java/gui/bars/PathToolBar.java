@@ -1,5 +1,6 @@
 package gui.bars;
 
+import components.DocumentAdapter;
 import components.PathNumberField;
 import gui.GUI;
 import gui.bars.listeners.*;
@@ -50,15 +51,15 @@ public class PathToolBar extends JToolBar {
         mirror.addActionListener(new MirrorListener(gui));
         mirror.setToolTipText("Mirror");
 
+        DocumentAdapter documentAdapter = e -> gui.getPathPane().moveSelected(xField.getNumber(), yField.getNumber());
+
         JLabel xLabel = new JLabel(" X (m): ");
         xField = new PathNumberField();
+        xField.getDocument().addDocumentListener(documentAdapter);
 
         JLabel yLabel = new JLabel(" Y (m): ");
         yField = new PathNumberField();
-
-        JButton move = new JButton(new ImageIcon(getClass().getResource("/res/icon/move.png")));
-        move.addActionListener(actionEvent -> gui.getPathPane().moveSelected(xField.getNumber(), yField.getNumber()));
-        move.setToolTipText("Move");
+        yField.getDocument().addDocumentListener(documentAdapter);
 
         add(newFile);
         add(save);
@@ -71,7 +72,6 @@ public class PathToolBar extends JToolBar {
         add(xField);
         add(yLabel);
         add(yField);
-        add(move);
     }
 
     /**
