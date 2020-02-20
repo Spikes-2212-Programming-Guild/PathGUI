@@ -13,7 +13,7 @@ import java.awt.*;
  *
  * @author Eran Goldstein
  */
-public class GainsPanel extends JPanel {
+public class GainsDialog extends JDialog {
     /**
      * A number field input for the spacing between points on the generated path.
      */
@@ -49,7 +49,27 @@ public class GainsPanel extends JPanel {
      */
     private JButton preview;
 
-    public GainsPanel() {
+    /**
+     * The value returned by this dialog.
+     * <p>
+     * The value is one of:
+     * - GainsDialog.APPROVE_OPTION
+     * - GainsDialog.CANCEL_OPTION
+     */
+    private int returnValue = CANCEL_OPTION;
+
+    /**
+     * The return value of {@code showDialog} when the user approves.
+     */
+    public static int APPROVE_OPTION = 0;
+
+    /**
+     * The return value of {@code showDialog} when the user cancels.
+     */
+    public static int CANCEL_OPTION = 1;
+
+    public GainsDialog(GUI context) {
+        super(context, true);
         setLayout(new GridLayout(7, 2));
 
         spacing = new PathNumberField(Globals.PREFS.getDouble("SPACING", 0.075));
@@ -60,6 +80,10 @@ public class GainsPanel extends JPanel {
         maxAcceleration = new PathNumberField(Globals.PREFS.getDouble("MAX_ACCELERATION", 18));
 
         preview = new JButton("Preview");
+        preview.addActionListener(actionEvent -> {
+            returnValue = APPROVE_OPTION;
+            dispose();
+        });
 
         add(new JLabel("Spacing: "));
         add(spacing);
@@ -76,35 +100,39 @@ public class GainsPanel extends JPanel {
         add(preview);
     }
 
+    public Gains getGains() {
+        Globals.PREFS.putDouble("SPACING", spacing.getNumber());
+        Globals.PREFS.putDouble("SMOOTH_WEIGHT", smoothWeight.getNumber());
+        Globals.PREFS.putDouble("TOLERANCE", tolerance.getNumber());
+        Globals.PREFS.putDouble("MAX_VELOCITY", maxVelocity.getNumber());
+        Globals.PREFS.putDouble("TURNING_CONSTANT", turningConstant.getNumber());
+        Globals.PREFS.putDouble("MAX_ACCELERATION", maxAcceleration.getNumber());
+
+        return new Gains(spacing.getNumber(), smoothWeight.getNumber(), tolerance.getNumber(),
+                maxVelocity.getNumber(), turningConstant.getNumber(), maxAcceleration.getNumber());
+    }
+
     /**
      * Show the gains dialog.
      *
      * @param context the context for the dialog
      * @return the gains from the user input
      */
-    public static Gains showDialog(GUI context) {
-        GainsPanel dialog = new GainsPanel();
-        JDialog frame = new JDialog();
+    public int showDialog(GUI context) {
+        setTitle("Gains | Spikes Path Drawing Tool");
+        setResizable(false);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        pack();
+        setLocationRelativeTo(context);
+        setVisible(true);
 
-        dialog.preview.addActionListener(actionEvent -> frame.dispose());
+        Globals.PREFS.putDouble("SPACING", spacing.getNumber());
+        Globals.PREFS.putDouble("SMOOTH_WEIGHT", smoothWeight.getNumber());
+        Globals.PREFS.putDouble("TOLERANCE", tolerance.getNumber());
+        Globals.PREFS.putDouble("MAX_VELOCITY", maxVelocity.getNumber());
+        Globals.PREFS.putDouble("TURNING_CONSTANT", turningConstant.getNumber());
+        Globals.PREFS.putDouble("MAX_ACCELERATION", maxAcceleration.getNumber());
 
-        frame.setModal(true);
-        frame.setContentPane(dialog);
-        frame.setTitle("Gains | Spikes Path Drawing Tool");
-        frame.setResizable(false);
-        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        frame.pack();
-        frame.setLocationRelativeTo(context);
-        frame.setVisible(true);
-
-        Globals.PREFS.putDouble("SPACING", dialog.spacing.getNumber());
-        Globals.PREFS.putDouble("SMOOTH_WEIGHT", dialog.smoothWeight.getNumber());
-        Globals.PREFS.putDouble("TOLERANCE", dialog.tolerance.getNumber());
-        Globals.PREFS.putDouble("MAX_VELOCITY", dialog.maxVelocity.getNumber());
-        Globals.PREFS.putDouble("TURNING_CONSTANT", dialog.turningConstant.getNumber());
-        Globals.PREFS.putDouble("MAX_ACCELERATION", dialog.maxAcceleration.getNumber());
-
-        return new Gains(dialog.spacing.getNumber(), dialog.smoothWeight.getNumber(), dialog.tolerance.getNumber(),
-                dialog.maxVelocity.getNumber(), dialog.turningConstant.getNumber(), dialog.maxAcceleration.getNumber());
+        return returnValue;
     }
 }
