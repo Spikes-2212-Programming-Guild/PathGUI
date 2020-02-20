@@ -27,7 +27,7 @@ public class ExportListener implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
-        if(Globals.FILE_CHOOSER.showSaveDialog(gui) == JFileChooser.APPROVE_OPTION) {
+        if(Globals.FILE_CHOOSER.showDialog(gui, "Export") == JFileChooser.APPROVE_OPTION) {
             if(!gui.getPathPane().isPathGenerated())
                 gui.getPathPane().generatePath(Gains.getPreferences());
             gui.getPathPane().alignPath();
