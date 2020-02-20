@@ -11,10 +11,13 @@ import java.text.NumberFormat;
  * @author Eran Goldstein
  */
 public class PathNumberField extends JFormattedTextField {
-    public PathNumberField(double value) {
+    private double val;
+
+    public PathNumberField(double number) {
         super(NumberFormat.getInstance());
         setColumns(Globals.TEXTFIELD_COLUMNS);
-        setText(String.valueOf(value));
+        setText(String.valueOf(number));
+        val = number;
     }
 
     public PathNumberField() {
@@ -22,10 +25,17 @@ public class PathNumberField extends JFormattedTextField {
     }
 
     public double getNumber() {
-        return getText().isEmpty() ? 0 : Double.parseDouble(getText());
+        try {
+            val = Double.parseDouble(getText());
+        } catch(NumberFormatException ignored) {
+            // if the value cannot be parsed, return the previous value
+        }
+
+        return val;
     }
 
     public void setNumber(double number) {
         setText(String.valueOf(number));
+        val = number;
     }
 }

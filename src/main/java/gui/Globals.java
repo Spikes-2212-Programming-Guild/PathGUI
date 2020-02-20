@@ -91,7 +91,7 @@ public class Globals {
     /**
      * The color of each path segment on the UI.
      */
-    public static final Color PATH_COLOR = Color.GRAY;
+    public static final Color PATH_COLOR = Color.decode("#353A47");
 
     /**
      * The color of each path point on the UI.
@@ -106,5 +106,5 @@ public class Globals {
     /**
      * The color of the first path point on the UI.
      */
-    public static final Color FIRST_COLOR = Color.YELLOW;
+    public static final Color FIRST_COLOR = Color.decode("#3366ff");
 }
