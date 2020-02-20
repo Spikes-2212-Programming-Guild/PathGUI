@@ -39,7 +39,7 @@ public class Globals {
 
     /**
      * The gains dialog used when getting user input for the gains for path generation.
-     *
+     * <p>
      * Using one global gains dialog allows conservation of memory.
      */
     public static final GainsDialog GAINS_DIALOG = new GainsDialog();
