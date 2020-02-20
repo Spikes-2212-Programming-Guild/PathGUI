@@ -1,6 +1,7 @@
 package gui;
 
 import gui.bars.PathMenuBar;
+import gui.bars.listeners.CSVFilter;
 import gui.pane.PathPane;
 
 import javax.swing.*;
@@ -14,6 +15,9 @@ public class GUI extends JFrame {
     public GUI() {
         setContentPane(new PathPane(this));
         setJMenuBar(new PathMenuBar(this));
+
+        Globals.FILE_CHOOSER.addChoosableFileFilter(new CSVFilter());
+        Globals.FILE_CHOOSER.setAcceptAllFileFilterUsed(false);
     }
 
     public static void main(String[] args) {
