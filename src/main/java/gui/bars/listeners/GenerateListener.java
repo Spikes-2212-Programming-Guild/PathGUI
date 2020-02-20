@@ -24,9 +24,8 @@ public class GenerateListener implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
-        GainsDialog gainsDialog = new GainsDialog(gui);
-        if(gainsDialog.showDialog(gui) == GainsDialog.APPROVE_OPTION) {
-            gui.getPathPane().generatePath(gainsDialog.getGains());
+        if(Globals.GAINS_DIALOG.showDialog(gui) == GainsDialog.APPROVE_OPTION) {
+            gui.getPathPane().generatePath(Globals.GAINS_DIALOG.getGains());
             Globals.UNDO_STACK.push(Globals.Action.GENERATE);
         }
     }

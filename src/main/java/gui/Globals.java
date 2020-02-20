@@ -1,5 +1,7 @@
 package gui;
 
+import gui.gains.GainsDialog;
+
 import javax.swing.*;
 import java.awt.*;
 import java.util.Stack;
@@ -34,6 +36,13 @@ public class Globals {
      * Using one global file chooser allows us to keep directory preference without constant {@link Preferences} calls.
      */
     public static final JFileChooser FILE_CHOOSER = new JFileChooser(PREFS.get("WORKING_DIRECTORY", null));
+
+    /**
+     * The gains dialog used when getting user input for the gains for path generation.
+     *
+     * Using one global gains dialog allows conservation of memory.
+     */
+    public static final GainsDialog GAINS_DIALOG = new GainsDialog();
 
     /**
      * The amount of character columns in number fields.
