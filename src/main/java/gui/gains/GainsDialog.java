@@ -68,8 +68,7 @@ public class GainsDialog extends JDialog {
      */
     public static int CANCEL_OPTION = 1;
 
-    public GainsDialog(GUI context) {
-        super(context, true);
+    public GainsDialog() {
         setLayout(new GridLayout(7, 2));
 
         spacing = new PathNumberField(Globals.PREFS.getDouble("SPACING", 0.075));
@@ -119,6 +118,7 @@ public class GainsDialog extends JDialog {
      * @return the gains from the user input
      */
     public int showDialog(GUI context) {
+        setModal(true);
         setTitle("Gains | Spikes Path Drawing Tool");
         setResizable(false);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
