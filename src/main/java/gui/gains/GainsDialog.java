@@ -79,6 +79,12 @@ public class GainsDialog extends JDialog {
             dispose();
         });
 
+        JButton cancel = new JButton("Cancel");
+        cancel.addActionListener(actionEvent -> {
+            returnValue = CANCEL_OPTION;
+            dispose();
+        });
+
         add(new JLabel("Spacing: "));
         add(spacing);
         add(new JLabel("Smooth Weight: "));
@@ -92,6 +98,7 @@ public class GainsDialog extends JDialog {
         add(new JLabel("Max Acceleration: "));
         add(maxAcceleration);
         add(preview);
+        add(cancel);
     }
 
     public Gains getGains() {
@@ -113,6 +120,8 @@ public class GainsDialog extends JDialog {
      * @return the gains from the user input
      */
     public int showDialog(GUI context) {
+        returnValue = CANCEL_OPTION;
+
         setModal(true);
         setTitle("Gains | Spikes Path Drawing Tool");
         setResizable(false);
