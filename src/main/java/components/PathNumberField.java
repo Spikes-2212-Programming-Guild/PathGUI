@@ -22,7 +22,7 @@ public class PathNumberField extends JFormattedTextField {
     }
 
     public double getNumber() {
-        return Double.parseDouble(getText());
+        return getText().isEmpty() ? 0 : Double.parseDouble(getText());
     }
 
     public void setNumber(double number) {
