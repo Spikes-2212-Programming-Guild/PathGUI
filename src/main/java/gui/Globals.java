@@ -91,15 +91,20 @@ public class Globals {
     /**
      * The color of each path segment on the UI.
      */
-    public static final Color PATH_COLOR = Color.RED;
+    public static final Color PATH_COLOR = Color.GRAY;
 
     /**
      * The color of each path point on the UI.
      */
-    public static final Color POINT_COLOR = Color.RED;
+    public static final Color POINT_COLOR = Color.BLACK;
 
     /**
      * The color of the selected path point on the UI.
      */
-    public static final Color SELECTION_COLOR = Color.YELLOW;
+    public static final Color SELECTION_COLOR = Color.BLUE;
+
+    /**
+     * The color of the first path point on the UI.
+     */
+    public static final Color FIRST_COLOR = Color.YELLOW;
 }
