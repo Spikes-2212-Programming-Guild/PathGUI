@@ -64,10 +64,7 @@ public class PathManipulator {
      */
     public void generatePath(Gains gains) {
         if(!path.isEmpty()) {
-            Path oldPath = new Path();
-            oldPath.addAll(path);
-            oldPaths.push(oldPath);
-
+            oldPaths.push((Path)path.clone());
             path.generate(gains);
         }
     }
