@@ -36,6 +36,8 @@ public class RedoListener implements ActionListener {
                     gui.getPathPane().generatePath(Gains.getPreferences());
                     break;
             }
+
+            Globals.UNDO_STACK.push(lastAction);
         }
     }
 }

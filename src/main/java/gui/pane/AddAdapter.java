@@ -6,6 +6,7 @@ import path.Waypoint;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.Stack;
 
 /**
  * A mouse adapter that adds {@link Waypoint}s to an {@link Addable} when the left mouse button is clicked.
@@ -32,5 +33,6 @@ public class AddAdapter extends MouseAdapter {
         addable.add(waypoint);
 
         Globals.UNDO_STACK.push(new Action(Action.ActionType.ADD, waypoint));
+        Globals.REDO_STACK = new Stack<>();
     }
 }

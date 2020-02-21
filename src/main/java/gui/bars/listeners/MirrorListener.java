@@ -4,6 +4,7 @@ import gui.*;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Stack;
 
 /**
  * The action listener for mirroring paths.
@@ -24,5 +25,6 @@ public class MirrorListener implements ActionListener {
     public void actionPerformed(ActionEvent actionEvent) {
         gui.getPathPane().mirrorPath();
         Globals.UNDO_STACK.push(new Action(Action.ActionType.MIRROR));
+        Globals.REDO_STACK = new Stack<>();
     }
 }

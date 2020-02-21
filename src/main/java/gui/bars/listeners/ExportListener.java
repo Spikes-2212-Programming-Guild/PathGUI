@@ -38,6 +38,7 @@ public class ExportListener implements ActionListener {
             Globals.PREFS.put("WORKING_DIRECTORY", path.toAbsolutePath().toString());
 
             Globals.UNDO_STACK = new Stack<>();
+            Globals.REDO_STACK = new Stack<>();
         }
     }
 }

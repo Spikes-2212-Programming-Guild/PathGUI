@@ -5,6 +5,7 @@ import gui.gains.GainsDialog;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Stack;
 
 /**
  * The action listener for generating paths.
@@ -26,6 +27,7 @@ public class GenerateListener implements ActionListener {
         if(Globals.GAINS_DIALOG.showDialog(gui) == GainsDialog.APPROVE_OPTION) {
             gui.getPathPane().generatePath(Globals.GAINS_DIALOG.getGains());
             Globals.UNDO_STACK.push(new Action(Action.ActionType.GENERATE));
+            Globals.REDO_STACK = new Stack<>();
         }
     }
 }

@@ -31,6 +31,7 @@ public class SaveListener implements ActionListener {
             gui.getPathPane().savePath(path);
             Globals.PREFS.put("WORKING_DIRECTORY", path.toAbsolutePath().toString());
             Globals.UNDO_STACK = new Stack<>();
+            Globals.REDO_STACK = new Stack<>();
         }
     }
 }

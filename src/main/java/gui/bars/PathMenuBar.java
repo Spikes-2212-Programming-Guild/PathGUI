@@ -57,6 +57,11 @@ public class PathMenuBar extends JMenuBar {
         undo.setMnemonic('U');
         undo.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Z, KeyEvent.CTRL_DOWN_MASK));
 
+        JMenuItem redo = new JMenuItem("Redo"/*, new ImageIcon(getClass().getResource("/res/icon/undo.png"))*/);
+        redo.addActionListener(new RedoListener(gui));
+        redo.setMnemonic('R');
+        redo.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Y, KeyEvent.CTRL_DOWN_MASK));
+
         JMenuItem generate = new JMenuItem("Preview");
         generate.addActionListener(new GenerateListener(gui));
         generate.setMnemonic('P');
@@ -73,6 +78,7 @@ public class PathMenuBar extends JMenuBar {
         mirror.setMnemonic('M');
 
         edit.add(undo);
+        edit.add(redo);
         edit.addSeparator();
         edit.add(generate);
         edit.add(quickGeneration);

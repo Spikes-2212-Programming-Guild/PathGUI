@@ -5,6 +5,7 @@ import path.Gains;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Stack;
 
 /**
  * The action listener for generating paths using the default gains.
@@ -25,5 +26,6 @@ public class QuickGenerationListener implements ActionListener {
     public void actionPerformed(ActionEvent actionEvent) {
         gui.getPathPane().generatePath(Gains.getPreferences());
         Globals.UNDO_STACK.push(new Action(Action.ActionType.GENERATE));
+        Globals.REDO_STACK = new Stack<>();
     }
 }

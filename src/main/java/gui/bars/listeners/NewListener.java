@@ -26,5 +26,6 @@ public class NewListener implements ActionListener {
     public void actionPerformed(ActionEvent actionEvent) {
         gui.getPathPane().newPath();
         Globals.UNDO_STACK = new Stack<>();
+        Globals.REDO_STACK = new Stack<>();
     }
 }
