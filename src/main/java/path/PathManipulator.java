@@ -148,6 +148,10 @@ public class PathManipulator {
             waypoint.setCoordinates(waypoint.getX() - xoff, waypoint.getY() - yoff);
     }
 
+    public boolean contains(Waypoint waypoint) {
+        return path.getPoints().contains(waypoint);
+    }
+
     public List<Waypoint> getPoints() {
         return path.getPoints();
     }

@@ -84,4 +84,11 @@ public class PathToolBar extends JToolBar {
         xField.setNumber(x);
         yField.setNumber(y);
     }
+
+    @Override
+    public void setEnabled(boolean enabled) {
+        super.setEnabled(enabled);
+        xField.setEnabled(enabled);
+        yField.setEnabled(enabled);
+    }
 }
