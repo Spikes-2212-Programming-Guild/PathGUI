@@ -19,7 +19,7 @@ public class PathIO {
     public static void write(java.nio.file.Path filepath, Path path) {
         try(BufferedWriter writer = Files.newBufferedWriter(filepath, StandardCharsets.US_ASCII)) {
             StringBuilder s = new StringBuilder("x,y,velocity,distance,curvature\n");
-            for(Waypoint w : path.getPoints()) {
+            for(Waypoint w : path) {
                 s.append(w.getX()).append(",").append(w.getY()).append(",").append(w.getV()).append(",")
                         .append(w.getD()).append(",").append(w.getCurvature()).append("\n");
             }

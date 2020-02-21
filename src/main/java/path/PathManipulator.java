@@ -63,10 +63,9 @@ public class PathManipulator {
      * @param gains the gains object containing the gains for the path generation
      */
     public void generatePath(Gains gains) {
-        if(!path.getPoints().isEmpty()) {
+        if(!path.isEmpty()) {
             Path oldPath = new Path();
-            for(Waypoint waypoint : path.getPoints())
-                oldPath.add(waypoint);
+            oldPath.addAll(path);
             oldPaths.push(oldPath);
 
             path.generate(gains);
@@ -102,7 +101,7 @@ public class PathManipulator {
         double xoff = path.get(0).getX();
         double yoff = path.get(0).getY();
 
-        for(Waypoint waypoint : path.getPoints()) {
+        for(Waypoint waypoint : path) {
             double x = (waypoint.getX() - xoff) * Math.cos(radians) - (waypoint.getY() - yoff) * Math.sin(radians);
             double y = (waypoint.getX() - xoff) * Math.sin(radians) + (waypoint.getY() - yoff) * Math.cos(radians);
 
@@ -133,7 +132,7 @@ public class PathManipulator {
      * Mirror the path.
      */
     public void mirrorPath() {
-        for(Waypoint waypoint : path.getPoints())
+        for(Waypoint waypoint : path)
             waypoint.setCoordinates(Globals.FIELD_WIDTH * Globals.CM_TO_M - waypoint.getX(), waypoint.getY());
     }
 
@@ -144,16 +143,16 @@ public class PathManipulator {
         double xoff = path.get(0).getX();
         double yoff = path.get(0).getY();
 
-        for(Waypoint waypoint : path.getPoints())
+        for(Waypoint waypoint : path)
             waypoint.setCoordinates(waypoint.getX() - xoff, waypoint.getY() - yoff);
     }
 
     public boolean contains(Waypoint waypoint) {
-        return path.getPoints().contains(waypoint);
+        return path.contains(waypoint);
     }
 
     public List<Waypoint> getPoints() {
-        return path.getPoints();
+        return path;
     }
 
     public Path getPath() {
