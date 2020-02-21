@@ -189,7 +189,7 @@ public class PathPane extends JPanel implements Addable {
      * Move the selected point to the supplied coordinates.
      *
      * @param x the x coordinate
-     * @param y the x coordinate
+     * @param y the y coordinate
      */
     public void moveSelected(double x, double y) {
         selected.setCoordinates(x, y);
