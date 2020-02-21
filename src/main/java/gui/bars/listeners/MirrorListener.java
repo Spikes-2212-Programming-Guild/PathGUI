@@ -1,7 +1,6 @@
 package gui.bars.listeners;
 
-import gui.GUI;
-import gui.Globals;
+import gui.*;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -24,6 +23,6 @@ public class MirrorListener implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
         gui.getPathPane().mirrorPath();
-        Globals.UNDO_STACK.push(Globals.Action.MIRROR);
+        Globals.UNDO_STACK.push(new Action(Action.ActionType.MIRROR));
     }
 }

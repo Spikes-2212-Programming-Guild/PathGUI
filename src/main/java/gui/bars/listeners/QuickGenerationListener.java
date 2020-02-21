@@ -1,7 +1,6 @@
 package gui.bars.listeners;
 
-import gui.GUI;
-import gui.Globals;
+import gui.*;
 import path.Gains;
 
 import java.awt.event.ActionEvent;
@@ -25,6 +24,6 @@ public class QuickGenerationListener implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
         gui.getPathPane().generatePath(Gains.getPreferences());
-        Globals.UNDO_STACK.push(Globals.Action.GENERATE);
+        Globals.UNDO_STACK.push(new Action(Action.ActionType.GENERATE));
     }
 }

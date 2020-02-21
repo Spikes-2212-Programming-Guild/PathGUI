@@ -18,9 +18,8 @@ public interface Addable {
     /**
      * Selects the {@link Waypoint} at the supplied coordinates.
      *
-     * @param x the x coordinate to select at
-     * @param y the y coordinate to select at
+     * @param waypoint the waypoint to select
      * @return {@code true} if the {@link Waypoint} was successfully selected, {@code false} otherwise
      */
-    boolean select(double x, double y);
+    boolean select(Waypoint waypoint);
 }

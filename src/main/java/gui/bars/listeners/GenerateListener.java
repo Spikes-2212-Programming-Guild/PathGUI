@@ -1,7 +1,6 @@
 package gui.bars.listeners;
 
-import gui.GUI;
-import gui.Globals;
+import gui.*;
 import gui.gains.GainsDialog;
 
 import java.awt.event.ActionEvent;
@@ -26,7 +25,7 @@ public class GenerateListener implements ActionListener {
     public void actionPerformed(ActionEvent actionEvent) {
         if(Globals.GAINS_DIALOG.showDialog(gui) == GainsDialog.APPROVE_OPTION) {
             gui.getPathPane().generatePath(Globals.GAINS_DIALOG.getGains());
-            Globals.UNDO_STACK.push(Globals.Action.GENERATE);
+            Globals.UNDO_STACK.push(new Action(Action.ActionType.GENERATE));
         }
     }
 }

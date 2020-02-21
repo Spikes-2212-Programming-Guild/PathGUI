@@ -1,5 +1,6 @@
 package gui.pane;
 
+import gui.Action;
 import gui.Globals;
 import path.Waypoint;
 
@@ -23,12 +24,13 @@ public class AddAdapter extends MouseAdapter {
 
     @Override
     public void mouseReleased(MouseEvent e) {
-        if(addable.select(e.getX() * Globals.CM_TO_M,
-                (Globals.FIELD_WIDTH - e.getY()) * Globals.CM_TO_M))
-            return;
+        Waypoint waypoint = new Waypoint(e.getX() * Globals.CM_TO_M,
+                (Globals.FIELD_WIDTH - e.getY()) * Globals.CM_TO_M);
 
-        addable.add(new Waypoint(e.getX() * Globals.CM_TO_M,
-                (Globals.FIELD_WIDTH - e.getY()) * Globals.CM_TO_M));
-        Globals.UNDO_STACK.push(Globals.Action.ADD);
+        if(addable.select(waypoint))
+            return;
+        addable.add(waypoint);
+
+        Globals.UNDO_STACK.push(new Action(Action.ActionType.ADD, waypoint));
     }
 }

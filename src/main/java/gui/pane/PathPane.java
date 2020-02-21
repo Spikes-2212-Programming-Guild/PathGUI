@@ -95,13 +95,13 @@ public class PathPane extends JPanel implements Addable {
     }
 
     @Override
-    public boolean select(double x, double y) {
-        for(Waypoint waypoint : pathManipulator.getPoints()) {
+    public boolean select(Waypoint waypoint) {
+        for(Waypoint wp : pathManipulator.getPoints()) {
             int radius = pathManipulator.isGenerated() ? Globals.GENERATED_RADIUS : Globals.POINT_RADIUS;
-            if(Math.abs(waypoint.getX() - x) < radius * Globals.CM_TO_M
-                    && Math.abs(waypoint.getY() - y) < radius * Globals.CM_TO_M) {
-                selected = waypoint;
-                toolBar.setCoordinates(waypoint.getX(), waypoint.getY());
+            if(Math.abs(wp.getX() - waypoint.getX()) < radius * Globals.CM_TO_M
+                    && Math.abs(wp.getY() - waypoint.getY()) < radius * Globals.CM_TO_M) {
+                selected = wp;
+                toolBar.setCoordinates(wp.getX(), wp.getY());
                 repaint();
 
                 return true;

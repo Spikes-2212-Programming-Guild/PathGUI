@@ -14,13 +14,6 @@ import java.util.prefs.Preferences;
  */
 public class Globals {
     /**
-     * A path manipulation action that was performed within the UI.
-     */
-    public enum Action {
-        ADD, MIRROR, GENERATE
-    }
-
-    /**
      * The actions performed on the current path, in order.
      */
     public static Stack<Action> UNDO_STACK = new Stack<>();
