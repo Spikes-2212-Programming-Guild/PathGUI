@@ -123,7 +123,7 @@ public class PathPane extends JPanel implements Addable {
      * Creates a new path, losing all unsaved changes to the old one.
      */
     public void newPath() {
-        pathManipulator.newPath();
+        pathManipulator = new PathManipulator();
         repaint();
     }
 

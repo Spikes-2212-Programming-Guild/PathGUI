@@ -43,14 +43,6 @@ public class PathManipulator {
     }
 
     /**
-     * Creates a new path.
-     */
-    public void newPath() {
-        path = new Path();
-        oldPaths = new Stack<>();
-    }
-
-    /**
      * Reverts to before the last time the path was generated.
      */
     public void ungeneratePath() {
