@@ -47,6 +47,10 @@ public class PathToolBar extends JToolBar {
         undo.addActionListener(new UndoListener(gui));
         undo.setToolTipText("Undo");
 
+        JButton redo = new JButton(new ImageIcon(getClass().getResource("/res/icon/redo.png")));
+        redo.addActionListener(new RedoListener(gui));
+        redo.setToolTipText("Redo");
+
         JButton mirror = new JButton(new ImageIcon(getClass().getResource("/res/icon/mirror.png")));
         mirror.addActionListener(new MirrorListener(gui));
         mirror.setToolTipText("Mirror");
@@ -66,6 +70,7 @@ public class PathToolBar extends JToolBar {
         add(open);
         addSeparator();
         add(undo);
+        add(redo);
         add(mirror);
         addSeparator();
         add(xLabel);
