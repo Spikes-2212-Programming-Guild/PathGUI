@@ -78,6 +78,7 @@ public class GainsDialog extends JDialog {
             returnValue = APPROVE_OPTION;
             dispose();
         });
+        preview.setMnemonic('P');
 
         JButton cancel = new JButton("Cancel");
         cancel.addActionListener(actionEvent -> {
