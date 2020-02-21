@@ -19,6 +19,11 @@ public class Globals {
     public static Stack<Action> UNDO_STACK = new Stack<>();
 
     /**
+     * The actions undone on the current path, in order.
+     */
+    public static Stack<Action> REDO_STACK = new Stack<>();
+
+    /**
      * The preferences object that saves the preferences for default directory and path generation gains.
      */
     public static final Preferences PREFS = Preferences.userNodeForPackage(GUI.class);
