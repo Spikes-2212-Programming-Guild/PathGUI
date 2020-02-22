@@ -3,7 +3,8 @@ package gui.pane;
 import gui.GUI;
 import gui.Globals;
 import gui.bars.PathToolBar;
-import path.*;
+import path.PathManipulator;
+import path.Waypoint;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -86,14 +87,6 @@ public class PathPane extends JPanel implements Addable {
         repaint();
     }
 
-    /**
-     * Removes the last point from the path.
-     */
-    public void removeLast() {
-        pathManipulator.removeLast();
-        repaint();
-    }
-
     @Override
     public boolean select(Waypoint waypoint) {
         for(Waypoint wp : pathManipulator.getPoints()) {
@@ -112,77 +105,11 @@ public class PathPane extends JPanel implements Addable {
     }
 
     /**
-     * Reverts to before the last time the path was generated.
-     */
-    public void ungeneratePath() {
-        pathManipulator.ungeneratePath();
-        repaint();
-    }
-
-    /**
      * Creates a new path, losing all unsaved changes to the old one.
      */
     public void newPath() {
         pathManipulator = new PathManipulator();
         repaint();
-    }
-
-    /**
-     * Imports a path from a csv file.
-     *
-     * @param filepath the path of the file to import
-     */
-    public void importPath(java.nio.file.Path filepath) {
-        pathManipulator.importPath(filepath);
-        repaint();
-    }
-
-    /**
-     * Generate the path.
-     *
-     * @param gains the gains object containing the gains for the path generation
-     */
-    public void generatePath(Gains gains) {
-        pathManipulator.generatePath(gains);
-        repaint();
-    }
-
-    /**
-     * Save the path to a file.
-     *
-     * @param filepath the path of the file.
-     */
-    public void savePath(java.nio.file.Path filepath) {
-        pathManipulator.savePath(filepath);
-        repaint();
-    }
-
-    /**
-     * Align the path so that the robot is facing forward at the beginning of it.
-     */
-    public void alignPath() {
-        pathManipulator.alignPath();
-        repaint();
-    }
-
-    /**
-     * Mirror the path.
-     */
-    public void mirrorPath() {
-        pathManipulator.mirrorPath();
-        repaint();
-    }
-
-    /**
-     * Move the path to the origin.
-     */
-    public void moveToOrigin() {
-        pathManipulator.moveToOrigin();
-        repaint();
-    }
-
-    public boolean isPathGenerated() {
-        return pathManipulator.isGenerated();
     }
 
     /**
