@@ -1,33 +1,24 @@
 package gui.bars.listeners;
 
+import components.PathListener;
 import gui.*;
 import gui.gains.GainsDialog;
-
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.Stack;
 
 /**
  * The action listener for generating paths.
  *
  * @author Eran Goldstein
  */
-public class GenerateListener implements ActionListener {
-    /**
-     * A user interface object.
-     */
-    private GUI gui;
-
-    public GenerateListener(GUI gui) {
-        this.gui = gui;
+public class GenerateListener extends PathListener {
+    public GenerateListener(GUI context) {
+        super(context);
     }
 
     @Override
-    public void actionPerformed(ActionEvent actionEvent) {
-        if(Globals.GAINS_DIALOG.showDialog(gui) == GainsDialog.APPROVE_OPTION) {
-            gui.getPathPane().generatePath(Globals.GAINS_DIALOG.getGains());
-            Globals.UNDO_STACK.push(new Action(Action.ActionType.GENERATE));
-            Globals.REDO_STACK = new Stack<>();
-        }
+    protected Action performAction() {
+        super.performAction();
+        if(Globals.GAINS_DIALOG.showDialog(context) == GainsDialog.APPROVE_OPTION)
+            manipulator.generatePath(Globals.GAINS_DIALOG.getGains());
+        return new Action(Action.ActionType.GENERATE);
     }
 }

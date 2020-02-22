@@ -1,31 +1,24 @@
 package gui.bars.listeners;
 
-import gui.*;
+import components.PathListener;
+import gui.Action;
+import gui.GUI;
 import path.Gains;
-
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.Stack;
 
 /**
  * The action listener for generating paths using the default gains.
  *
  * @author Eran Goldstein
  */
-public class QuickGenerationListener implements ActionListener {
-    /**
-     * A user interface object.
-     */
-    private GUI gui;
-
-    public QuickGenerationListener(GUI gui) {
-        this.gui = gui;
+public class QuickGenerationListener extends PathListener {
+    public QuickGenerationListener(GUI context) {
+        super(context);
     }
 
     @Override
-    public void actionPerformed(ActionEvent actionEvent) {
-        gui.getPathPane().generatePath(Gains.getPreferences());
-        Globals.UNDO_STACK.push(new Action(Action.ActionType.GENERATE));
-        Globals.REDO_STACK = new Stack<>();
+    protected Action performAction() {
+        super.performAction();
+        manipulator.generatePath(Gains.getPreferences());
+        return new Action(Action.ActionType.GENERATE);
     }
 }

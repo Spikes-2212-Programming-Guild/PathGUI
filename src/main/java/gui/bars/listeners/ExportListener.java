@@ -1,44 +1,38 @@
 package gui.bars.listeners;
 
-import gui.GUI;
-import gui.Globals;
+import components.PathListener;
+import gui.Action;
+import gui.*;
 import path.Gains;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.nio.file.Path;
-import java.util.Stack;
 
 /**
  * The action listener for exporting paths.
  *
  * @author Eran Goldstein
  */
-public class ExportListener implements ActionListener {
-    /**
-     * A user interface object.
-     */
-    private GUI gui;
-
-    public ExportListener(GUI gui) {
-        this.gui = gui;
+public class ExportListener extends PathListener {
+    public ExportListener(GUI context) {
+        super(context);
     }
 
     @Override
-    public void actionPerformed(ActionEvent actionEvent) {
-        if(Globals.FILE_CHOOSER.showDialog(gui, "Export") == JFileChooser.APPROVE_OPTION) {
-            if(!gui.getPathPane().isPathGenerated())
-                gui.getPathPane().generatePath(Gains.getPreferences());
-            gui.getPathPane().alignPath();
-            gui.getPathPane().moveToOrigin();
+    protected Action performAction() {
+        super.performAction();
+
+        if(Globals.FILE_CHOOSER.showDialog(context, "Export") == JFileChooser.APPROVE_OPTION) {
+            if(!manipulator.isGenerated())
+                manipulator.generatePath(Gains.getPreferences());
+            manipulator.alignPath();
+            manipulator.moveToOrigin();
 
             Path path = Globals.FILE_CHOOSER.getSelectedFile().toPath();
-            gui.getPathPane().savePath(path);
+            manipulator.savePath(path);
             Globals.PREFS.put("WORKING_DIRECTORY", path.toAbsolutePath().toString());
-
-            Globals.UNDO_STACK = new Stack<>();
-            Globals.REDO_STACK = new Stack<>();
         }
+
+        return null;
     }
 }

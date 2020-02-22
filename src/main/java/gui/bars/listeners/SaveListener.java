@@ -1,37 +1,32 @@
 package gui.bars.listeners;
 
-import gui.GUI;
-import gui.Globals;
+import components.PathListener;
+import gui.Action;
+import gui.*;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.nio.file.Path;
-import java.util.Stack;
 
 /**
  * The action listener for saving files.
  *
  * @author Eran Goldstein
  */
-public class SaveListener implements ActionListener {
-    /**
-     * A user interface object.
-     */
-    private GUI gui;
-
-    public SaveListener(GUI gui) {
-        this.gui = gui;
+public class SaveListener extends PathListener {
+    public SaveListener(GUI context) {
+        super(context);
     }
 
     @Override
-    public void actionPerformed(ActionEvent actionEvent) {
-        if(Globals.FILE_CHOOSER.showSaveDialog(gui) == JFileChooser.APPROVE_OPTION) {
+    protected Action performAction() {
+        super.performAction();
+
+        if(Globals.FILE_CHOOSER.showSaveDialog(context) == JFileChooser.APPROVE_OPTION) {
             Path path = Globals.FILE_CHOOSER.getSelectedFile().toPath();
-            gui.getPathPane().savePath(path);
+            manipulator.savePath(path);
             Globals.PREFS.put("WORKING_DIRECTORY", path.toAbsolutePath().toString());
-            Globals.UNDO_STACK = new Stack<>();
-            Globals.REDO_STACK = new Stack<>();
         }
+
+        return null;
     }
 }

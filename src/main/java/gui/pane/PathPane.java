@@ -195,4 +195,8 @@ public class PathPane extends JPanel implements Addable {
         selected.setCoordinates(x, y);
         repaint();
     }
+
+    public PathManipulator getPathManipulator() {
+        return pathManipulator;
+    }
 }
