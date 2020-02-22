@@ -28,6 +28,7 @@ public class GUI extends JFrame {
         gui.pack();
         gui.setLocationRelativeTo(null);
         gui.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        gui.setIconImage(new ImageIcon(GUI.class.getResource("/res/spike.png")).getImage());
         gui.setVisible(true);
     }
 
