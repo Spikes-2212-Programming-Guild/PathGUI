@@ -1,10 +1,10 @@
 package gui;
 
 import gui.bars.PathMenuBar;
-import gui.bars.listeners.CSVFilter;
 import gui.pane.PathPane;
 
 import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  * The main frame that holds the paths GUI.
@@ -17,7 +17,8 @@ public class GUI extends JFrame {
         setContentPane(new PathPane(this));
         setJMenuBar(new PathMenuBar(this));
 
-        Globals.FILE_CHOOSER.addChoosableFileFilter(new CSVFilter());
+        Globals.FILE_CHOOSER.addChoosableFileFilter(new FileNameExtensionFilter("Path Files (*.csv)",
+                "csv"));
         Globals.FILE_CHOOSER.setAcceptAllFileFilterUsed(false);
     }
 
