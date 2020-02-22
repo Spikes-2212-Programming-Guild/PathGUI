@@ -67,7 +67,7 @@ public class Globals {
     public static final int H_GAP = 8;
 
     /**
-     * The vetical gap between components in dialogs.
+     * The vertical gap between components in dialogs.
      */
     public static final int V_GAP = 4;
 
