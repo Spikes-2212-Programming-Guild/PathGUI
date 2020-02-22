@@ -17,7 +17,7 @@ public class GUI extends JFrame {
         setContentPane(new PathPane(this));
         setJMenuBar(new PathMenuBar(this));
 
-        Globals.FILE_CHOOSER.addChoosableFileFilter(new FileNameExtensionFilter("Path Files (*.csv)",
+        Globals.FILE_CHOOSER.addChoosableFileFilter(new FileNameExtensionFilter("Path Files",
                 "csv"));
         Globals.FILE_CHOOSER.setAcceptAllFileFilterUsed(false);
     }
