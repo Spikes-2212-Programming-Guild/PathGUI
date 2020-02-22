@@ -37,6 +37,7 @@ public class UndoListener implements ActionListener {
             }
 
             Globals.REDO_STACK.push(lastAction);
+            gui.repaint();
         }
     }
 }

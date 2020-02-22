@@ -38,6 +38,7 @@ public class RedoListener implements ActionListener {
             }
 
             Globals.UNDO_STACK.push(lastAction);
+            gui.repaint();
         }
     }
 }
