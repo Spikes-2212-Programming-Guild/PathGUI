@@ -64,7 +64,7 @@ public class GainsDialog extends JDialog {
     public static int CANCEL_OPTION = 1;
 
     public GainsDialog() {
-        setLayout(new GridLayout(0, 2));
+        JPanel gainsPanel = new JPanel(new GridLayout(0, 2, 8, 4));
 
         spacing = new PathNumberField(Globals.PREFS.getDouble("SPACING", 0.075));
         smoothWeight = new PathNumberField(Globals.PREFS.getDouble("SMOOTH_WEIGHT", 0.6));
@@ -86,20 +86,23 @@ public class GainsDialog extends JDialog {
             dispose();
         });
 
-        add(new JLabel("Spacing: "));
-        add(spacing);
-        add(new JLabel("Smooth Weight: "));
-        add(smoothWeight);
-        add(new JLabel("Tolerance: "));
-        add(tolerance);
-        add(new JLabel("Max Velocity: "));
-        add(maxVelocity);
-        add(new JLabel("Turning Constant: "));
-        add(turningConstant);
-        add(new JLabel("Max Acceleration: "));
-        add(maxAcceleration);
-        add(preview);
-        add(cancel);
+        gainsPanel.add(new JLabel("Spacing:"));
+        gainsPanel.add(spacing);
+        gainsPanel.add(new JLabel("Smooth Weight:"));
+        gainsPanel.add(smoothWeight);
+        gainsPanel.add(new JLabel("Tolerance:"));
+        gainsPanel.add(tolerance);
+        gainsPanel.add(new JLabel("Max Velocity:"));
+        gainsPanel.add(maxVelocity);
+        gainsPanel.add(new JLabel("Turning Constant:"));
+        gainsPanel.add(turningConstant);
+        gainsPanel.add(new JLabel("Max Acceleration:"));
+        gainsPanel.add(maxAcceleration);
+        gainsPanel.add(preview);
+        gainsPanel.add(cancel);
+
+        gainsPanel.setBorder(BorderFactory.createEmptyBorder(4, 8, 4, 8));
+        add(gainsPanel);
     }
 
     public Gains getGains() {
