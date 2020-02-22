@@ -16,7 +16,6 @@ public class GenerateListener extends PathListener {
 
     @Override
     protected Action performAction() {
-        super.performAction();
         if(Globals.GAINS_DIALOG.showDialog(context) == GainsDialog.APPROVE_OPTION)
             manipulator.generatePath(Globals.GAINS_DIALOG.getGains());
         return new Action(Action.ActionType.GENERATE);

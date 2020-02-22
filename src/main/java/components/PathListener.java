@@ -27,6 +27,7 @@ public abstract class PathListener implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
+        manipulator = context.getPathPane().getPathManipulator();
         Action action = performAction();
         if(action != null)
             Globals.UNDO_STACK.push(action);
@@ -39,13 +40,8 @@ public abstract class PathListener implements ActionListener {
 
     /**
      * Performs the action.
-     * <p>
-     * Override this method.
      *
-     * @return an {@link Action} object representing the performed action.
+     * @return an {@link Action} object representing the performed action
      */
-    protected Action performAction() {
-        manipulator = context.getPathPane().getPathManipulator();
-        return null;
-    }
+    protected abstract Action performAction();
 }

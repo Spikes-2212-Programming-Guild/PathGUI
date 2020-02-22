@@ -19,8 +19,6 @@ public class SaveListener extends PathListener {
 
     @Override
     protected Action performAction() {
-        super.performAction();
-
         if(Globals.FILE_CHOOSER.showSaveDialog(context) == JFileChooser.APPROVE_OPTION) {
             Path path = Globals.FILE_CHOOSER.getSelectedFile().toPath();
             manipulator.savePath(path);

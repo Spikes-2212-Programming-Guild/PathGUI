@@ -16,7 +16,6 @@ public class MirrorListener extends PathListener {
 
     @Override
     protected Action performAction() {
-        super.performAction();
         manipulator.mirrorPath();
         return new Action(Action.ActionType.MIRROR);
     }

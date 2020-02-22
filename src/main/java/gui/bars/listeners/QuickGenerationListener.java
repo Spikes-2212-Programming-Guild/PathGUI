@@ -17,7 +17,6 @@ public class QuickGenerationListener extends PathListener {
 
     @Override
     protected Action performAction() {
-        super.performAction();
         manipulator.generatePath(Gains.getPreferences());
         return new Action(Action.ActionType.GENERATE);
     }

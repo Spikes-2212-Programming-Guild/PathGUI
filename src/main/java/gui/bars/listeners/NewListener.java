@@ -16,7 +16,6 @@ public class NewListener extends PathListener {
 
     @Override
     protected Action performAction() {
-        super.performAction();
         context.getPathPane().newPath();
         return null;
     }

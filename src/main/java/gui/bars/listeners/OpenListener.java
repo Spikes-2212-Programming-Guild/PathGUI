@@ -19,8 +19,6 @@ public class OpenListener extends PathListener {
 
     @Override
     protected Action performAction() {
-        super.performAction();
-
         if(Globals.FILE_CHOOSER.showOpenDialog(context) == JFileChooser.APPROVE_OPTION) {
             Path path = Globals.FILE_CHOOSER.getSelectedFile().toPath();
             manipulator.importPath(path);

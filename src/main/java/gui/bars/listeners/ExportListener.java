@@ -20,8 +20,6 @@ public class ExportListener extends PathListener {
 
     @Override
     protected Action performAction() {
-        super.performAction();
-
         if(Globals.FILE_CHOOSER.showDialog(context, "Export") == JFileChooser.APPROVE_OPTION) {
             if(!manipulator.isGenerated())
                 manipulator.generatePath(Gains.getPreferences());
