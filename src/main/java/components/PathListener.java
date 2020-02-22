@@ -34,7 +34,7 @@ public abstract class PathListener implements ActionListener {
             Globals.UNDO_STACK = new Stack<>();
         Globals.REDO_STACK = new Stack<>();
 
-        context.getPathPane().repaint();
+        context.repaint();
     }
 
     /**
