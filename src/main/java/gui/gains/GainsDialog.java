@@ -64,7 +64,7 @@ public class GainsDialog extends JDialog {
     public static int CANCEL_OPTION = 1;
 
     public GainsDialog() {
-        setLayout(new GridLayout(7, 2));
+        setLayout(new GridLayout(0, 2));
 
         spacing = new PathNumberField(Globals.PREFS.getDouble("SPACING", 0.075));
         smoothWeight = new PathNumberField(Globals.PREFS.getDouble("SMOOTH_WEIGHT", 0.6));
