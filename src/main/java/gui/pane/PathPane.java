@@ -47,7 +47,7 @@ public class PathPane extends JPanel implements Addable {
         toolBar.setEnabled(pathManipulator.contains(selected));
 
         try {
-            BufferedImage img = ImageIO.read(getClass().getResource("/res/HalfField.png"));
+            BufferedImage img = ImageIO.read(getClass().getResource("/res/half-field.png"));
             g.drawImage(img, 0, 0, null);
         } catch(IOException ioe) {
             JOptionPane.showMessageDialog(this, "Failed to load game field image.",
