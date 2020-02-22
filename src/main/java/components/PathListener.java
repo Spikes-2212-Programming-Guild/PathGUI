@@ -31,11 +31,12 @@ public abstract class PathListener implements ActionListener {
     public void actionPerformed(ActionEvent actionEvent) {
         manipulator = context.getPathPane().getPathManipulator();
         Action action = performAction();
-        if(action != null)
-            Globals.UNDO_STACK.push(action);
-        else
+        if(action == null)
             Globals.UNDO_STACK = new Stack<>();
-        Globals.REDO_STACK = new Stack<>();
+        else if(action != Action.NO_ACTION)
+            Globals.UNDO_STACK.push(action);
+        if(!(action == Action.NO_ACTION))
+            Globals.REDO_STACK = new Stack<>();
 
         context.repaint();
     }

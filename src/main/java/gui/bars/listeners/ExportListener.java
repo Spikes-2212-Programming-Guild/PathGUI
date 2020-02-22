@@ -29,8 +29,9 @@ public class ExportListener extends PathListener {
             Path path = Globals.FILE_CHOOSER.getSelectedFile().toPath();
             manipulator.savePath(path);
             Globals.PREFS.put("WORKING_DIRECTORY", path.toAbsolutePath().toString());
+            return null;
         }
 
-        return null;
+        return Action.NO_ACTION;
     }
 }

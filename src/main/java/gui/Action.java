@@ -9,6 +9,11 @@ import path.Waypoint;
  */
 public class Action {
     /**
+     * An object that represents no action.
+     */
+    public static final Action NO_ACTION = new Action(ActionType.ADD, null);
+
+    /**
      * Types of actions the user may perform.
      */
     public enum ActionType {
