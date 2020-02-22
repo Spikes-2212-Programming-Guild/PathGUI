@@ -26,13 +26,13 @@ public class UndoListener implements ActionListener {
             Action lastAction = Globals.UNDO_STACK.pop();
             switch(lastAction.getType()) {
                 case ADD:
-                    gui.getPathPane().removeLast();
+                    gui.getPathPane().getPathManipulator().removeLast();
                     break;
                 case MIRROR:
-                    gui.getPathPane().mirrorPath();
+                    gui.getPathPane().getPathManipulator().mirrorPath();
                     break;
                 case GENERATE:
-                    gui.getPathPane().ungeneratePath();
+                    gui.getPathPane().getPathManipulator().ungeneratePath();
                     break;
             }
 

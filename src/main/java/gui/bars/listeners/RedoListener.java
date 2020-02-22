@@ -27,13 +27,13 @@ public class RedoListener implements ActionListener {
             Action lastAction = Globals.REDO_STACK.pop();
             switch(lastAction.getType()) {
                 case ADD:
-                    gui.getPathPane().add(lastAction.getDestination());
+                    gui.getPathPane().getPathManipulator().add(lastAction.getDestination());
                     break;
                 case MIRROR:
-                    gui.getPathPane().mirrorPath();
+                    gui.getPathPane().getPathManipulator().mirrorPath();
                     break;
                 case GENERATE:
-                    gui.getPathPane().generatePath(Gains.getPreferences());
+                    gui.getPathPane().getPathManipulator().generatePath(Gains.getPreferences());
                     break;
             }
 
