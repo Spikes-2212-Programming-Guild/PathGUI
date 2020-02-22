@@ -28,10 +28,10 @@ public abstract class PathListener implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
         Action action = performAction();
-        if(action == null)
-            Globals.UNDO_STACK = new Stack<>();
-        else
+        if(action != null)
             Globals.UNDO_STACK.push(action);
+        else
+            Globals.UNDO_STACK = new Stack<>();
         Globals.REDO_STACK = new Stack<>();
 
         context.getPathPane().repaint();
