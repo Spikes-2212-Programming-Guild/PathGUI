@@ -12,7 +12,8 @@ import javax.swing.*;
  * @author Eran Goldstein
  */
 public class GUI extends JFrame {
-    public GUI() {
+    public GUI(String title) {
+        super(title);
         setContentPane(new PathPane(this));
         setJMenuBar(new PathMenuBar(this));
 
@@ -21,8 +22,7 @@ public class GUI extends JFrame {
     }
 
     public static void main(String[] args) {
-        GUI gui = new GUI();
-        gui.setTitle("Spikes Path Drawing Tool");
+        GUI gui = new GUI("Spikes Path Drawing Tool");
         gui.setResizable(false);
         gui.pack();
         gui.setLocationRelativeTo(null);
