@@ -64,7 +64,7 @@ public class GainsDialog extends JDialog {
     public static int CANCEL_OPTION = 1;
 
     public GainsDialog() {
-        JPanel gainsPanel = new JPanel(new GridLayout(0, 2, 8, 4));
+        JPanel gainsPanel = new JPanel(new GridLayout(0, 2, Globals.H_GAP, Globals.V_GAP));
 
         spacing = new PathNumberField(Globals.PREFS.getDouble("SPACING", 0.075));
         smoothWeight = new PathNumberField(Globals.PREFS.getDouble("SMOOTH_WEIGHT", 0.6));
@@ -101,7 +101,8 @@ public class GainsDialog extends JDialog {
         gainsPanel.add(preview);
         gainsPanel.add(cancel);
 
-        gainsPanel.setBorder(BorderFactory.createEmptyBorder(4, 8, 4, 8));
+        gainsPanel.setBorder(BorderFactory
+                .createEmptyBorder(Globals.V_GAP, Globals.H_GAP, Globals.V_GAP, Globals.H_GAP));
         add(gainsPanel);
     }
 

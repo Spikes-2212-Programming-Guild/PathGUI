@@ -62,6 +62,16 @@ public class Globals {
     public static final int FIELD_HEIGHT = 770;
 
     /**
+     * The horizontal gap between components in dialogs.
+     */
+    public static final int H_GAP = 8;
+
+    /**
+     * The vetical gap between components in dialogs.
+     */
+    public static final int V_GAP = 4;
+
+    /**
      * Converts meters to centimeters when multiplied by.
      */
     public static final int M_TO_CM = 100;
