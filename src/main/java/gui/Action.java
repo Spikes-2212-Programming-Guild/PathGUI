@@ -23,11 +23,11 @@ public class Action {
     /**
      * The destination the action was directed towards.
      */
-    private Waypoint to;
+    private Waypoint destination;
 
-    public Action(ActionType type, Waypoint to) {
+    public Action(ActionType type, Waypoint destination) {
         this.type = type;
-        this.to = to;
+        this.destination = destination;
     }
 
     /**
@@ -41,7 +41,7 @@ public class Action {
         return type;
     }
 
-    public Waypoint getTo() {
-        return to;
+    public Waypoint getDestination() {
+        return destination;
     }
 }
