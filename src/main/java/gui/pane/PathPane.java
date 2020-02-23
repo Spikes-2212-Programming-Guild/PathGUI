@@ -53,7 +53,7 @@ public class PathPane extends JPanel implements Addable {
                     "Error", JOptionPane.ERROR_MESSAGE);
         }
 
-        ((Graphics2D)g).setStroke(new BasicStroke(Globals.PATH_WIDTH));
+        ((Graphics2D)g).setStroke(new BasicStroke(Globals.PATH_WIDTH, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
 
         Waypoint prev = null;
         int radius = pathManipulator.isGenerated() ? Globals.GENERATED_RADIUS : Globals.POINT_RADIUS;
