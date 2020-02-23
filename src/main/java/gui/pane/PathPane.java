@@ -9,7 +9,6 @@ import path.Waypoint;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 /**
@@ -48,8 +47,7 @@ public class PathPane extends JPanel implements Addable {
         toolBar.setEnabled(pathManipulator.contains(selected));
 
         try {
-            BufferedImage img = ImageIO.read(getClass().getResource("/res/half-field.png"));
-            g.drawImage(img, 0, 0, null);
+            g.drawImage(ImageIO.read(getClass().getResource("/res/field.png")), 0, 0, null);
         } catch(IOException ioe) {
             JOptionPane.showMessageDialog(this, "Failed to load game field image.",
                     "Error", JOptionPane.ERROR_MESSAGE);
