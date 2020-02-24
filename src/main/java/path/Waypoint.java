@@ -1,4 +1,4 @@
-package com.spikes2212.path;
+package path;
 
 /**
  * This class represents a point in 2d space, with additional fields used for path generation and following.
@@ -6,16 +6,15 @@ package com.spikes2212.path;
  * @author T
  */
 public class Waypoint {
-
     /**
      * The x coordinate.
      */
-    private final double x;
+    private double x;
 
     /**
      * The y coordinate.
      */
-    private final double y;
+    private double y;
 
     /**
      * The velocity at the given point (used for path following).
@@ -33,6 +32,11 @@ public class Waypoint {
     private double curvature;
 
     public Waypoint(double x, double y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    public void setCoordinates(double x, double y) {
         this.x = x;
         this.y = y;
     }
@@ -57,15 +61,18 @@ public class Waypoint {
         this.d = distance;
     }
 
-    public double getD(){
+    public double getD() {
         return d;
     }
 
     /**
      * returns an array of the point's coordinates
+     *
      * @return an array of the point's coordinates
      */
-    public double[] toArray() { return new double[]{x, y}; }
+    public double[] toArray() {
+        return new double[]{x, y};
+    }
 
     public double getCurvature() {
         return curvature;
@@ -77,11 +84,13 @@ public class Waypoint {
 
     /**
      * returns the distance from the given point to {@code this}.
+     *
      * @param point the point to calculate the distance from
      * @return the distance between the points
      */
     public double distance(Waypoint point) {
-        return Math.sqrt((x - point.getX())*(getX() - point.getX()) + (getY() - point.getY())*(getY() - point.getY()));
+        return Math.sqrt((getX() - point.getX()) * (getX() - point.getX())
+                + (getY() - point.getY()) * (getY() - point.getY()));
     }
 
     @Override
