@@ -16,7 +16,7 @@ public class PathMenuBar extends JMenuBar {
     /**
      * Sets up the menu bar, menus and menu items.
      *
-     * @param gui a user interface object.
+     * @param gui a user interface object
      */
     public PathMenuBar(GUI gui) {
         JMenu file = new JMenu("File");
