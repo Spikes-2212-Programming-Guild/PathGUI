@@ -39,7 +39,7 @@ public class PathManipulator {
      * Removes the last point from the path.
      */
     public void removeLast() {
-        path.remove(path.size() - 1);
+        path.removeLast();
     }
 
     /**
@@ -87,8 +87,8 @@ public class PathManipulator {
      * @param radians the amount by which to rotate the path
      */
     private void rotatePath(double radians) {
-        double xoff = path.get(0).getX();
-        double yoff = path.get(0).getY();
+        double xoff = path.getFirst().getX();
+        double yoff = path.getFirst().getY();
 
         for(Waypoint waypoint : path) {
             double x = (waypoint.getX() - xoff) * Math.cos(radians) - (waypoint.getY() - yoff) * Math.sin(radians);
@@ -102,7 +102,7 @@ public class PathManipulator {
      * Align the path so that the robot is facing forward at the beginning of it.
      */
     public void alignPath() {
-        Waypoint first = path.get(0);
+        Waypoint first = path.getFirst();
         Waypoint second = path.get(1);
 
         double m = (first.getY() - second.getY()) / (first.getX() - second.getX());
@@ -110,11 +110,8 @@ public class PathManipulator {
 
         rotatePath((Math.PI / 2) - angle);
 
-        first = path.get(0);
-        second = path.get(1);
-        if(second.getY() < first.getY()) {
+        if(second.getY() < first.getY())
             rotatePath(Math.PI);
-        }
     }
 
     /**
@@ -129,11 +126,9 @@ public class PathManipulator {
      * Move the path to the origin.
      */
     public void moveToOrigin() {
-        double xoff = path.get(0).getX();
-        double yoff = path.get(0).getY();
-
         for(Waypoint waypoint : path)
-            waypoint.setCoordinates(waypoint.getX() - xoff, waypoint.getY() - yoff);
+            waypoint.setCoordinates(waypoint.getX() - path.getFirst().getX(),
+                    waypoint.getY() - path.getFirst().getY());
     }
 
     public boolean contains(Waypoint waypoint) {
@@ -142,14 +137,6 @@ public class PathManipulator {
 
     public List<Waypoint> getPoints() {
         return path;
-    }
-
-    public Path getPath() {
-        return path;
-    }
-
-    public void setPath(Path path) {
-        this.path = path;
     }
 
     public boolean isGenerated() {
