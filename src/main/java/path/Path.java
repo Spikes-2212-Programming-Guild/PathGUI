@@ -31,24 +31,19 @@ public class Path extends LinkedList<Waypoint> {
         for(int i = 0; i < size() - 1; i++) {
             Waypoint startPoint = get(i);
             double length = get(i).distance(get(i + 1));
-            int pointsThatFit = (int)(length / spacing);
             Waypoint vector = new Waypoint((get(i + 1).getX() - get(i).getX()) * (spacing / length),
                     (get(i + 1).getY() - get(i).getY()) * (spacing / length));
-            for(int j = 0; j < pointsThatFit; j++, i++) {
-                add(i + 1, new Waypoint(
-                        startPoint.getX() + vector.getX() * (j + 1),
-                        startPoint.getY() + vector.getY() * (j + 1)
-                ));
-            }
+            for(int j = 0; j < (int)(length / spacing); j++, i++)
+                add(i + 1, new Waypoint(startPoint.getX() + vector.getX() * (j + 1),
+                        startPoint.getY() + vector.getY() * (j + 1)));
         }
     }
 
-    private void smooth(double smooth_weight, double tolerance) {
-        double data_weight = 1 - smooth_weight;
+    private void smooth(double smoothWeight, double tolerance) {
+        double dataWeight = 1 - smoothWeight;
         double[][] path = new double[size()][2];
-        for(int i = 0; i < size(); i++) {
+        for(int i = 0; i < size(); i++)
             path[i] = get(i).toArray();
-        }
         double[][] ogPath = Arrays.copyOf(path, path.length);
         double change = tolerance;
         while(change >= tolerance) {
@@ -56,25 +51,22 @@ public class Path extends LinkedList<Waypoint> {
             for(int i = 1; i < path.length - 1; i++) {
                 for(int j = 0; j < path[i].length; j++) {
                     double aux = path[i][j];
-                    path[i][j] += data_weight * (ogPath[i][j] - path[i][j])
-                            + smooth_weight * (path[i - 1][j] + path[i + 1][j] - 2 * path[i][j]);
+                    path[i][j] += dataWeight * (ogPath[i][j] - path[i][j])
+                            + smoothWeight * (path[i - 1][j] + path[i + 1][j] - 2 * path[i][j]);
                     change += Math.abs(aux - path[i][j]);
                 }
             }
         }
 
-        for(int i = 0; i < path.length; i++) {
+        for(int i = 0; i < path.length; i++)
             set(i, new Waypoint(path[i][0], path[i][1]));
-        }
     }
 
     private void calculateDistances() {
         double previousDistance = 0;
-        get(0).setD(0);
-        for(int i = 1; i < size(); i++) {
-            previousDistance += get(i).distance(get(i - 1));
-            get(i).setD(previousDistance);
-        }
+        getFirst().setD(0);
+        for(int i = 1; i < size(); i++)
+            get(i).setD(previousDistance += get(i).distance(get(i - 1)));
     }
 
     private void calculateCurvatures() {
@@ -95,19 +87,15 @@ public class Path extends LinkedList<Waypoint> {
         }
     }
 
-    private void calculateMaxVelocities(double maxVelocity, double k) {
-        for(Waypoint p : this) {
-            p.setV(Math.min(maxVelocity, k / p.getCurvature()));
-        }
+    private void calculateMaxVelocities(double maxVelocity, double turningConstant) {
+        for(Waypoint p : this)
+            p.setV(Math.min(maxVelocity, turningConstant / p.getCurvature()));
     }
 
     private void smoothVelocities(double maxAcceleration) {
-        get(size() - 1).setV(0);
-        for(int i = size() - 2; i >= 0; i--) {
-            double distance;
-            distance = get(i).distance(get(i + 1));
+        getLast().setV(0);
+        for(int i = size() - 2; i >= 0; i--)
             get(i).setV(Math.min(get(i).getV(),
-                    Math.sqrt(Math.pow(get(i + 1).getV(), 2) + 2 * maxAcceleration * distance)));
-        }
+                    Math.sqrt(Math.pow(get(i + 1).getV(), 2) + 2 * maxAcceleration * get(i).distance(get(i + 1)))));
     }
 }
