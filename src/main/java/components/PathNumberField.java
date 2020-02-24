@@ -11,6 +11,9 @@ import java.text.NumberFormat;
  * @author Eran Goldstein
  */
 public class PathNumberField extends JFormattedTextField {
+    /**
+     * The {@code double} value stored in this number field.
+     */
     private double val;
 
     public PathNumberField(double number) {
