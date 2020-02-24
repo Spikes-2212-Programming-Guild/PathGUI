@@ -107,13 +107,6 @@ public class GainsDialog extends JDialog {
     }
 
     public Gains getGains() {
-        Globals.PREFS.putDouble("SPACING", spacing.getNumber());
-        Globals.PREFS.putDouble("SMOOTH_WEIGHT", smoothWeight.getNumber());
-        Globals.PREFS.putDouble("TOLERANCE", tolerance.getNumber());
-        Globals.PREFS.putDouble("MAX_VELOCITY", maxVelocity.getNumber());
-        Globals.PREFS.putDouble("TURNING_CONSTANT", turningConstant.getNumber());
-        Globals.PREFS.putDouble("MAX_ACCELERATION", maxAcceleration.getNumber());
-
         return new Gains(spacing.getNumber(), smoothWeight.getNumber(), tolerance.getNumber(),
                 maxVelocity.getNumber(), turningConstant.getNumber(), maxAcceleration.getNumber());
     }
