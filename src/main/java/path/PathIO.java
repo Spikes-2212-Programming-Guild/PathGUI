@@ -18,12 +18,11 @@ public class PathIO {
      */
     public static void write(java.nio.file.Path filepath, Path path) {
         try(BufferedWriter writer = Files.newBufferedWriter(filepath, StandardCharsets.US_ASCII)) {
-            StringBuilder s = new StringBuilder("x,y,velocity,distance,curvature\n");
-            for(Waypoint w : path) {
-                s.append(w.getX()).append(",").append(w.getY()).append(",").append(w.getV()).append(",")
+            StringBuilder sb = new StringBuilder("x,y,velocity,distance,curvature\n");
+            for(Waypoint w : path)
+                sb.append(w.getX()).append(",").append(w.getY()).append(",").append(w.getV()).append(",")
                         .append(w.getD()).append(",").append(w.getCurvature()).append("\n");
-            }
-            writer.write(s.toString(), 0, s.length());
+            writer.write(sb.toString(), 0, sb.length());
         } catch(IOException ioe) {
             ioe.printStackTrace();
         }
