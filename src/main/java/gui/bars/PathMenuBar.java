@@ -76,6 +76,7 @@ public class PathMenuBar extends JMenuBar {
                 new ImageIcon(getClass().getResource("/res/icon/mirror.png")));
         mirror.addActionListener(new MirrorListener(gui));
         mirror.setMnemonic('M');
+        mirror.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_M, KeyEvent.CTRL_DOWN_MASK));
 
         edit.add(undo);
         edit.add(redo);
