@@ -28,7 +28,7 @@ public class PathPane extends JPanel implements Addable {
     private Waypoint selected;
 
     /**
-     * The {@link PathToolBar} in to the panel.
+     * The {@link PathToolBar} on the panel.
      */
     private PathToolBar toolBar;
 
