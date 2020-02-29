@@ -26,6 +26,11 @@ public class PathManipulator {
         oldPaths = new Stack<>();
     }
 
+    public PathManipulator(PathManipulator pathManipulator) {
+        this.path = (Path)pathManipulator.path.clone();
+        this.oldPaths = new Stack<>();
+    }
+
     /**
      * Adds a {@link Waypoint} to the path.
      *
