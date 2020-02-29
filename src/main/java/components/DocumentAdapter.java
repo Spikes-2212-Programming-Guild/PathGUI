@@ -22,7 +22,7 @@ public interface DocumentAdapter extends DocumentListener {
     /**
      * Called when any DocumentListener method is invoked.
      *
-     * @param e the DocumentEvent from the original DocumentListener method
+     * @param e the {@link DocumentEvent} from the original {@link DocumentListener} method
      */
     void documentChanged(DocumentEvent e);
 }
