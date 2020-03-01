@@ -126,7 +126,7 @@ public class GainsDialog extends JDialog {
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         pack();
         setLocationRelativeTo(context);
-        setIconImage(new ImageIcon(getClass().getResource("/res/spike.png")).getImage());
+        setIconImage(new ImageIcon(getClass().getResource("/res/logo.png")).getImage());
         setVisible(true);
 
         Globals.PREFS.putDouble("SPACING", spacing.getNumber());
