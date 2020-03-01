@@ -74,7 +74,7 @@ public class PathPane extends JPanel implements Addable {
     }
 
     private int ypx(Waypoint waypoint) {
-        return Globals.FIELD_WIDTH - (int)(Globals.M_TO_CM * waypoint.getY());
+        return Globals.FIELD_HEIGHT - (int)(Globals.M_TO_CM * waypoint.getY());
     }
 
     @Override
