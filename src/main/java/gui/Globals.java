@@ -82,6 +82,11 @@ public class Globals {
     public static final double CM_TO_M = 0.01;
 
     /**
+     * The width of the center line drawn on the field photo.
+     */
+    public static final int CENTER_LINE_WIDTH = 4;
+
+    /**
      * The width of each path segment on the UI.
      */
     public static final int PATH_WIDTH = 4;
@@ -115,4 +120,9 @@ public class Globals {
      * The color of the first path point on the UI.
      */
     public static final Color FIRST_COLOR = Color.decode("#3366ff");
+
+    /**
+     * The color of the rule lines on the field photo.
+     */
+    public static final Color RULE_COLOR = new Color(0, 0, 0, 64);
 }

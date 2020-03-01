@@ -53,6 +53,16 @@ public class PathPane extends JPanel implements Addable {
                     "Error", JOptionPane.ERROR_MESSAGE);
         }
 
+        g.setColor(Globals.RULE_COLOR);
+        for(int x = 0; x < Globals.FIELD_WIDTH; x += 100)
+            g.drawLine(x, 0, x, Globals.FIELD_HEIGHT);
+        for(int y = Globals.FIELD_HEIGHT; y > 0; y -= 100)
+            g.drawLine(0, y, Globals.FIELD_WIDTH, y);
+
+        g.setColor(Color.BLACK);
+        ((Graphics2D)g).setStroke(new BasicStroke(Globals.CENTER_LINE_WIDTH));
+        g.drawLine(Globals.FIELD_WIDTH / 2, 0, Globals.FIELD_WIDTH / 2, Globals.FIELD_HEIGHT);
+
         ((Graphics2D)g).setStroke(new BasicStroke(Globals.PATH_WIDTH, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
 
         Waypoint prev = null;
