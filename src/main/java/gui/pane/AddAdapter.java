@@ -26,7 +26,7 @@ public class AddAdapter extends MouseAdapter {
     @Override
     public void mouseReleased(MouseEvent e) {
         Waypoint waypoint = new Waypoint(e.getX() * Globals.CM_TO_M,
-                (Globals.FIELD_WIDTH - e.getY()) * Globals.CM_TO_M);
+                (Globals.FIELD_HEIGHT - e.getY()) * Globals.CM_TO_M);
 
         if(addable.select(waypoint))
             return;
