@@ -10,6 +10,20 @@ import java.util.List;
  */
 public class Paths {
     /**
+     * Rotates the path by an arbitrary amount.
+     *
+     * @param rad the amount by which to rotate the path, in radians
+     */
+    public static void rotate(double rad, List<Waypoint> path) {
+        double xoff = path.get(0).getX();
+        double yoff = path.get(0).getY();
+
+        for(Waypoint point : path)
+            point.setCoordinates((point.getX() - xoff) * Math.cos(rad) - (point.getY() - yoff) * Math.sin(rad),
+                    (point.getX() - xoff) * Math.sin(rad) + (point.getY() - yoff) * Math.cos(rad));
+    }
+
+    /**
      * Generates the path.
      *
      * @param gains the path generation gains

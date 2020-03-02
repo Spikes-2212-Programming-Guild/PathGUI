@@ -86,23 +86,6 @@ public class PathManipulator {
     }
 
     /**
-     * Rotate the path by an arbitrary amount.
-     *
-     * @param radians the amount by which to rotate the path
-     */
-    private void rotatePath(double radians) {
-        double xoff = path.get(0).getX();
-        double yoff = path.get(0).getY();
-
-        for(Waypoint waypoint : path) {
-            double x = (waypoint.getX() - xoff) * Math.cos(radians) - (waypoint.getY() - yoff) * Math.sin(radians);
-            double y = (waypoint.getX() - xoff) * Math.sin(radians) + (waypoint.getY() - yoff) * Math.cos(radians);
-
-            waypoint.setCoordinates(x, y);
-        }
-    }
-
-    /**
      * Align the path so that the robot is facing forward at the beginning of it.
      */
     public void alignPath() {
@@ -112,10 +95,10 @@ public class PathManipulator {
         double m = (first.getY() - second.getY()) / (first.getX() - second.getX());
         double angle = Math.atan(m);
 
-        rotatePath((Math.PI / 2) - angle);
+        Paths.rotate((Math.PI / 2) - angle, path);
 
         if(second.getY() < first.getY())
-            rotatePath(Math.PI);
+            Paths.rotate(Math.PI, path);
     }
 
     /**
