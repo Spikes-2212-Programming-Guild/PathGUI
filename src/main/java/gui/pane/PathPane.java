@@ -67,9 +67,9 @@ public class PathPane extends JPanel implements Addable {
 
         Waypoint prev = null;
         int radius = pathManipulator.isGenerated() ? Globals.GENERATED_RADIUS : Globals.POINT_RADIUS;
-        for(Waypoint waypoint : pathManipulator.getPoints()) {
+        for(Waypoint waypoint : pathManipulator.getPath()) {
             g.setColor(waypoint == selected ? Globals.SELECTION_COLOR :
-                    waypoint == pathManipulator.getPoints().get(0) ? Globals.FIRST_COLOR : Globals.POINT_COLOR);
+                    waypoint == pathManipulator.getPath().get(0) ? Globals.FIRST_COLOR : Globals.POINT_COLOR);
             g.fillOval(xpx(waypoint) - radius, ypx(waypoint) - radius, radius * 2, radius * 2);
 
             g.setColor(Globals.PATH_COLOR);
@@ -97,7 +97,7 @@ public class PathPane extends JPanel implements Addable {
 
     @Override
     public boolean select(Waypoint waypoint) {
-        for(Waypoint wp : pathManipulator.getPoints()) {
+        for(Waypoint wp : pathManipulator.getPath()) {
             int radius = pathManipulator.isGenerated() ? Globals.GENERATED_RADIUS : Globals.POINT_RADIUS;
             if(Math.abs(wp.getX() - waypoint.getX()) < radius * Globals.CM_TO_M
                     && Math.abs(wp.getY() - waypoint.getY()) < radius * Globals.CM_TO_M) {

@@ -122,7 +122,7 @@ public class PathManipulator {
         return path.contains(waypoint);
     }
 
-    public List<Waypoint> getPoints() {
+    public List<Waypoint> getPath() {
         return path;
     }
 
