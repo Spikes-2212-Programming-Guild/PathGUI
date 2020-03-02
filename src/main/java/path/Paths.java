@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * This class represents a path.
+ * This class contains algorithms that operate on paths.
  *
  * @author T
  */
