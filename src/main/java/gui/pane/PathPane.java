@@ -44,7 +44,7 @@ public class PathPane extends JPanel implements Addable {
 
     @Override
     protected void paintComponent(Graphics g) {
-        toolBar.setEnabled(pathManipulator.contains(selected));
+        toolBar.setEnabled(pathManipulator.getPath().contains(selected));
 
         try {
             g.drawImage(ImageIO.read(getClass().getResource("/res/field.png")), 0, 0, null);

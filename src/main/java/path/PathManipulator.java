@@ -118,10 +118,6 @@ public class PathManipulator {
                     waypoint.getY() - path.get(0).getY());
     }
 
-    public boolean contains(Waypoint waypoint) {
-        return path.contains(waypoint);
-    }
-
     public List<Waypoint> getPath() {
         return path;
     }
