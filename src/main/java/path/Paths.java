@@ -39,13 +39,13 @@ public class Paths {
 
     private static void fill(double spacing, List<Waypoint> path) {
         for(int i = 0; i < path.size() - 1; i++) {
-            Waypoint startPoint = path.get(i);
-            double length = path.get(i).distance(path.get(i + 1));
+            Waypoint first = path.get(i);
+            double length = first.distance(path.get(i + 1));
             Waypoint vector = new Waypoint((path.get(i + 1).getX() - path.get(i).getX()) * (spacing / length),
                     (path.get(i + 1).getY() - path.get(i).getY()) * (spacing / length));
             for(int j = 0; j < (int)(length / spacing); j++, i++)
-                path.add(i + 1, new Waypoint(startPoint.getX() + vector.getX() * (j + 1),
-                        startPoint.getY() + vector.getY() * (j + 1)));
+                path.add(i + 1, new Waypoint(first.getX() + vector.getX() * (j + 1),
+                        first.getY() + vector.getY() * (j + 1)));
         }
     }
 
