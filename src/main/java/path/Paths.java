@@ -15,12 +15,12 @@ public class Paths {
      * @param rad the amount by which to rotate the path, in radians
      */
     public static void rotate(double rad, List<Waypoint> path) {
-        double xoff = path.get(0).getX();
-        double yoff = path.get(0).getY();
+        double xOffset = path.get(0).getX();
+        double yOffset = path.get(0).getY();
 
         for(Waypoint point : path)
-            point.setCoordinates((point.getX() - xoff) * Math.cos(rad) - (point.getY() - yoff) * Math.sin(rad),
-                    (point.getX() - xoff) * Math.sin(rad) + (point.getY() - yoff) * Math.cos(rad));
+            point.setCoordinates((point.getX() - xOffset) * Math.cos(rad) - (point.getY() - yOffset) * Math.sin(rad),
+                    (point.getX() - xOffset) * Math.sin(rad) + (point.getY() - yOffset) * Math.cos(rad));
     }
 
     /**
