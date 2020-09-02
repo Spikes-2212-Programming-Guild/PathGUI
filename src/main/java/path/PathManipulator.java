@@ -2,8 +2,7 @@ package path;
 
 import gui.Globals;
 
-import java.util.List;
-import java.util.Stack;
+import java.util.*;
 
 /**
  * Holds and manipulates a path.
@@ -14,20 +13,20 @@ public class PathManipulator {
     /**
      * The path manipulated by this PathManipulator.
      */
-    private Path path;
+    private List<Waypoint> path;
 
     /**
      * The old versions of the path, before generation.
      */
-    private Stack<Path> oldPaths;
+    private Stack<List<Waypoint>> oldPaths;
 
     public PathManipulator() {
-        this.path = new Path();
+        this.path = new LinkedList<>();
         oldPaths = new Stack<>();
     }
 
     public PathManipulator(PathManipulator pathManipulator) {
-        this.path = (Path)pathManipulator.path.clone();
+        this.path = new LinkedList<>(pathManipulator.path);
         this.oldPaths = new Stack<>();
     }
 
@@ -44,7 +43,7 @@ public class PathManipulator {
      * Removes the last point from the path.
      */
     public void removeLast() {
-        path.removeLast();
+        path.remove(path.size() - 1);
     }
 
     /**
@@ -61,8 +60,8 @@ public class PathManipulator {
      */
     public void generatePath(Gains gains) {
         if(!path.isEmpty()) {
-            oldPaths.push((Path)path.clone());
-            path.generate(gains);
+            oldPaths.push(new LinkedList<>(path));
+            Paths.generate(gains, path);
         }
     }
 
@@ -87,36 +86,19 @@ public class PathManipulator {
     }
 
     /**
-     * Rotate the path by an arbitrary amount.
-     *
-     * @param radians the amount by which to rotate the path
-     */
-    private void rotatePath(double radians) {
-        double xoff = path.getFirst().getX();
-        double yoff = path.getFirst().getY();
-
-        for(Waypoint waypoint : path) {
-            double x = (waypoint.getX() - xoff) * Math.cos(radians) - (waypoint.getY() - yoff) * Math.sin(radians);
-            double y = (waypoint.getX() - xoff) * Math.sin(radians) + (waypoint.getY() - yoff) * Math.cos(radians);
-
-            waypoint.setCoordinates(x, y);
-        }
-    }
-
-    /**
      * Align the path so that the robot is facing forward at the beginning of it.
      */
     public void alignPath() {
-        Waypoint first = path.getFirst();
+        Waypoint first = path.get(0);
         Waypoint second = path.get(1);
 
         double m = (first.getY() - second.getY()) / (first.getX() - second.getX());
         double angle = Math.atan(m);
 
-        rotatePath((Math.PI / 2) - angle);
+        Paths.rotate((Math.PI / 2) - angle, path);
 
         if(second.getY() < first.getY())
-            rotatePath(Math.PI);
+            Paths.rotate(Math.PI, path);
     }
 
     /**
@@ -132,15 +114,11 @@ public class PathManipulator {
      */
     public void moveToOrigin() {
         for(Waypoint waypoint : path)
-            waypoint.setCoordinates(waypoint.getX() - path.getFirst().getX(),
-                    waypoint.getY() - path.getFirst().getY());
+            waypoint.setCoordinates(waypoint.getX() - path.get(0).getX(),
+                    waypoint.getY() - path.get(0).getY());
     }
 
-    public boolean contains(Waypoint waypoint) {
-        return path.contains(waypoint);
-    }
-
-    public List<Waypoint> getPoints() {
+    public List<Waypoint> getPath() {
         return path;
     }
 

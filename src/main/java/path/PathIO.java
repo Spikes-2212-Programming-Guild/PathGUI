@@ -4,6 +4,7 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -14,9 +15,9 @@ public class PathIO {
      * Writes the path to a file in CSV format.
      *
      * @param filepath the file's path
-     * @param path the path that will be written to the file
+     * @param path     the path that will be written to the file
      */
-    public static void write(java.nio.file.Path filepath, Path path) {
+    public static void write(java.nio.file.Path filepath, List<Waypoint> path) {
         try(BufferedWriter writer = Files.newBufferedWriter(filepath, StandardCharsets.US_ASCII)) {
             StringBuilder sb = new StringBuilder("x,y,velocity,distance,curvature\n");
             for(Waypoint w : path)
@@ -34,8 +35,8 @@ public class PathIO {
      * @param filepath the file's path
      * @return the imported path
      */
-    public static Path read(java.nio.file.Path filepath) {
-        Path path = new Path();
+    public static List<Waypoint> read(java.nio.file.Path filepath) {
+        List<Waypoint> path = new LinkedList<>();
         try {
             List<String> lines = Files.readAllLines(filepath);
             lines.remove(0);

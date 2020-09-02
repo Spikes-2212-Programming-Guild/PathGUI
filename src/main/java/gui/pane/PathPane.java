@@ -44,7 +44,7 @@ public class PathPane extends JPanel implements Addable {
 
     @Override
     protected void paintComponent(Graphics g) {
-        toolBar.setEnabled(pathManipulator.contains(selected));
+        toolBar.setEnabled(pathManipulator.getPath().contains(selected));
 
         try {
             g.drawImage(ImageIO.read(getClass().getResource("/res/field.png")), 0, 0, null);
@@ -53,13 +53,23 @@ public class PathPane extends JPanel implements Addable {
                     "Error", JOptionPane.ERROR_MESSAGE);
         }
 
+        g.setColor(Globals.RULE_COLOR);
+        for(int x = 0; x < Globals.FIELD_WIDTH; x += 100)
+            g.drawLine(x, 0, x, Globals.FIELD_HEIGHT);
+        for(int y = Globals.FIELD_HEIGHT; y > 0; y -= 100)
+            g.drawLine(0, y, Globals.FIELD_WIDTH, y);
+
+        g.setColor(Color.BLACK);
+        ((Graphics2D)g).setStroke(new BasicStroke(Globals.CENTER_LINE_WIDTH));
+        g.drawLine(Globals.FIELD_WIDTH / 2, 0, Globals.FIELD_WIDTH / 2, Globals.FIELD_HEIGHT);
+
         ((Graphics2D)g).setStroke(new BasicStroke(Globals.PATH_WIDTH, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
 
         Waypoint prev = null;
         int radius = pathManipulator.isGenerated() ? Globals.GENERATED_RADIUS : Globals.POINT_RADIUS;
-        for(Waypoint waypoint : pathManipulator.getPoints()) {
+        for(Waypoint waypoint : pathManipulator.getPath()) {
             g.setColor(waypoint == selected ? Globals.SELECTION_COLOR :
-                    waypoint == pathManipulator.getPoints().get(0) ? Globals.FIRST_COLOR : Globals.POINT_COLOR);
+                    waypoint == pathManipulator.getPath().get(0) ? Globals.FIRST_COLOR : Globals.POINT_COLOR);
             g.fillOval(xpx(waypoint) - radius, ypx(waypoint) - radius, radius * 2, radius * 2);
 
             g.setColor(Globals.PATH_COLOR);
@@ -74,7 +84,7 @@ public class PathPane extends JPanel implements Addable {
     }
 
     private int ypx(Waypoint waypoint) {
-        return Globals.FIELD_WIDTH - (int)(Globals.M_TO_CM * waypoint.getY());
+        return Globals.FIELD_HEIGHT - (int)(Globals.M_TO_CM * waypoint.getY());
     }
 
     @Override
@@ -87,7 +97,7 @@ public class PathPane extends JPanel implements Addable {
 
     @Override
     public boolean select(Waypoint waypoint) {
-        for(Waypoint wp : pathManipulator.getPoints()) {
+        for(Waypoint wp : pathManipulator.getPath()) {
             int radius = pathManipulator.isGenerated() ? Globals.GENERATED_RADIUS : Globals.POINT_RADIUS;
             if(Math.abs(wp.getX() - waypoint.getX()) < radius * Globals.CM_TO_M
                     && Math.abs(wp.getY() - waypoint.getY()) < radius * Globals.CM_TO_M) {
